@@ -1,0 +1,269 @@
+.flats__wrapper {
+  @include container();
+  padding: 0 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.flats__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flats__item {
+  margin-bottom: 25px;
+}
+
+.flats__item-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flats__text {
+  width: 125px;
+  margin: 0;
+  color: #030303;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+
+  &--price {
+    color: $primary-grey;
+  }
+}
+
+.flats__link {
+  position: relative;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  padding-right: 15px;
+  color: $primary-pink;
+
+  &::after {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    width: 6px;
+    height: 10px;
+    content: "";
+    background-image: url("../../img/arrow-right.png");
+    background-repeat: no-repeat;
+    background-size: 6px 10px;
+  }
+}
+
+.flats__title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 0;
+  margin-bottom: 25px;
+  color: $primary-black;
+}
+
+.flats__deadline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flats__deadline-item {
+  width: 200px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 15px;
+  color: $primary-black;
+}
+@media(min-width: $tablet-width) {
+  .flats__wrapper {
+    padding: 30px;
+  }
+
+  .flats__list {
+    // padding-top: 100px;
+    // margin-top: 100px;
+    margin-top: 20px;
+    // margin-right: 50px;
+    width: 100%;
+  }
+
+  .flats__item {
+    // width: 500px;
+    width: 100%;
+  }
+
+  .flats__title {
+    font-size: 18px;
+    line-height: 19px;
+  }
+
+  .flats__text {
+    width: 350px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .flats__link {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .flats__deadline-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flats__deadline-item {
+    font-size: 16px;
+    line-height: 18px;
+    margin-right: 15px;
+  }
+
+}
+@media(min-width: $desktop-width) {
+  .flats__list {
+    // padding-top: 100px;
+    // margin-top: 100px;
+    margin-top: 20px;
+    // margin-right: 50px;
+    // width: 100%;
+  }
+
+  .flats__item {
+    // width: 500px;
+    width: 100%;
+  }
+  .flats__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0;
+    padding-bottom: 70px;
+  }
+
+  .flats__list {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0;
+    order: 2;
+  }
+
+  .flats__item {
+    width: 665px;
+    border-radius: 2px;
+    background-color: #f0f0f0;
+    padding: 30px;
+    padding-left: 70px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .flats__text {
+    width: 350px;
+    font-size: 18px;
+    line-height: 19px;
+  }
+
+  .flats__link {
+    font-size: 18px;
+    line-height: 19px;
+    font-weight: 600;
+    padding-right: 60px;
+
+    &::after {
+      top: 6px;
+      width: 13px;
+      height: 8px;
+      background-image: url("../../img/arrow-down.png");
+      background-size: 13px 8px;
+    }
+  }
+
+  .flats__deadline-box {
+    display: block;
+    width: 1010px;
+    padding: 20px;
+    padding-right: 30px;
+    margin-bottom: 40px;
+    background-color: #1d0f1b;
+    order: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .flats__deadline-list--closed {
+    display: none !important;
+  }
+
+  .flats__title {
+    position: relative;
+    font-size: 18px;
+    line-height: 19px;
+    padding-left: 70px;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: $primary-white;
+
+    &::after {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      width: 13px;
+      height: 8px;
+      content: "";
+      background-image: url("../../img/arrow__down-white.png");
+      background-repeat: no-repeat;
+      background-size: 13px 8px;
+      transform: rotateX(180deg);
+    }
+  }
+
+  .flats__deadline-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 70px 0;
+  }
+
+  .flats__title.clicked {
+
+    &::after {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      width: 13px;
+      height: 8px;
+      content: "";
+      background-image: url("../../img/arrow__down-white.png");
+      background-repeat: no-repeat;
+      background-size: 13px 8px;
+      transform: rotateX(0);
+    }
+  }
+
+  .flats__deadline-item {
+    width: 195px;
+    font-size: 16px;
+    line-height: 19px;
+    margin-right: 70px;
+    color: $primary-white;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}

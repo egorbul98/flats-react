@@ -1,0 +1,76 @@
+@import "variables";
+
+@import "fonts";
+@import "global";
+@import "normalize";
+@import "mixins";
+
+@import "my_aos";
+@import "slick";
+@import "blocks/visually-hidden";
+// @import "jquery.fancybox.min.scss";
+
+@import "blocks/main-header";
+@import "blocks/main-nav";
+
+@import "blocks/estate";
+@import "blocks/advantages";
+
+@import "blocks/flats";
+
+@import "blocks/review";
+
+@import "blocks/expectation";
+
+@import "blocks/description";
+@import "blocks/table";
+
+@import "blocks/rating";
+@import "blocks/blog";
+
+@import "blocks/documents";
+
+@import "blocks/credit";
+@import "blocks/calculator";
+@import "blocks/bank";
+
+@import "blocks/chart";
+
+@import "blocks/route";
+
+@import "blocks/feedback";
+
+@import "blocks/analog";
+
+
+@import "blocks/progress";
+
+@import "blocks/footer";
+@import "blocks/buildings";
+@import "blocks/price";
+@import "blocks/news";
+
+
+// modals
+
+@import "blocks/modal";
+@import "blocks/catalog";
+@import "blocks/consultation";
+@import "blocks/excursion";
+@import "blocks/mortgage";
+@import "blocks/analog__modal";
+@import "blocks/modal-image.scss";
+@import "blocks/modal-photo-galery.scss";
+@import "blocks/modal-feedback.scss";
+@import "blocks/modal-to-book.scss";
+
+//catalog page
+@import "blocksCatalog/global.scss";
+@import "blocksCatalog/modal-map.scss";
+@import "blocksCatalog/header-catalog.scss";
+@import "blocksCatalog/filter-box.scss";
+@import "blocksCatalog/sort-box.scss";
+@import "blocksCatalog/catalog-complex-box.scss";
+@import "blocksCatalog/advice-box.scss";
+@import "blocksCatalog/catalog-footer.scss";
+

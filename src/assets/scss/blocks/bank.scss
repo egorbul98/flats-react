@@ -1,0 +1,74 @@
+.bank__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+}
+
+.bank__title {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 10px;
+  padding-left: 10px;
+  color: $light-black;
+}
+
+.bank__title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.bank__term {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 600;
+  color: $primary-black;
+}
+
+.bank__term-description {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 400;
+  color: $primary-black;
+}
+
+@media(min-width: $tablet-width) {
+  .bank__title {
+  font-size: 13px;
+  line-height: 15px;
+  }
+
+  .bank__term {
+    font-size: 13px;
+    line-height: 24px;
+  }
+
+  .bank__term-description {
+    font-size: 13px;
+    line-height: 24px;
+  }
+}
+
+@media(min-width: $desktop-width) {
+
+  .bank__title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    padding-left: 20px;
+  }
+
+  .bank__logo {
+    width: 47px;
+    height: 45px;
+  }
+
+  .bank__term {
+    font-size: 16px;
+    line-height: 30px;
+  }
+
+  .bank__term-description {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

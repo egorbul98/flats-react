@@ -1,0 +1,219 @@
+@mixin container() {
+  width: 360px;
+  margin: 0 auto;
+
+  @media(min-width: $tablet-width) {
+    width: $tablet-width;
+  }
+
+  @media(min-width: $desktop-width) {
+    width: $desktop-width;
+  }
+}
+
+@mixin pink__btn {
+  width: 320px;
+  min-height: 50px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  border: none;
+  padding: 0;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+  color: $secondary-white;
+  background-color: $primary-pink;
+
+  @media(min-width: $tablet-width) {
+    font-size: 16px;
+  }
+
+  @media(min-width: $desktop-width) {
+    width: 360px;
+    min-height: 70px;
+    border-radius: 35px;
+    font-size: 18px;
+    line-height: 19px;
+    transition: color 0.6s 0.1s, background-color 0.5s 0.2s;
+
+    &:hover,
+    &:focus {
+      color: $primary-pink;
+      background-color: $light-pink;
+    }
+    &:active {
+      border: 2px solid $primary-pink;
+    }
+  }
+}
+
+@mixin light__btn {
+  width: 300px;
+  min-height: 50px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  border: none;
+  padding: 0;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+  color: $primary-pink;
+  background-color: $light-pink;
+
+  @media(min-width: $tablet-width) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  @media(min-width: $desktop-width) {
+    width: 360px;
+    min-height: 70px;
+    border-radius: 35px;
+    font-size: 18px;
+    line-height: 19px;
+    transition: color 0.6s 0.1s, background-color 0.5s 0.2s;
+    &:hover,
+    &:focus {
+      color: $light-pink;
+      background-color: $primary-pink;
+
+    }
+
+    &:active {
+      border: 2px solid $light-pink;
+    }
+  }
+}
+
+@mixin show__btn {
+  position: relative;
+  max-width: 300px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 32px;
+  border: none;
+  padding: 0;
+  align-self: center;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: $primary-pink;
+  background-color: transparent;
+
+  &::after {
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    width: 5px;
+    height: 4px;
+    content: "";
+    background-image: url('../img/arrow_down.png');
+    background-size: 5px 4px;
+    background-repeat: no-repeat;
+  }
+
+  @media(min-width: $tablet-width) {
+    font-size: 14px;
+
+    &:after {
+      width: 8px;
+      height: 5px;
+      right: -12px;
+      background-size: 8px 5px;
+    }
+  }
+  @media(min-width: $desktop-width) {
+    font-size: 16px;
+  }
+}
+
+/*.unfurl-link() {
+  position: relative;
+  font-size: 11px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: $primary-pink;
+  background: transparent;
+  align-self: center;
+  transition: opacity 0.5s 0.1s;
+
+  @media(min-width: $desktop-width) {
+
+    font-size: 16px;
+    line-height: 32px;
+    text-decoration: underline;
+  }
+}
+
+.unfurl-icon() {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  content: "";
+  width: 5px;
+  height: 4px;
+  background-image: url("../img/unfurl.png");
+  background-repeat: no-repeat;
+  background-size: 5px 4px;
+
+  @media (min-width: $desktop-width) {
+    width: 8px;
+    height: 5px;
+    background-size: 8px 5px;
+  }
+}
+
+.unfurl-link__hover {
+  opacity: 0.8;
+}
+
+.pink-btn {
+  width: 345px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.18px;
+  text-decoration: none;
+  padding: 25px 60px;
+  border-radius: 35px;
+  color: $button-white;
+  background-color: $primary-pink;
+  align-self: center;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.5s 0.1s, color 0.5s 0.4s, box-shadow 0.5s 0.1s;
+}
+
+.pink-btn__hover {
+  opacity: 0.9;
+  color: $primary-black;
+  box-shadow: 0 2px 5px $primary-black;
+}
+
+.light-btn {
+  width: 345px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.18px;
+  text-decoration: none;
+  padding: 25px 20px;
+  border-radius: 35px;
+  align-self: center;
+  text-align: center;
+  color: $primary-pink;
+  background-color: $light-pink;
+  transition: background-color 0.7s 0.1s, color 0.5s 0.4s, box-shadow 0.5s 0.1s;
+}
+
+.light-btn__hover {
+  color: $primary-white;
+  background-color: $primary-pink;
+  box-shadow: 0 2px 5px $primary-black;
+}*/

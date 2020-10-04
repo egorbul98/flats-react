@@ -1,0 +1,231 @@
+.footer {
+  min-height: 590px;
+  background-color: $footer-black;
+}
+
+.footer__wrapper {
+  @include container();
+  padding: 40px 20px;
+}
+
+.footer__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__search-form {
+  width: 320px;
+}
+
+.footer__search-input {
+  position: relative;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 32px;
+  padding: 10px 20px;
+  padding-right: 60px;
+  border-radius: 4px;
+  color: $primary-grey;
+  background-color: #ffffff;
+  z-index: 1;
+
+  &::placeholder {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 32px;
+    color: $primary-grey;
+  }
+}
+
+.footer__search-form {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.footer__search-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  content: "";
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-image: url("../../img/magnifying-glass.png");
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  background-position: center;
+  z-index: 1000;
+  outline: none;
+}
+
+.footer__search-btn:hover {
+  background-size: 20px 20px;
+}
+
+.footer__search-btn:active {
+  background-size: 15px 15px;
+}
+
+.footer__logo-link {
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 30px;
+  margin-bottom: 35px;
+  color: $primary-white;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.footer__social-list{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__social {
+  margin-bottom: 40px;
+}
+
+.footer__social-link img{
+  transition: transform 0.3s 0.1s;
+}
+
+.footer__social-link:hover img,
+.footer__social-link:focus img{
+  transform: scale(0.8);
+}
+
+.footer__social-item {
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:active {
+    transform: scale(0.8);
+  }
+}
+
+.footer__info-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.footer__info-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.footer__info-news {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media(min-width: $tablet-width) {
+  .footer__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer__box {
+    width: 360px;
+    order: 2;
+    align-items: flex-end;
+  }
+
+  .footer__search-form {
+    width: 360px;
+  }
+
+  .footer__logo {
+    margin-bottom: 70px;
+  }
+
+  .footer__social {
+    margin-bottom: 10px;
+  }
+
+  .footer__info-wrapper {
+    width: 340px;
+    order: 1;
+    margin-right: 28px;
+    padding: 0;
+    padding-left: 10px;
+  }
+}
+
+@media(min-width: $desktop-width) {
+  .footer__wrapper {
+    padding: 80px 75px;
+  }
+  .footer__box {
+    width: 490px;
+    justify-content: flex-start;
+  }
+
+  .footer__search {
+    margin-bottom: 50px;
+  }
+
+  .footer__search-form {
+    width: 490px;
+  }
+
+  .footer__logo {
+    margin-bottom: 40px;
+  }
+
+  .footer__social {
+    margin-bottom: 30px;
+  }
+
+  .footer__info-news {
+    width: 210px;
+  }
+
+  .footer__info-wrapper {
+    flex-direction: row;
+    width: 700px;
+    margin-right: 20px;
+    padding: 0;
+    order: 1;
+  }
+
+  .footer__logo-link {
+    position: relative;
+
+      &::after {
+        position: absolute;
+        left: -10px;
+        bottom: -2px;
+        content: "";
+        width: 0;
+        height: 2px;
+        opacity: 0;
+        background-color: $primary-pink;
+        transition: width 0.5s, opacity 1s;
+        transition-delay: 0.1s;
+      }
+  }
+
+  .footer__logo-link:hover.footer__logo-link::after,
+  .footer__logo-link:focus.footer__logo-link::after {
+    width: 100%;
+    opacity: 1;
+  }
+}

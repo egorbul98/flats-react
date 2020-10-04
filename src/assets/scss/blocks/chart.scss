@@ -1,0 +1,202 @@
+.tooltipChart {
+  transition: all 0.1s;
+}
+.tooltipChart .body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.tooltipChart .figure{
+  position: absolute;
+  top: 32px;
+  border: 12px solid transparent;
+  border-top: 15px solid #7be37b;
+}
+
+.chart__wrapper {
+  @include container();
+  max-width: 360px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 40px;
+}
+
+.chart__title {
+  font-size: 15px;
+  line-height: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: $primary-black;
+  margin-bottom: 15px;
+}
+
+.chart__button-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.chart__btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  padding: 0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 9px;
+  margin-right: 13px;
+  cursor: pointer;
+  color: $primary-grey;
+  background-color: $secondary-grey;
+
+  &--studio {
+    width: 80px;
+  }
+
+  &--active {
+    color: $secondary-white;
+    background-color: $primary-pink;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.chart__description-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart__note {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 16px;
+  margin-bottom: 15px;
+  color: $primary-black;
+}
+
+.chart__description {
+  margin-bottom: 15px;
+}
+
+#myChart {
+  width: 300px;
+  height: 220px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: $tablet-width) {
+  .chart__wrapper {
+    padding: 0 30px 60px;
+    max-width: 100%;
+  }
+
+  .chart__btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 12px;
+
+    &--studio {
+      width: 130px;
+    }
+  }
+
+  .chart__title {
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
+
+  .chart__note {
+    position: relative;
+    width: 350px;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 40px;
+
+    &::after {
+      position: absolute;
+      top: -8px;
+      right: 0;
+      width: 40px;
+      height: 43px;
+      content: "";
+      background-image: url("../../img/expert-icon.svg");
+      background-repeat: no-repeat;
+      background-size: 40px 43px;
+    }
+  }
+
+  .chart__description {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .chart__wrapper {
+    flex-direction: row;
+    padding: 0 75px 80px;
+  }
+
+  .chart__box {
+    width: 800px;
+  }
+
+  .chart__btn {
+    width: 55px;
+    height: 57px;
+    font-size: 16px;
+    line-height: 14px;
+  }
+
+  .chart__title {
+    font-size: 22px;
+    line-height: 19px;
+    margin-bottom: 55px;
+  }
+
+  .chart__description-box {
+    position: relative;
+    width: 400px;
+  }
+
+  .chart__note {
+    width: 230px;
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 120px;
+
+    &::after {
+      top: 100px;
+      left: 0;
+    }
+  }
+
+  .chart__description {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width:$tablet-width){
+  #myChart{
+    margin-left: -20px;
+  }
+
+  .tooltipChart .figure{
+    top: 20px;
+    border: 7px solid transparent;
+    border-top: 10px solid #7be37b;
+  }
+  .chart__btn{
+margin-right: 6px;
+  }
+  .chart__btn--studio{
+    width: 46px;
+  }
+}

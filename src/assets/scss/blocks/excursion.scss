@@ -1,0 +1,385 @@
+
+.excursion__wrapper {
+  @include container();
+  padding: 0 20px 40px;
+
+  .modal__info {
+    margin-bottom: 0;
+
+    .modal__info-phone {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.excursion__form {
+  width: 280px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  outline: 1px solid red;
+}
+
+.excursion__form-input {
+  width: 100%;
+  border-radius: 2px;
+  padding: 15px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  border: 1px solid $primary-grey;
+  background-color: $primary-white;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.excursion__form-input::placeholder {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: $primary-grey;
+}
+
+.modal__content-right {
+  margin-top: 30px;
+
+  .modal__btn {
+    margin-top: 40px;
+    width: 100%;
+    order: 3;
+  }
+}
+
+.excursion__wrapper {
+  .consultation__form {
+    margin: 0;
+    margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.excursion .modal-close-btn {
+  display: none;
+}
+
+.consultation__form-fields {
+  order: 2;
+  margin: auto;
+  margin-top: 30px;
+  width: 284px;
+}
+
+.date-info {
+  width: 284px;
+  padding: 0 42px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  order: 1;
+  align-items: center;
+  height: 100px;
+  background-color: $secondary-white;
+
+  .date,
+  .time {
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  .date {
+    color: $primary-pink;
+    margin-right: 36px;
+  }
+
+}
+
+.ui-datepicker,
+.ui-datepicker table,
+.ui-datepicker tr,
+.ui-datepicker td,
+.ui-datepicker th {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-spacing: 0;
+}
+
+.ui-datepicker table {
+  margin: auto;
+}
+
+.excursion-field {
+  width: 106px;
+  margin: auto;
+  position: relative;
+}
+
+.excursion__select-arrow {
+  pointer-events: none;
+  position: absolute;
+  padding-right: 6px;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 30px;
+  height: 90%;
+  z-index: 1;
+  margin-right: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+}
+
+.excursion__select-time {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  padding-left: 18px;
+  font-size: 15px;
+  font-weight: 700;
+
+  &::before {
+    content: ">";
+    display: inline-block;
+    background: white;
+    position: absolute;
+    right: -5px;
+    top: 2px;
+    z-index: 2;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    line-height: 26px;
+    border: 2px solid #ddd;
+    transform: rotate(90deg);
+    cursor: pointer;
+  }
+}
+
+.ui-datepicker {
+  display: none;
+  width: 284px;
+  padding: 14px 4px 10px;
+  font-size: 14px;
+  line-height: 18px;
+  background-color: $secondary-white;
+  border-radius: 3px;
+  color: black;
+  font-weight: 700;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+//заголовок
+.ui-datepicker-header {
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-month {
+  position: relative;
+  color: black;
+}
+
+.ui-datepicker-year {
+  padding-left: 4px;
+  color: black;
+}
+
+//
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  position: absolute;
+  top: -2px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ui-datepicker-prev {
+  left: 12px;
+  padding-left: 0;
+}
+
+.ui-datepicker-next {
+  right: 12px;
+  padding-right: 0;
+}
+
+.ui-datepicker-prev span,
+.ui-datepicker-next span {
+  display: block;
+  width: 8px;
+  height: 15px;
+  text-indent: -9999px;
+}
+
+.ui-datepicker-prev span {
+  background: url('../../img/arrow-left.svg') no-repeat;
+}
+
+.ui-datepicker-next span {
+  background: url('../../img/arrow-right.svg') no-repeat;
+}
+
+//дни
+.ui-datepicker-calendar th {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: 700;
+  color: black;
+}
+
+.ui-datepicker-calendar td {
+  padding: 0 7px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 26px;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+  display: block;
+  width: 26px;
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+  background-color: $datepicker-active;
+  border-radius: 50%;
+}
+
+.ui-datepicker-other-month .ui-state-default {
+  display: none;
+  color: #747171;
+}
+
+@media(min-width: $tablet-width) {
+
+  .ui-datepicker-calendar td {
+    padding: 3px 6px;
+  }
+
+  .excursion__wrapper {
+    width: 736px;
+    // height: 516px;
+    height: 100%;
+  }
+
+  .excursion__form-input {
+    padding: 10px 15px 10px 20px;
+  }
+
+  .excursion .modal__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .excursion .modal__content-right {
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+
+    .excursion .modal__btn {
+      max-width: 230px;
+      min-height: 40px;
+      margin-top: 30px;
+    }
+  }
+
+  .consultation__form-fields,
+  .date-info {
+    max-width: 356px;
+    width: 100%;
+  }
+
+  .date-info {
+    height: 126px;
+    order: 2;
+    margin-top: 32px;
+  }
+
+  .consultation__form-fields {
+    order: 1;
+    margin-top: 0;
+  }
+
+  .modal__title-box {
+    background-color: $primary-pink;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .excursion .modal__title {
+    color: #fff;
+  }
+}
+
+@media(min-width: $desktop-width) {
+  .modal__content-right{
+    margin-left: 38px;
+  }
+  .excursion__wrapper {
+    .modal__header {
+      display: none;
+    }
+
+    .modal__content {
+      padding: 0 22px;
+    }
+
+    .excursion .modal__text{
+      margin-top: 28px;
+      margin-left: 22px;
+    }
+    
+    
+  }
+  .excursion .modal-close-btn{
+    display: block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  .excursion .modal__wrapper {
+    width: 738px;
+    height: 514px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.45);
+  }
+
+  .excursion__modal.modal {
+    background-color: rgba(0, 0, 0, 0.14);
+  }
+}
+
+@media (max-width: $tablet-width){
+  .excursion {
+    
+    .modal__text, .modal__title-box{
+      text-align: center;
+    }
+    
+  }
+  .modal__content-right .modal__btn{
+      max-width: 300px;
+  }
+}

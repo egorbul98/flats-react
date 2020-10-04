@@ -1,0 +1,317 @@
+.advantages__list {
+  position: relative;
+  display: flex;
+  list-style: none;
+  min-height: 35px;
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+  padding-top: 25px;
+  margin-bottom: 20px;
+}
+
+.advantages__list-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  transform: translateX(-10px);
+
+  & svg {
+    fill: $primary-white;
+    align-self: center;
+  }
+
+  &--sale {
+    left: 20px;
+    background-color: $icon-orange;
+  }
+
+  &--deal {
+    left: 40px;
+    background-color: $icon-lightblue;
+  }
+
+  &--gift {
+    left: 60px;
+    background-color: $icon-green;
+  }
+
+  &--decor {
+    left: 80px;
+    background-color: $icon-blue;
+  }
+
+  &--conditions {
+    left: 100px;
+    background-color: $icon-violet;
+  }
+}
+
+.advantages__features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  padding-bottom: 0;
+  background-color: $secondary-grey;
+}
+
+.advantages__features-item-box {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+
+  & svg {
+    fill: $primary-white;
+    align-self: center;
+  }
+}
+
+.advantages__features-item  {
+  display: flex;
+  margin-bottom: 10px;
+
+  &--sale>.advantages__features-item-box {
+    background-color: $icon-orange;
+  }
+
+  &--deal>.advantages__features-item-box {
+    background-color: $icon-lightblue;
+  }
+
+  &--gift>.advantages__features-item-box {
+    background-color: $icon-green;
+  }
+
+  &--decor>.advantages__features-item-box {
+    background-color: $icon-blue;
+  }
+
+  &--conditions>.advantages__features-item-box {
+    background-color: $icon-violet;
+  }
+}
+
+.advantages__features-hint {
+  width: 280px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 44px;
+  color: #7e7e7e;
+}
+
+@media (min-width: $tablet-width) {
+  .advantages__list {
+    display: none;
+  }
+
+  .advantages__features-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-bottom: 0;
+  }
+
+  .advantages__features-item {
+    width: 50%;
+
+
+    &--sale:nth-child(1) {
+      order: 1;
+    }
+
+    &--sale:nth-child(2) {
+      order: 3;
+      display: none;
+    }
+
+    &--sale:nth-child(3) {
+      order: 5;
+      display: none;
+
+    }
+
+    &--sale:nth-child(4) {
+      order: 7;
+      display: none;
+
+    }
+
+    &--deal {
+      order: 2;
+    }
+
+    &--gift {
+      order: 4;
+    }
+
+    &--decor {
+      order: 6;
+    }
+
+    &--conditions {
+      order: 8;
+    }
+  }
+
+  .advantages__features-hint {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .advantages__features-list {
+    position: relative;
+    flex-direction: column;
+    padding: 30px 0;
+    min-height: 550px;
+
+    &::before {
+      position: absolute;
+      top: 140px;
+      left: -20px;
+      width: 220px;
+      height: 300px;
+      content: "";
+      background-color: $primary-pink;
+    }
+  }
+
+  .advantages__features-item {
+    position: relative;
+    margin-left: 235px;
+    margin-bottom: 25px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--sale:nth-child(1),
+    &--sale:nth-child(3),
+    &--sale:nth-child(4) {
+      display: none
+    }
+
+    &--sale:nth-child(2) {
+      display: block;
+      order: 1;
+    }
+
+    &--sale svg {
+      width: 21px;
+      height: 22px;
+    }
+
+    &--deal svg {
+      width: 21px;
+      height: 23px;
+    }
+
+    &--gift svg {
+      width: 21px;
+      height: 16px;
+    }
+
+    &--decor svg {
+      width: 20px;
+      height: 27px;
+    }
+
+    &--conditions svg {
+      width: 30px;
+      height: 20px;
+    }
+
+    &:hover .advantages__features-hint {
+      display: block;
+    }
+  }
+
+  .advantages__features-item-box {
+    border: 2px solid transparent;
+    transition: all 0.4s 0.1s;
+  }
+
+  .advantages__features-item {
+
+    &:hover .advantages__features-item-box {
+      background-color: white;
+    }
+
+    &--sale:hover .advantages__features-item-box  {
+      border: 2px solid $icon-orange;
+    }
+
+    &--deal:hover .advantages__features-item-box  {
+      border: 2px solid $icon-lightblue;
+    }
+
+    &--gift:hover .advantages__features-item-box  {
+      border: 2px solid $icon-green;
+    }
+
+    &--decor:hover .advantages__features-item-box    {
+      border: 2px solid $icon-blue;
+    }
+
+    &--conditions:hover .advantages__features-item-box  {
+      border: 2px solid $icon-violet;
+    }
+
+    &--sale:hover svg {
+      fill: $icon-orange;
+    }
+
+    &--deal:hover svg {
+      fill: $icon-lightblue;
+    }
+
+    &--gift:hover svg {
+      fill: $icon-green;
+    }
+
+    &--decor:hover svg   {
+      fill: $icon-blue;
+    }
+
+    &--conditions:hover svg {
+      fill: $icon-violet;
+    }
+  }
+
+  .advantages__features-hint {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    max-width: 185px;
+    padding: 15px 10px 15px 25px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    color: $primary-black;
+    background-image: url("../../img/hint_box.svg");
+    background-repeat: no-repeat;
+    display: none;
+    z-index: 1000000;
+    transform: translateY(-50%);
+  }
+
+  .advantages__features-item-box {
+    width: 55px;
+    height: 55px;
+  }
+
+  @keyframes showHint {
+    from {opacity: 0};
+    to {opacity: 1};
+  }
+}

@@ -1,0 +1,47 @@
+[data-aos="border-pink"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-pink;
+  }
+}
+
+[data-aos="border-orange"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-orange;
+  }
+}
+
+[data-aos="border-lightblue"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-lightblue;
+  }
+}
+
+[data-aos="border-green"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-green;
+  }
+}
+
+[data-aos="border-blue"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-blue;
+  }
+}
+
+[data-aos="border-violet"] {
+  transition: border 1.2s 0.2s;
+
+  &.aos-animate {
+    border: 8px solid $icon-violet;
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "complexes": [{
+    "id": 0,
+    "tel": "+7 985 985 98 85",
+    "name": "ЖК \"Новое Мурино\"",
+    "developer": "ООО «Инвест-Строй»",
+    "description": "description",
+    "metro": "Девяткино",
+    "area": "Район 1",
+    "img": "img/analog_1.jpg",
+    "coords": [59.96366228831891, 30.33065350936121],
+    "minCost": "2800000",
+    "maxCost": "10800000",
+    "minSquare": 18,
+    "maxSquare": 54,
+    "minCostSquare": "78,4",
+    "maxCostSquare": "107,4",
+    "address": "Большой проспект Васильевского острова",
+    "images": ["img/img-video-1.jpg", "img/analog_1.jpg"]
+  }],
+
+  "flats": [{
+    "id":0,
+    "square": 32,
+    "complexId": 1,
+    "cost": "3800000",
+    "type": "С отделкой",
+    "floor": 3,
+    "address": "Большой проспект Васильевского острова, 14",
+    "num": 115,
+    "room": "2 ккв",
+    "img": "img/analog_1.jpg",
+    "deadline": "2023",
+    "typeProperty": 1,
+    "bank": "банк 2",
+    "payment": "Наличными/Безнал",
+    "totalFloor": 12,
+    "corpus": 2
+  }],
+
+  "typeProperties":[
+    {
+      "id":0,
+      "name":"Тип собственности 1"
+    },
+    {
+      "id":1,
+      "name":"Тип собственности 2"
+    },
+    {
+      "id":2,
+      "name":"Тип собственности 3"
+    },
+    {
+      "id":3,
+      "name":"Тип собственности 4"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+.route__wrapper {
+  @include container();
+  padding: 0 20px;
+}
+
+.route__title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $primary-black;
+}
+
+.route__map {
+  height: 220px;
+  background-color: rgb(223,240,206);
+}
+
+.route #map {
+  height: 220px;
+}
+
+@media (min-width: $tablet-width) {
+  .route__wrapper {
+    padding: 0 30px;
+  }
+
+  .route__title {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .route #map {
+    height: 400px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .route__wrapper {
+    padding: 0 75px;
+  }
+
+  .route__title {
+    font-size: 22px;
+    line-height: 19px;
+  }
+
+  .route #map {
+    height: 450px;
+  }
+}

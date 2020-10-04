@@ -1,0 +1,144 @@
+.consultation__wrapper {
+  @include container();
+  padding: 0 20px 40px;
+}
+
+.consultation__form {
+  width: 280px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.consultation__form-input {
+  width: 100%;
+  border-radius: 2px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid $primary-grey;
+  background-color: $primary-white;
+}
+
+.consultation__form-input::placeholder {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: $primary-grey;
+}
+
+.modal__closeBtn {
+  display: none;
+  cursor: pointer;
+}
+
+.modal__btn--consultation {
+  width: 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media(min-width: $tablet-width) {
+  .consultation__wrapper {
+    padding: 0 30px 40px;
+  }
+
+  .consultation__form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-input {
+      width: 350px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .consultation .modal__text {
+    padding-left: 20px;
+    margin-bottom: 22px;
+    margin-top: 20px;
+  }
+
+  .modal__title-box {
+    position: relative;
+  }
+
+  .consultation .modal__title {
+    color: $primary-white;
+  }
+
+  .modal__closeBtn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    content: "";
+    background-image: url("../../img/close__btn.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+  }
+}
+
+@media(min-width: $desktop-width) {
+
+  .consultation__title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  .consultation .modal__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: $primary-black;
+    margin-bottom: 38px;
+  }
+
+  .modal__header {
+    display: none;
+  }
+  .consultation__modal{
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .consultation__modal .modal__wrapper {
+  width: 592px;
+  height: 403px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.45);
+  border-radius: 4px;
+  padding-top: 20px;
+  background-color: $primary-white;
+  }
+
+  .consultation__form-input {
+    margin-bottom: 20px;
+  }
+
+  .consultation__form {
+    justify-content: center;
+  }
+
+  .modal__btn--consultation {
+    margin-top: 40px;
+    width: 230px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: $tablet-width){
+  .consultation .modal__title{
+    padding-left: 20px;
+  }
+  .consultation .modal__text{
+    padding-left: 20px;
+  }
+}
