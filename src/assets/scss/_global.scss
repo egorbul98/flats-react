@@ -38,9 +38,144 @@ body {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .slick-slide {
   outline: none;
+}
+
+.react-slidedown.my-dropdown-slidedown {
+  transition-duration: 0.25s;
+  // overflow: visible;
+}
+
+.react-slidedown {
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.select-component{
+  position: relative;
+  width: 100%;
+  .select-arrow svg{
+    transform: rotate(-180deg);
+  }
+
+  .checkboxes {
+    padding: 30px 26px 26px;
+    // display: none;
+    transition: all 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 8px 16px 0px rgba(134, 134, 134, 0.35);
+    max-height: 320px;
+    overflow-y: auto;
+
+    
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    &::-webkit-scrollbar-corner {
+      display: none;
+    }
+    label {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;  
+      align-items: center;
+      cursor: pointer;
+
+      &:first-child {
+        padding-top: 0;
+      }
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+
+    
+
+    .text {
+      order: 1;
+    }
+
+    
+  }
+  
+  &.active{
+    .select-arrow svg{
+      transform: rotate(0);
+      stroke: #000;
+    }
+
+    .checkboxes{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &.multi{
+    .check{
+      display: block;
+    }
+  }
+
+  .check {
+    order: 2;
+    position: relative;
+    content: '';
+    display: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    background-color: #fff;
+
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: $primary-pink;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+  
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  input:checked+.check::after {
+    opacity: 1;
+  }
 }

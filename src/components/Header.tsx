@@ -1,21 +1,18 @@
 
 import React from 'react';
+import logo from './../assets/img/logo.svg';
+import btnOpen from './../assets/img/btn-open-nav.svg';
+import {ReactComponent as HeartIcon} from './../assets/img/icons/heart.svg';
 
 type PropsTypes = {}
 
 const Header : React.FC < PropsTypes > = ({}) => {
-
+    
     return (
         <header className="header-catalog">
-            <img
-                className='lazy'
-                data-src="img/close__btn.png"
-                src="img/content-item-img.png"
-                alt=""/>
-
             <div className="header-catalog__wrap">
                 <div className="header-catalog__logo">
-                    <img src="img/logo.svg" alt="logo"/>
+                    <img src={logo} alt="logo"/>
                 </div>
                 <div className="header-catalog__right-box">
                     <div className="header-catalog__cities">
@@ -69,17 +66,14 @@ const Header : React.FC < PropsTypes > = ({}) => {
                             </div>
                         </div>
                         <div className="catalog-nav__item">
-                            <svg width="13" height="12">
-                                <use xlinkHref="#heart"></use>
-                            </svg>
-                            <a href="">Избранное</a>
+                            <a href=""><HeartIcon width="13" height="12"/> Избранное</a>
                         </div>
                     </nav>
                     <div className="btn-open-nav">
-                        <img className='img-open-nav' src="img/btn-open-nav.svg" alt=""/>
+                        <img className='img-open-nav' src={btnOpen} alt=""/>
                     </div>
                 </div>
-                <hr className="hr"/>
+               
             </div>
         </header>
     )

@@ -77,7 +77,7 @@
     transform: translateY(-50%);
     background-color: $primary-white;
     z-index: 1000;
-    transition: background-color 0.5s 0.1s;
+    transition: background-color 0.3s 0.1s;
 
     &:hover {
       background-color: rgba(255,240,240,0.9);
