@@ -66,8 +66,8 @@ body {
     padding: 30px 26px 26px;
     // display: none;
     transition: all 0.3s;
-    opacity: 0;
-    visibility: hidden;
+    // opacity: 0;
+    // visibility: hidden;
     color: #333333;
     font-size: 14px;
     font-weight: 700;
@@ -135,8 +135,8 @@ body {
     }
 
     .checkboxes{
-      opacity: 1;
-      visibility: visible;
+      // opacity: 1;
+      // visibility: visible;
     }
   }
   &.multi{

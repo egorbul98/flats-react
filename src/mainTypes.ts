@@ -1,4 +1,4 @@
-export type FlatType = { 
+export type FlatType = {
   id: number,
   square: number,
   complexId: number,
@@ -15,7 +15,7 @@ export type FlatType = {
   corpus: number
 };
 
-export type ComplexeType = { 
+export type ComplexeType = {
   id: number,
   tel: number,
   name: string,
@@ -33,7 +33,15 @@ export type ComplexeType = {
   minCostSquare: number,
   maxCostSquare: number,
   address: string,
-  images: Array<string>,
+  images: Array < string > ,
   totalFloor: 10,
-  flats?:Array<FlatType>
+  flats ? : Array < FlatType >
 };
+
+export type SelectsDataType = {
+  name: string,
+  placeholder: string,
+  items: Array < string > ,
+  activeItems? : Array < string >
+}
+export type ItemSelectType = { value: string | number, index: number, checked: boolean }

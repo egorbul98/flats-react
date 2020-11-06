@@ -3,7 +3,7 @@ import AdviceBox from '../components/AdviceBox';
 import CatalogComplexes from '../components/CatalogComplexes';
 import Chart from '../components/Chart';
 import CreditCalculator from '../components/CreditCalculator';
-import FilterBox from '../components/FilterBox';
+import FilterBox from '../components/FilterBox/FilterBox';
 import Footer from '../components/Footer';
 import SortBox from '../components/SortBox';
 
