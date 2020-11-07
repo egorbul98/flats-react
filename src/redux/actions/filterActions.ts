@@ -1,6 +1,6 @@
 import { ItemSelectType } from "../../mainTypes";
 
-export const ADD_FILTER = "ADD_FILTER";
+export const APPLY_FILTER = "APPLY_FILTER";
 export const CHANGE_FILTER = "CHANGE_FILTER";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 
@@ -9,16 +9,13 @@ export type FilterItemType = {
   values: Array<ItemSelectType>
 }
 
-
-export type AddFilterItemType = {
-  type: typeof ADD_FILTER,
-  payload: FilterItemType
+export type ApplyFilterItemType = {
+  type: typeof APPLY_FILTER
 }
 
-export const addFilterItem = (filtersItems: FilterItemType):AddFilterItemType => {
+export const applyFilterItem = ():ApplyFilterItemType => {
   return {
-    type: ADD_FILTER,
-    payload: filtersItems
+    type: APPLY_FILTER
   }
 }
 

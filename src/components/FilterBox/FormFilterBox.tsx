@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SelectsDataType } from '../../mainTypes';
 import { FilterItemType, setChangeFilterItem, setClearFilter } from '../../redux/actions/filterActions';
@@ -11,6 +11,7 @@ import classNames from 'classnames';
 
 import resetIcon from '../../assets/img/modal-close-red.svg';
 import placeholderRed from '../../assets/img/placeholder-red.svg';
+import { fetchComplexes } from '../../redux/actions/complexesActions';
 
 type PropsTypesForm = {
   openInnerFields: boolean,
@@ -23,12 +24,12 @@ type PropsTypesForm = {
 const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBottom, dataSelectMiddle, dataSelectTop }) => {
     
   const dispatch = useDispatch();
-  const [activeSelect, setActiveSelect] = useState<string | null>("select2");
   const {filterItems} = useSelector(({ filter }:AppStateType) => {
       return {
-          filterItems: filter.filterItems
+        filterItems: filter.filterItems
       }
   })
+
   const onChangeFilterItem = useCallback(({ type, values }: FilterItemType) => {//Добавляет фильтры в redux
       dispatch(setChangeFilterItem({ type, values }))
   }, [dispatch]);
@@ -36,6 +37,10 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
   const onClearFilter = useCallback(() => {//очищаем фильтры
       dispatch(setClearFilter())
   }, [dispatch]);
+
+  const onApplyFilter = () => {//принять фильтры
+      dispatch(fetchComplexes(filterItems))
+  };
 
 
   return (
@@ -83,7 +88,7 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
             <div className="filter-buttons">
                   <button type="reset" className="filter__btn-reset pink__btn" onClick={onClearFilter}>Сбросить все фильтры
                     <img src={resetIcon} alt=""/></button>
-                <button type='button' className='filter__btn-show pink__btn'>Показать объекты</button>
+                <button type='button' className='filter__btn-show pink__btn' onClick={onApplyFilter}>Показать объекты</button>
                 <button type='button' className='filter__btn-show-map pink__btn'><img src={placeholderRed} alt=""/>Показать на карте</button>
             </div>
         </form>

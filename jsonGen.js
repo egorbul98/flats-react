@@ -1,24 +1,51 @@
 [
-  '{{repeat(5, 7)}}',
+  '{{repeat(7, 8)}}',
   {
     "id": '{{index()}}',
     "tel": "+7 {{phone()}}",
-    "name": "ЖК \"{{firstName()}}\"",
-    "developer": "ООО «{{company()}}»",
+    "name": function (tags) {
+      var values = ['Новое мурино', 'Старое мурино', 'Mandy', "Kelli", "Столичный", "Северные высоты"];
+      return 'ЖК "' + values[tags.integer(0, values.length - 1)] + '"';
+    },
+    "developer": function (tags) {
+      var values = ['ООО «Инвест Строй»', 'ООО «Сбер Строй»', 'ООО «AnarcoBuild»', 'ООО «SenmeiBuild»', 'ООО «Lovepad»'];
+      return values[tags.integer(0, values.length - 1)];
+    },
     "description": '{{lorem(1, "paragraphs")}}',
-    "metro": "Девяткино",
+    "metro": function (tags) {
+      var values = ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники'];
+      return values[tags.integer(0, values.length - 1)];
+    },
+    "deadline": [
+      '{{repeat(5,7)}}',
+      {
+        "corpus": "{{integer(1, 4)}}",
+        "year": "{{integer(2021, 2029)}}"
+      }
+    ],
+    
     "metroDistance": '{{integer(5, 32)}}',
-    "area": "Район {{integer(1, 50)}}",
-    "img": "/img/complexesImages/img-{{integer(1, 8)}}.jpg",
+    "area": "Район {{integer(1, 4)}}",
     "coords": ['{{floating(59.96366228831886, 59.96366228831899)}}', '{{floating(30.33065350936121, 30.33065350936150)}}'],
-    "minCost": '{{integer(2600000, 5600000)}}',
-    "maxCost": '{{integer(12600000, 25600000)}}',
-    "minSquare": '{{integer(16, 24)}}',
-    "maxSquare": '{{integer(25, 83)}}',
-    "minCostSquare": '{{floating(40, 78.4)}}',
-    "maxCostSquare": '{{floating(100, 160)}}',
     "address": "Большой проспект Васильевского острова '{{index()}}'",
     "images": ["/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg"],
     "totalFloor": '{{integer(9, 17)}}',
+    // "bank": "Банк '{{integer(1, 4)}}'",
+    // "payment": "Оплата '{{integer(1, 4)}}'",
+    // "deadline": '{{integer(2020, 2030)}}',
+    "bank": function (tags) {
+      var values = ['АльфаБанк', 'Сбербанк', 'Тинькофф'];
+      return values[tags.integer(0, values.length - 1)];
+    },
+    "finish": function (tags) {
+      var values = ['Чистовая', 'Черновая', 'Готовая', 'Без отделки'];
+      return values[tags.integer(0, values.length - 1)];
+    },
+
+    "propertiesTypes": function (tags) {
+      var values = ['Личный', 'Коллективный', 'Смешанный'];
+      return values[tags.integer(0, values.length - 1)];
+    },
+    "payment": 'Оплата {{integer(1, 4)}}'
   }
 ]

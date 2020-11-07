@@ -15,20 +15,14 @@ const SelectList: React.FC<PropsTypesSelectList> = ({ arrSelects, onChangeItem, 
       <>
       {arrSelects.map((selectItem: SelectsDataType, index) => {
         const activeItems = filterItemsActive?.filter(itemAtive => itemAtive.type === selectItem.name)[0];
-            console.log(activeItems);
-            
               return (
                   <div className="filter-field" key={index + "_" + selectItem.name}>
                   <span className="filter-field__name">{selectItem.placeholder}</span>
                       <Select
                           {...selectItem}
                           multi={true}
-                    onChangeItem={onChangeItem}
-                    activeItems={activeItems?.values}
-                          // onClickShowSelect={(name) => {
-                          //     console.log(name, "name");
-                          //     setActiveSelect(name)
-                          // }}
+                          onChangeItem={onChangeItem}
+                          activeItems={activeItems?.values}
                       />
                   </div>
               )

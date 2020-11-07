@@ -1,4 +1,4 @@
-import { ADD_FILTER, CLEAR_FILTER, FilterItemType, SetClearFilterType, AddFilterItemType, SetChangeFilterItemType, CHANGE_FILTER } from "../actions/filterActions";
+import { CLEAR_FILTER, FilterItemType, SetClearFilterType,ApplyFilterItemType,  SetChangeFilterItemType, CHANGE_FILTER } from "../actions/filterActions";
 
 // const initialState = {
 //   areas: null as Array<string> | null,
@@ -23,15 +23,11 @@ const initialState = {
 
 export type StateFilterType = typeof initialState;
 
-type ActionsTypes = SetClearFilterType | AddFilterItemType | SetChangeFilterItemType;
+type ActionsTypes = SetClearFilterType | SetChangeFilterItemType;
 
 
 export const filterReducer = (state = initialState, action: ActionsTypes):StateFilterType => {
   switch (action.type) {
-    case ADD_FILTER:
-      
-      return state;
-    
     case CHANGE_FILTER:
       let newState = { ...state, filterItems: [...state.filterItems] }
 

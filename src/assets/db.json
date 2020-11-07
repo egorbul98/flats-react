@@ -2,143 +2,368 @@
   "complexes":[
     {
       "id": 0,
-      "tel": "+7 (931) 600-2048",
-      "name": "ЖК \"Mandy\"",
-      "developer": "ООО «Anarco»",
-      "description": "In quis ut labore laboris minim consectetur commodo ullamco est excepteur proident. Quis do pariatur ad laborum commodo. Quis esse aliqua non labore. Eu amet mollit incididunt aliqua.\r\n",
-      "metro": "Девяткино",
-      "metroDistance": 11,
-      "area": "Район 48",
-      "img": "/img/complexesImages/img-8.jpg",
-      "coords": [
-        59.96366228831899,
-        30.33065350936126
+      "tel": "+7 (822) 552-3731",
+      "name": "ЖК \"Новое мурино\"",
+      "developer": "ООО «SenmeiBuild»",
+      "description": "Sint fugiat ullamco veniam ad amet ullamco ullamco cillum. Eiusmod magna mollit deserunt qui veniam. Pariatur dolor ea qui quis et officia ullamco.\r\n",
+      "metro": "Сокольники",
+      "deadline": [
+        {
+          "corpus": 1,
+          "year": 2029
+        },
+        {
+          "corpus": 1,
+          "year": 2024
+        },
+        {
+          "corpus": 1,
+          "year": 2028
+        },
+        {
+          "corpus": 4,
+          "year": 2023
+        },
+        {
+          "corpus": 1,
+          "year": 2027
+        },
+        {
+          "corpus": 4,
+          "year": 2029
+        }
       ],
-      "minCost": 5132724,
-      "maxCost": 20564241,
-      "minSquare": 17,
-      "maxSquare": 45,
-      "minCostSquare": 42.2378,
-      "maxCostSquare": 124.4642,
+      "metroDistance": 28,
+      "area": "Район 4",
+      "coords": [
+        59.96366228831895,
+        30.33065350936145
+      ],
       "address": "Большой проспект Васильевского острова '0'",
       "images": [
-        "/img/complexesImages/img-5.jpg",
-        "/img/complexesImages/img-6.jpg",
-        "/img/complexesImages/img-8.jpg"
+        "/img/complexesImages/img-2.jpg",
+        "/img/complexesImages/img-4.jpg",
+        "/img/complexesImages/img-1.jpg"
       ],
-      "totalFloor": 13
+      "totalFloor": 11,
+      "bank": "АльфаБанк",
+      "finish": "Чистовая",
+      "propertiesTypes": "Коллективный",
+      "payment": "Оплата 2"
     },
     {
       "id": 1,
-      "tel": "+7 (952) 460-3107",
-      "name": "ЖК \"Lola\"",
-      "developer": "ООО «Savvy»",
-      "description": "Officia Lorem cillum duis ut. Occaecat cupidatat nulla excepteur nisi ea tempor exercitation adipisicing dolor. Cupidatat qui excepteur consequat quis duis. Consectetur aliquip Lorem magna nulla quis officia qui consectetur. Amet cupidatat et cillum dolore non eu incididunt.\r\n",
-      "metro": "Девяткино",
-      "metroDistance": 12,
-      "area": "Район 24",
-      "img": "/img/complexesImages/img-3.jpg",
-      "coords": [
-        59.9636622883189,
-        30.33065350936141
+      "tel": "+7 (830) 458-3195",
+      "name": "ЖК \"Mandy\"",
+      "developer": "ООО «Lovepad»",
+      "description": "Eiusmod anim consectetur dolor proident tempor magna amet Lorem excepteur est veniam proident dolor consequat. Aute occaecat esse ut cillum sunt. Cupidatat occaecat est duis voluptate officia ad. Tempor do dolor ipsum non minim ex. Consectetur elit sit tempor laboris eu.\r\n",
+      "metro": "Измайловская",
+      "deadline": [
+        {
+          "corpus": 4,
+          "year": 2025
+        },
+        {
+          "corpus": 1,
+          "year": 2021
+        },
+        {
+          "corpus": 1,
+          "year": 2024
+        },
+        {
+          "corpus": 4,
+          "year": 2022
+        },
+        {
+          "corpus": 1,
+          "year": 2023
+        },
+        {
+          "corpus": 4,
+          "year": 2021
+        },
+        {
+          "corpus": 1,
+          "year": 2022
+        }
       ],
-      "minCost": 3757669,
-      "maxCost": 13330122,
-      "minSquare": 16,
-      "maxSquare": 25,
-      "minCostSquare": 77.4104,
-      "maxCostSquare": 144.2616,
+      "metroDistance": 16,
+      "area": "Район 1",
+      "coords": [
+        59.96366228831896,
+        30.33065350936142
+      ],
       "address": "Большой проспект Васильевского острова '1'",
       "images": [
-        "/img/complexesImages/img-3.jpg",
-        "/img/complexesImages/img-7.jpg",
-        "/img/complexesImages/img-8.jpg"
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-4.jpg"
       ],
-      "totalFloor": 10
+      "totalFloor": 9,
+      "bank": "Сбербанк",
+      "finish": "Готовая",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 4"
     },
     {
       "id": 2,
-      "tel": "+7 (863) 588-2254",
+      "tel": "+7 (977) 541-3607",
       "name": "ЖК \"Kelli\"",
-      "developer": "ООО «Senmei»",
-      "description": "Et qui officia laboris anim reprehenderit tempor. Enim mollit proident qui nulla culpa tempor minim duis incididunt aute Lorem. Culpa occaecat laboris nisi proident reprehenderit ea nostrud. Minim laborum excepteur ipsum est nisi nulla deserunt sunt. Laboris irure fugiat sint voluptate ut minim velit.\r\n",
-      "metro": "Девяткино",
-      "metroDistance": 14,
-      "area": "Район 48",
-      "img": "/img/complexesImages/img-3.jpg",
-      "coords": [
-        59.96366228831888,
-        30.33065350936123
+      "developer": "ООО «Сбер Строй»",
+      "description": "In laboris esse Lorem veniam cupidatat tempor ea esse. Est id incididunt incididunt veniam sit minim incididunt irure. Amet sit aliquip veniam magna amet aliquip cupidatat cupidatat laborum sit pariatur. Est aute irure voluptate non cillum commodo nisi. Velit id veniam id qui enim officia ex incididunt dolore cillum eu ipsum sit excepteur. Id pariatur in amet dolore incididunt tempor incididunt Lorem do irure sunt cupidatat tempor. Aute sint nulla dolor irure eiusmod quis.\r\n",
+      "metro": "Рассказовка",
+      "deadline": [
+        {
+          "corpus": 4,
+          "year": 2028
+        },
+        {
+          "corpus": 2,
+          "year": 2023
+        },
+        {
+          "corpus": 1,
+          "year": 2027
+        },
+        {
+          "corpus": 4,
+          "year": 2025
+        },
+        {
+          "corpus": 1,
+          "year": 2023
+        },
+        {
+          "corpus": 2,
+          "year": 2029
+        },
+        {
+          "corpus": 1,
+          "year": 2021
+        }
       ],
-      "minCost": 4604617,
-      "maxCost": 18177775,
-      "minSquare": 21,
-      "maxSquare": 30,
-      "minCostSquare": 62.4668,
-      "maxCostSquare": 105.7581,
+      "metroDistance": 12,
+      "area": "Район 4",
+      "coords": [
+        59.96366228831898,
+        30.33065350936143
+      ],
       "address": "Большой проспект Васильевского острова '2'",
       "images": [
-        "/img/complexesImages/img-2.jpg",
-        "/img/complexesImages/img-6.jpg",
-        "/img/complexesImages/img-5.jpg"
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-7.jpg"
       ],
-      "totalFloor": 12
+      "totalFloor": 9,
+      "bank": "Тинькофф",
+      "finish": "Готовая",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 4"
     },
     {
       "id": 3,
-      "tel": "+7 (814) 555-2197",
-      "name": "ЖК \"Katharine\"",
-      "developer": "ООО «Lyria»",
-      "description": "Non ut occaecat duis magna eu aute pariatur velit mollit mollit nostrud voluptate anim. Occaecat culpa ullamco ipsum in Lorem magna est enim incididunt cupidatat dolor velit esse commodo. Cillum ex ipsum nulla anim officia mollit voluptate proident eu tempor esse laboris. Sit proident aliquip sunt ad labore eiusmod labore incididunt commodo officia. Excepteur ea reprehenderit consectetur est culpa nulla mollit Lorem ex ut incididunt qui.\r\n",
-      "metro": "Девяткино",
-      "metroDistance": 12,
-      "area": "Район 16",
-      "img": "/img/complexesImages/img-8.jpg",
-      "coords": [
-        59.9636622883189,
-        30.33065350936137
+      "tel": "+7 (800) 566-2200",
+      "name": "ЖК \"Столичный\"",
+      "developer": "ООО «Сбер Строй»",
+      "description": "Aliqua ut do labore enim. Est irure excepteur quis cillum mollit ullamco veniam ut veniam elit adipisicing irure ut. Occaecat Lorem et exercitation deserunt eiusmod elit officia Lorem Lorem ut dolor excepteur. Velit deserunt laborum amet consequat cupidatat duis fugiat pariatur magna dolor sunt.\r\n",
+      "metro": "Сокольники",
+      "deadline": [
+        {
+          "corpus": 1,
+          "year": 2023
+        },
+        {
+          "corpus": 4,
+          "year": 2028
+        },
+        {
+          "corpus": 1,
+          "year": 2023
+        },
+        {
+          "corpus": 3,
+          "year": 2026
+        },
+        {
+          "corpus": 2,
+          "year": 2029
+        },
+        {
+          "corpus": 1,
+          "year": 2021
+        }
       ],
-      "minCost": 5475325,
-      "maxCost": 25202541,
-      "minSquare": 16,
-      "maxSquare": 37,
-      "minCostSquare": 52.6444,
-      "maxCostSquare": 124.1096,
+      "metroDistance": 22,
+      "area": "Район 3",
+      "coords": [
+        59.96366228831888,
+        30.33065350936125
+      ],
       "address": "Большой проспект Васильевского острова '3'",
       "images": [
-        "/img/complexesImages/img-3.jpg",
         "/img/complexesImages/img-6.jpg",
-        "/img/complexesImages/img-2.jpg"
+        "/img/complexesImages/img-1.jpg",
+        "/img/complexesImages/img-7.jpg"
       ],
-      "totalFloor": 11
+      "totalFloor": 11,
+      "bank": "Сбербанк",
+      "finish": "Чистовая",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 2"
     },
     {
       "id": 4,
-      "tel": "+7 (945) 537-2191",
-      "name": "ЖК \"Preston\"",
-      "developer": "ООО «Lovepad»",
-      "description": "Ad veniam aute amet esse Lorem. Nisi sunt ipsum deserunt nisi nisi elit aute eu culpa consequat pariatur commodo fugiat incididunt. Eu ullamco do nostrud consectetur tempor occaecat ad nisi. Eiusmod mollit eu pariatur anim. Laboris culpa excepteur laboris elit exercitation anim irure excepteur est est ex id Lorem non. Ullamco deserunt eu reprehenderit aliquip eu ex Lorem et exercitation labore tempor sunt ex est. Nostrud dolor aliquip enim consectetur consectetur officia.\r\n",
-      "metro": "Девяткино",
-      "metroDistance": 15,
-      "area": "Район 33",
-      "img": "/img/complexesImages/img-2.jpg",
-      "coords": [
-        59.96366228831895,
-        30.33065350936133
+      "tel": "+7 (847) 593-2579",
+      "name": "ЖК \"Kelli\"",
+      "developer": "ООО «Сбер Строй»",
+      "description": "Tempor occaecat eu velit velit ad enim veniam laboris dolore anim proident ex. Nulla qui laboris consectetur sunt. Reprehenderit do excepteur nisi ea minim ut sint aute. Culpa sunt culpa non culpa commodo mollit cillum duis magna occaecat culpa esse laborum ut. Officia aliqua do ad culpa non. Labore dolore id sunt fugiat esse eu nulla ullamco fugiat nisi labore.\r\n",
+      "metro": "Сокольники",
+      "deadline": [
+        {
+          "corpus": 4,
+          "year": 2024
+        },
+        {
+          "corpus": 3,
+          "year": 2021
+        },
+        {
+          "corpus": 3,
+          "year": 2024
+        },
+        {
+          "corpus": 1,
+          "year": 2028
+        },
+        {
+          "corpus": 3,
+          "year": 2023
+        }
       ],
-      "minCost": 3638032,
-      "maxCost": 18190011,
-      "minSquare": 19,
-      "maxSquare": 73,
-      "minCostSquare": 57.3238,
-      "maxCostSquare": 111.5912,
+      "metroDistance": 19,
+      "area": "Район 4",
+      "coords": [
+        59.963662288319,
+        30.33065350936142
+      ],
       "address": "Большой проспект Васильевского острова '4'",
       "images": [
+        "/img/complexesImages/img-6.jpg",
+        "/img/complexesImages/img-3.jpg",
+        "/img/complexesImages/img-2.jpg"
+      ],
+      "totalFloor": 15,
+      "bank": "Сбербанк",
+      "finish": "Без отделки",
+      "propertiesTypes": "Коллективный",
+      "payment": "Оплата 1"
+    },
+    {
+      "id": 5,
+      "tel": "+7 (980) 426-3384",
+      "name": "ЖК \"Северные высоты\"",
+      "developer": "ООО «AnarcoBuild»",
+      "description": "Nisi sunt id velit officia laboris ipsum esse velit. Ullamco dolor duis sunt exercitation proident minim consequat ipsum. In ex irure consequat eiusmod quis reprehenderit ea id consequat mollit. Cupidatat sint elit amet dolor non laboris culpa ad voluptate ad. Ea nisi eiusmod aliqua velit ut laboris consectetur veniam mollit.\r\n",
+      "metro": "Котельники",
+      "deadline": [
+        {
+          "corpus": 3,
+          "year": 2027
+        },
+        {
+          "corpus": 1,
+          "year": 2027
+        },
+        {
+          "corpus": 1,
+          "year": 2025
+        },
+        {
+          "corpus": 2,
+          "year": 2025
+        },
+        {
+          "corpus": 4,
+          "year": 2021
+        },
+        {
+          "corpus": 4,
+          "year": 2022
+        }
+      ],
+      "metroDistance": 15,
+      "area": "Район 3",
+      "coords": [
+        59.96366228831893,
+        30.33065350936124
+      ],
+      "address": "Большой проспект Васильевского острова '5'",
+      "images": [
+        "/img/complexesImages/img-2.jpg",
         "/img/complexesImages/img-4.jpg",
-        "/img/complexesImages/img-8.jpg",
         "/img/complexesImages/img-4.jpg"
       ],
-      "totalFloor": 16
+      "totalFloor": 10,
+      "bank": "АльфаБанк",
+      "finish": "Без отделки",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 1"
+    },
+    {
+      "id": 6,
+      "tel": "+7 (868) 505-3114",
+      "name": "ЖК \"Северные высоты\"",
+      "developer": "ООО «SenmeiBuild»",
+      "description": "Magna do esse sit labore pariatur anim qui sit magna. Incididunt sint deserunt quis eu pariatur excepteur ut ut labore quis reprehenderit est. Ut aliquip ad aute reprehenderit amet reprehenderit. Officia eu officia Lorem nostrud id. Ullamco velit amet consectetur reprehenderit dolore dolore aute amet nulla ea cupidatat do duis. Et cupidatat ad quis aliqua eu. Anim commodo elit qui ad excepteur ex laborum adipisicing magna ipsum culpa aliqua nisi elit.\r\n",
+      "metro": "Рассказовка",
+      "deadline": [
+        {
+          "corpus": 3,
+          "year": 2026
+        },
+        {
+          "corpus": 1,
+          "year": 2021
+        },
+        {
+          "corpus": 3,
+          "year": 2029
+        },
+        {
+          "corpus": 2,
+          "year": 2022
+        },
+        {
+          "corpus": 4,
+          "year": 2024
+        },
+        {
+          "corpus": 4,
+          "year": 2026
+        },
+        {
+          "corpus": 2,
+          "year": 2024
+        }
+      ],
+      "metroDistance": 6,
+      "area": "Район 3",
+      "coords": [
+        59.96366228831891,
+        30.33065350936148
+      ],
+      "address": "Большой проспект Васильевского острова '6'",
+      "images": [
+        "/img/complexesImages/img-1.jpg",
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-8.jpg"
+      ],
+      "totalFloor": 15,
+      "bank": "Тинькофф",
+      "finish": "Чистовая",
+      "propertiesTypes": "Личный",
+      "payment": "Оплата 1"
     }
   ],
 

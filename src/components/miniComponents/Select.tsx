@@ -13,13 +13,14 @@ type PropsType = {
   readonly?: boolean,
   classNames?: string,
   placeholder?: string,
-  items?: Array<string>,
+  items?: Array<string | number>,
   active?: boolean,
   name?: string,
   activeItems?: Array<ItemSelectType> | null ,
   onChangeItem?: ({ }: FilterItemType) => void,
   onClickShowSelect?: (name: string | null) => void
 }
+
 
 const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = false, classNames, placeholder, items, activeItems, name, onChangeItem, onClickShowSelect }) => {
 
@@ -81,7 +82,7 @@ const duration = 150;
 const defaultStyle = {
     transition: `opacity ${duration}ms ease-in-out`,
     opacity: 0,
-  }
+}
   
 const transitionStyles = {
     entering: { opacity: 1, visibility: "visible" },
@@ -117,7 +118,7 @@ const transitionStyles = {
                       value={item} onChange={onChangeCheckbox}
                       data-index={index}
                       checked={valuesSelect ? valuesSelect.some((itemSel: ItemSelectType) => {
-                      return itemSel.value === item ? true: false
+                      return itemSel.value == item ? true: false
                     }) : false}/>
                         <span className="check"></span>
                         <span className="text">{item}</span>

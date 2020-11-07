@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchComplexes } from '../redux/actions/complexesActions';
 import { AppStateType } from '../redux/reducers/rootReducer';
 import ComplexCart from './ComplexCart';
+import Loading from './miniComponents/Loading';
 
 type PropsTypes = {}
 
 const CatalogComplexes : React.FC < PropsTypes > = () => {
 
   const dispatch = useDispatch();
-  const {complexesitems} = useSelector(({complexes}: AppStateType) => {
+  const {complexesitems, isLoadingComplexes} = useSelector(({complexes}: AppStateType) => {
     return {
-      complexesitems: complexes.items
+      complexesitems: complexes.items,
+      isLoadingComplexes: complexes.isLoading
     }
   });
   
@@ -23,9 +25,9 @@ const CatalogComplexes : React.FC < PropsTypes > = () => {
       <section className="catalog-complex-box catalog-complex">
       <div className="catalog-wrapper">
         <div className="catalog-complex__list">
-            {complexesitems && complexesitems.map((item) => {
-              
-              
+            {isLoadingComplexes
+              ? <Loading/>
+              : complexesitems && complexesitems.map((item) => {
               return <ComplexCart key={item.id} {...item}/>
             })}
         </div>

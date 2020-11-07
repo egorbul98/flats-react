@@ -10,18 +10,18 @@ type PropsTypes = {}
 
 const dataSelectTop:Array<SelectsDataType> = [
     {name: "area", placeholder:"Район:", items: ["Район 1", "Район 2", "Район 3", "Район 4"]},
-    {name: "metro", placeholder:"Метро:", items: ["Метро 1", "Метро 2", "Метро 3", "Метро 4"]},
-    {name: "deadline", placeholder:"Срок сдачи:", items: ["Срок сдачи 1", "Срок сдачи 2", "Срок сдачи 3", "Срок сдачи 4"]},
+    {name: "metro", placeholder:"Метро:", items: ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники']},
+    {name: "deadline", placeholder:"Срок сдачи:", items: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]},
 ]
 const dataSelectMiddle:Array<SelectsDataType> = [
-    {name: "complexe", placeholder:"Комплекс:", items: ["Комплекс 1", "Комплекс 2", "Комплекс 3", "Комплекс 4"]},
-    {name: "developer", placeholder:"Застройщик:", items: ["Застройщик 1", "Застройщик 2", "Застройщик 3", "Застройщик 4"]},
-    {name: "rooms", placeholder:"Тип квартиры:", items: ["Тип квартиры 1", "Тип квартиры 2", "Тип квартиры 3", "Тип квартиры 4"]},
-    { name: "propertiesTypes", placeholder: "Тип собственности:", items: ["Тип собственности 1", "Тип собственности 2", "Тип собственности 3", "Тип собственности 4"] },
-    {name: "finish", placeholder:"Отделка:", items: ["Отделка 1", "Отделка 2", "Отделка 3", "Отделка 4"]},
+    {name: "name", placeholder:"Комплекс:", items: ['ЖК "Новое мурино"', 'ЖК "Старое мурино"', 'ЖК "Mandy"', 'ЖК "Kelli"', 'ЖК "Столичный"', 'ЖК "Северные высоты"']},
+    {name: "developer", placeholder:"Застройщик:", items: ['ООО «Инвест Строй»', 'ООО «Сбер Строй»', 'ООО «AnarcoBuild»', 'ООО «SenmeiBuild»', 'ООО «Lovepad»']},
+    {name: "rooms", placeholder:"Тип квартиры:", items: ["1ккв", "2ккв", "3ккв", "Студия"]},
+    { name: "propertiesTypes", placeholder: "Тип собственности:", items: ['Личный', 'Коллективный', 'Смешанный'] },
+    {name: "finish", placeholder:"Отделка:", items: ['Чистовая', 'Черновая', 'Готовая', 'Без отделки']},
 ]
 const dataSelectBottom:Array<SelectsDataType> = [
-    {name: "bank", placeholder:"Банк:", items: ["Банк 1", "Банк 2", "Банк 3", "Банк 4"]},
+    {name: "bank", placeholder:"Банк:", items: ['АльфаБанк', 'Сбербанк', 'Тинькофф']},
     {name: "payment", placeholder:"Оплата:", items: ["Оплата 1", "Оплата 2", "Оплата 3", "Оплата 4"]}
 ]
   

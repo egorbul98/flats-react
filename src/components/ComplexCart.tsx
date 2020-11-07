@@ -23,6 +23,7 @@ import {ReactComponent as SvgArrow} from '../assets/img/icons/up-arrow.svg';
 
 import ButtonPhone from './miniComponents/ButtonPhone';
 import IconAdvantage from './miniComponents/IconAdvantage';
+import { calcCostSquare, FlatsGroupByRoomsType, getFlatsGroupByRooms } from '../handlers/complexesHandlers';
 
 const SlickArrowLeft:React.FC<any> = ({ currentSlide, slideCount, ...props }) => (
     <button 
@@ -75,52 +76,8 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
         }
     }
 
-    let minCostSquare : number = 0; //максимальная стоимость за кв/м среди всех квартир комплекса
-    let maxCostSquare : number = 0; //минимальная стоимость за кв/м
-
-    type FlatsGroupByRoomsType = {
-        room: number,
-        minCost: number,
-        maxCost: number,
-        minSquare: number
-    }
-
-    let flatsGroupByRooms : Array < FlatsGroupByRoomsType > = []; //массив сгруппированных по кол-ву комнат квартир
-
-    function calcCostSquare(cost : number, square : number) : number { //Считаем стоимость за квадратный метр
-        return + (cost / square / 1000).toFixed(1);
-    }
-
-    if (complex.flats) { //если квартиры в комплексе есть, то добавляем и группируем их в массив flatsGroupByRooms
-        for (let i = 0; i < complex.flats.length; i++) {
-            const flat = complex.flats[i];
-            const flatCostSquare = calcCostSquare(flat.cost, flat.square);
-            if (i == 0) {
-                minCostSquare = flatCostSquare;
-            }
-            minCostSquare = flatCostSquare < minCostSquare ? flatCostSquare : minCostSquare;
-            maxCostSquare = flatCostSquare > maxCostSquare ? flatCostSquare : maxCostSquare;
-
-            let found = flatsGroupByRooms.some((item) => {
-                if (item.room === flat.room) {
-                    item.minCost = flat.cost < item.minCost ? flat.cost : item.minCost;
-                    item.maxCost = flat.cost > item.maxCost ? flat.cost : item.maxCost;
-                    item.minSquare = flat.square > item.minSquare ? flat.square : item.minSquare;
-                    return true
-                } else {
-                    return false
-                }
-            })
-            if (!found) {
-                flatsGroupByRooms.push({room: flat.room, minCost: flat.cost, maxCost: flat.cost, minSquare: flat.square});
-            }
-        }
-    }
-
-    flatsGroupByRooms.sort((a, b) => { //Сортируем по кол-ву комнат
-        return a.room < b.room ? 1 : -1;
-    })
-
+    const [flatsGroupByRooms, minCostSquare, maxCostSquare] = getFlatsGroupByRooms(complex); //возвращаем массив сгруппированных по кол-ву комнат квартир, а также максимальную/минимальную стоимость за кв/м среди всех квартир 
+    
     const flatsTypesBlocks = flatsGroupByRooms.map((item, index) => {
         return (
             <div className="flat-type room" key={index + "_" + item.room}>
@@ -133,7 +90,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                 </div>
                 <div className="flat-type__right-box">
                     <span className="flat-type__cost-from">{(item.minCost / 1000000).toFixed(1)} </span>
-                    -<span className="flat-type__cost-to"> {(item.maxCost / 1000000).toFixed(1)}</span>
+                    -<span className="flat-type__cost-to"> {(item.maxCost / 1000000).toFixed(1)} </span>
                     млн. руб.
                 </div>
             </div>
@@ -197,7 +154,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                         тыс. руб/м2</div>
                     <ButtonPhone>{complex.tel}</ButtonPhone>
                 </div>
-                <div className="address">{complex.address}</div>
+                <div className="address">{complex.address}. {complex.area}</div>
                 <div className="metro">
                     <img src={iconMetro} alt=""/>
                     <span className="metro__name">{complex.metro}</span>
