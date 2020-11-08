@@ -16,7 +16,7 @@ const dataSelectTop:Array<SelectsDataType> = [
 const dataSelectMiddle:Array<SelectsDataType> = [
     {name: "name", placeholder:"Комплекс:", items: ['ЖК "Новое мурино"', 'ЖК "Старое мурино"', 'ЖК "Mandy"', 'ЖК "Kelli"', 'ЖК "Столичный"', 'ЖК "Северные высоты"']},
     {name: "developer", placeholder:"Застройщик:", items: ['ООО «Инвест Строй»', 'ООО «Сбер Строй»', 'ООО «AnarcoBuild»', 'ООО «SenmeiBuild»', 'ООО «Lovepad»']},
-    {name: "rooms", placeholder:"Тип квартиры:", items: ["1ккв", "2ккв", "3ккв", "Студия"]},
+    {name: "rooms", placeholder:"Тип квартиры:", items: ["1-комнатная кв.", "2-комнатная кв.", "3-комнатная кв.", "Студия"]},
     { name: "propertiesTypes", placeholder: "Тип собственности:", items: ['Личный', 'Коллективный', 'Смешанный'] },
     {name: "finish", placeholder:"Отделка:", items: ['Чистовая', 'Черновая', 'Готовая', 'Без отделки']},
 ]

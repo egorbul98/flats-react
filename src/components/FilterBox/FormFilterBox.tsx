@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SelectsDataType } from '../../mainTypes';
-import { FilterItemType, setChangeFilterItem, setClearFilter } from '../../redux/actions/filterActions';
+import { FilterItemDiapasonType, FilterItemType, setChangeFilterItem, setChangeFilterItemDiapason, setClearFilter } from '../../redux/actions/filterActions';
 import { AppStateType } from '../../redux/reducers/rootReducer';
 import DropDown from '../DropDown';
 import FieldsFromToWrap from './FieldsFromToWrap';
@@ -24,14 +24,19 @@ type PropsTypesForm = {
 const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBottom, dataSelectMiddle, dataSelectTop }) => {
     
   const dispatch = useDispatch();
-  const {filterItems} = useSelector(({ filter }:AppStateType) => {
+  const {filterItems, filterItemsDiapason} = useSelector(({ filter }:AppStateType) => {
       return {
-        filterItems: filter.filterItems
+        filterItems: filter.filterItems,
+        filterItemsDiapason: filter.filterItemsDiapason,
       }
   })
 
   const onChangeFilterItem = useCallback(({ type, values }: FilterItemType) => {//Добавляет фильтры в redux
       dispatch(setChangeFilterItem({ type, values }))
+  }, [dispatch]);
+
+  const onChangeFilterItemDiapason = useCallback(({ type, from, to }: FilterItemDiapasonType) => {//Добавляет фильтры в redux. Фильтры с диапазоном знаечний, например "Стоимость"
+      dispatch(setChangeFilterItemDiapason({ type, from, to }))
   }, [dispatch]);
   
   const onClearFilter = useCallback(() => {//очищаем фильтры
@@ -39,7 +44,7 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
   }, [dispatch]);
 
   const onApplyFilter = () => {//принять фильтры
-      dispatch(fetchComplexes(filterItems))
+      dispatch(fetchComplexes(filterItems, filterItemsDiapason))
   };
 
 
@@ -56,7 +61,9 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
                 filterItemsActive={filterItems}
               />}
                       
-              <FieldsFromToWrap name="cost" placeholder="Стоимость:"/>
+            <FieldsFromToWrap name="cost" placeholder="Стоимость:"
+              values={filterItemsDiapason.filter((item) => item.type === "cost")[0]}
+            onChangeFilterItem={onChangeFilterItemDiapason}/>
             </div>
 
             <div className={classNames({"slideDown--overflow-visible": openInnerFields})}>
@@ -69,7 +76,9 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
                       onChangeItem={onChangeFilterItem}
                       filterItemsActive={filterItems}
                     />}
-                              <FieldsFromToWrap name="square" placeholder="Площадь:"/>
+                  <FieldsFromToWrap name="square" placeholder="Площадь:"
+                    values={filterItemsDiapason.filter((item) => item.type === "square")[0]}
+                  onChangeFilterItem={onChangeFilterItemDiapason}/>
                     </div>
                 
                     <div className="filter-wrap-bottom">

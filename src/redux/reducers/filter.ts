@@ -1,34 +1,18 @@
-import { CLEAR_FILTER, FilterItemType, SetClearFilterType,ApplyFilterItemType,  SetChangeFilterItemType, CHANGE_FILTER } from "../actions/filterActions";
-
-// const initialState = {
-//   areas: null as Array<string> | null,
-//   metro: null as Array<string> | null,
-//   deadline: null as string | null,
-//   costFrom: null as number | null,
-//   costTo: null as number | null,
-//   complexes: null as Array<number> | null,
-//   developers: null as Array<number> | null,
-//   rooms: null as Array<number> | null,
-//   propertiesTypes: null as Array<number> | null,
-//   finish: null as string | null,
-//   squareFrom: null as number | null,
-//   squareTo: null as number | null,
-//   bank: null as Array<number> | null,
-//   payment: null as Array<number> | null,
-// }
+import { CLEAR_FILTER, CHANGE_FILTER_DIAPASON_ITEMS, CHANGE_FILTER, FilterItemType, SetClearFilterType, SetChangeFilterItemDiapasonType, SetChangeFilterItemType, FilterItemDiapasonType } from "../actions/filterActions";
 
 const initialState = {
-  filterItems: [] as Array<FilterItemType>
+  filterItems: [] as Array<FilterItemType>,
+  filterItemsDiapason: [] as Array<FilterItemDiapasonType>,
 }
 
 export type StateFilterType = typeof initialState;
 
-type ActionsTypes = SetClearFilterType | SetChangeFilterItemType;
+type ActionsTypes = SetClearFilterType | SetChangeFilterItemType | SetChangeFilterItemDiapasonType;
 
 
 export const filterReducer = (state = initialState, action: ActionsTypes):StateFilterType => {
   switch (action.type) {
-    case CHANGE_FILTER:
+    case CHANGE_FILTER:{
       let newState = { ...state, filterItems: [...state.filterItems] }
 
       const inArray = newState.filterItems.some((item) => {
@@ -46,7 +30,26 @@ export const filterReducer = (state = initialState, action: ActionsTypes):StateF
       }
       
       return newState;
-    
+    }
+    case CHANGE_FILTER_DIAPASON_ITEMS:{
+      let newState = { ...state, filterItemsDiapason: [...state.filterItemsDiapason] }
+
+      const inArray = newState.filterItemsDiapason.some((item) => {
+        return item.type === action.payload.type ? true : false;
+      });
+      if (inArray) {
+        newState.filterItemsDiapason.map((item) => {
+          if (item.type === action.payload.type) {
+            item.from = action.payload.from
+            item.to = action.payload.to
+          }
+          return item;
+        })
+      } else {
+        newState.filterItemsDiapason.push(action.payload);
+      }
+      
+      return newState;}
     case CLEAR_FILTER:
       return initialState;
   

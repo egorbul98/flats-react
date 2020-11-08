@@ -2,28 +2,28 @@ import React from 'react';
 import Slider from 'react-slick';
 import classnames from 'classnames';
 
-import { ComplexeType, FlatType } from '../mainTypes';
-import Select from './miniComponents/Select';
+import { ComplexeType, FlatType } from '../../mainTypes';
+import Select from '../miniComponents/Select';
 
 
-import iconHeart from '../assets/img/slide-heart.svg';
-import iconBuild from '../assets/img/slide-build.svg';
-import iconDevLogo from '../assets/img/developer_logo.svg';
-import iconMetro from '../assets/img/metro-el.svg';
-import iconPlaceholderRed from '../assets/img/placeholder-red.svg';
-import imgContentComplex from '../assets/img/content-item-img.png';
-import imgSliderPrev from '../assets/img/catalog-slider-prev.svg';
-import imgSliderNext from '../assets/img/catalog-slider-next.svg';
-import {ReactComponent as SvgFeatureSale} from '../assets/img/icon-feature_sale.svg';
-import {ReactComponent as SvgFeatureDeal} from '../assets/img/icon-feature_deal.svg';
-import {ReactComponent as SvgFeatureGift} from '../assets/img/icon-feature_gift.svg';
-import {ReactComponent as SvgFeatureDecor} from '../assets/img/icon-feature_decor.svg';
-import {ReactComponent as SvgFeatureBus} from '../assets/img/icon-bus.svg';
-import {ReactComponent as SvgArrow} from '../assets/img/icons/up-arrow.svg';
+import iconHeart from '../../assets/img/slide-heart.svg';
+import iconBuild from '../../assets/img/slide-build.svg';
+import iconDevLogo from '../../assets/img/developer_logo.svg';
+import iconMetro from '../../assets/img/metro-el.svg';
+import iconPlaceholderRed from '../../assets/img/placeholder-red.svg';
+import imgContentComplex from '../../assets/img/content-item-img.png';
+import imgSliderPrev from '../../assets/img/catalog-slider-prev.svg';
+import imgSliderNext from '../../assets/img/catalog-slider-next.svg';
+import {ReactComponent as SvgFeatureSale} from '../../assets/img/icon-feature_sale.svg';
+import {ReactComponent as SvgFeatureDeal} from '../../assets/img/icon-feature_deal.svg';
+import {ReactComponent as SvgFeatureGift} from '../../assets/img/icon-feature_gift.svg';
+import {ReactComponent as SvgFeatureDecor} from '../../assets/img/icon-feature_decor.svg';
+import {ReactComponent as SvgFeatureBus} from '../../assets/img/icon-bus.svg';
+import {ReactComponent as SvgArrow} from '../../assets/img/icons/up-arrow.svg';
 
-import ButtonPhone from './miniComponents/ButtonPhone';
-import IconAdvantage from './miniComponents/IconAdvantage';
-import { calcCostSquare, FlatsGroupByRoomsType, getFlatsGroupByRooms } from '../handlers/complexesHandlers';
+import ButtonPhone from '../miniComponents/ButtonPhone';
+import IconAdvantage from '../miniComponents/IconAdvantage';
+import { getFlatsGroupByRooms, getMinMaxValuesFlats } from '../../handlers/complexesHandlers';
 
 const SlickArrowLeft:React.FC<any> = ({ currentSlide, slideCount, ...props }) => (
     <button 
@@ -76,13 +76,14 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
         }
     }
 
-    const [flatsGroupByRooms, minCostSquare, maxCostSquare] = getFlatsGroupByRooms(complex); //возвращаем массив сгруппированных по кол-ву комнат квартир, а также максимальную/минимальную стоимость за кв/м среди всех квартир 
+    const flatsGroupByRooms = getFlatsGroupByRooms(complex.flats); //возвращаем массив сгруппированных по кол-ву комнат квартир
+    const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);//возвращаем  максимальную/минимальную стоимость за кв/м среди всех квартир 
     
     const flatsTypesBlocks = flatsGroupByRooms.map((item, index) => {
         return (
             <div className="flat-type room" key={index + "_" + item.room}>
                 <div className="flat-type__left-box">
-                    {item.room}-комнатная кв. от
+                    {item.room} от
                     <span className="flat-type__square">
                         <span className="flat-type__square-value"> {item.minSquare}</span>
                         м<sup>2</sup>
@@ -146,7 +147,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                     </div>
                 </div>
                 <div className="catalog-complex__cost-block">
-                    <span className="cost-block__cost-from">{complex.minCost}</span>-<span className="cost-block__cost-to">{complex.maxCost}</span>
+                    <span className="cost-block__cost-from">{complex.minCost && (complex.minCost/1000000).toFixed(1)}</span>-<span className="cost-block__cost-to">{complex.maxCost&&(complex.maxCost/1000000).toFixed(1)}</span>
                     млн. руб.</div>
                 <div className="catalog-container-wrap">
                     <div className="square-metr">{minCostSquare}
@@ -164,7 +165,9 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                 <Select 
                     classNames="filter-field complex-field-deadlines" 
                     placeholder="Срок сдачи:" 
-                    items={["корпус 1, 2019 г.", "корпус 2, 2019 г.",]}
+                    items={complex.deadline.sort((a,b)=>a.year>b.year?1:-1).map((item) => {
+                        return "корпус "+ item.corpus + ", " + item.year + "г."
+                    })}
                 />
             
                 <div className="catalog-complex-info-wrap">
@@ -183,4 +186,4 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
     )
 }
 
-export default ComplexCart;
+export default React.memo(ComplexCart);

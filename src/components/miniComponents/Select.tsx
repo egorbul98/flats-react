@@ -3,10 +3,8 @@ import React from 'react';
 import {ReactComponent as SvgArrow} from '../../assets/img/icons/up-arrow.svg';
 import classnames from 'classnames';
 import { FilterItemType} from '../../redux/actions/filterActions';
-import { AppStateType } from '../../redux/reducers/rootReducer';
-import { useSelector } from 'react-redux';
-import {CSSTransition, TransitionGroup, Transition} from 'react-transition-group';
-import { ItemSelectType, SelectsDataType } from '../../mainTypes';
+import {Transition} from 'react-transition-group';
+import { ItemSelectType} from '../../mainTypes';
 
 type PropsType = {
   multi?: boolean,
@@ -28,12 +26,6 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
   
   const [valuesSelect, setValuesSelect] = React.useState<Array<ItemSelectType>>(activeItems ? activeItems : []);
   
-  React.useEffect(() => {
-    if (activeItems === undefined) {
-      setValuesSelect([])
-    }
-  }, [activeItems]);
-  
   const onToggleShow = () => {
     if (onClickShowSelect && name) {
       onClickShowSelect(name);
@@ -49,6 +41,11 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     }
   }, [name])
 
+  React.useEffect(() => {
+    if (activeItems === undefined) {
+      setValuesSelect([])
+    }
+  }, [activeItems]);
 
   React.useEffect(() => {
     document.body.addEventListener("click", onCloseSelect);
@@ -66,7 +63,6 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
   const onChangeCheckbox = (e: any) => {
     const val = e.target.value;
     const index = e.target.getAttribute("data-index");
-    // const newObj = { type: name, value: { index: index, value: val, checked: e.target.checked } };
     let newStateValues: Array<ItemSelectType> = [];
     if (e.target.checked) {
       newStateValues = [...valuesSelect, { index: index, value: val, checked: e.target.checked}];

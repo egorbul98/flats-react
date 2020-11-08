@@ -1,8 +1,11 @@
 import React from 'react';
+import ButtonsDisplayList from './ButtonsDisplayList';
 
-type PropsTypes = {}
+type PropsTypes = {
+  onClickDisplayButton?: (titleBtn: string) => void;
+}
 
-const SortBox : React.FC < PropsTypes > = ({}) => {
+const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
 
     return (
       <section className="sort-box">
@@ -54,23 +57,7 @@ const SortBox : React.FC < PropsTypes > = ({}) => {
                 <button type='button' className="list-character__btn list-character__btn-map"><img
                     src="img/placeholder-red.svg" alt=""/>На карте</button>
               </div>
-              <div className="sort-box__list-type list-type">
-                <button type='button' className="list-type__btn list-type__btn--active list-type__btn-tile">
-                  <svg width="12" height="12" viewBox="0 0 12 12">
-                    <path
-                      d="M0,0H5.469V5.469H0V0ZM6.531,0H12V5.469H6.531V0ZM0,6.531H5.469V12H0V6.531Zm6.531,0H12V12H6.531V6.531Z" />
-                  </svg>
-                  Плиткой</button>
-                <button type='button' className="list-type__btn list-type__btn-list"><svg width="12" height="12"
-                    viewBox="0 0 12 12">
-                    <path d="M0,0H12V2.406H0V0ZM0,4.813H12V7.188H0V4.813ZM0,9.594H12V12H0V9.594Z" />
-                  </svg>
-                  Списком</button>
-                <button type='button' className="list-type__btn list-type__btn-map">
-                  <svg width="15" height="15">
-                    <use xlinkHref="#icon-maps"></use>
-                  </svg>На карте</button>
-              </div>
+                <ButtonsDisplayList className="sort-box__list-type" onClickDisplayButton={ onClickDisplayButton }/>
             </div>
           </div>
   
@@ -85,4 +72,4 @@ const SortBox : React.FC < PropsTypes > = ({}) => {
     )
 }
 
-export default SortBox;
+export default React.memo(SortBox);

@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchComplexes } from '../redux/actions/complexesActions';
-import { AppStateType } from '../redux/reducers/rootReducer';
+import { fetchComplexes } from '../../redux/actions/complexesActions';
+import { AppStateType } from '../../redux/reducers/rootReducer';
 import ComplexCart from './ComplexCart';
-import Loading from './miniComponents/Loading';
+import Loading from '../miniComponents/Loading';
+import classNames from 'classnames';
+type PropsTypes = {
+  displayItems: string
+}
 
-type PropsTypes = {}
-
-const CatalogComplexes : React.FC < PropsTypes > = () => {
+const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
   const {complexesitems, isLoadingComplexes} = useSelector(({complexes}: AppStateType) => {
@@ -16,23 +18,24 @@ const CatalogComplexes : React.FC < PropsTypes > = () => {
       isLoadingComplexes: complexes.isLoading
     }
   });
+
   
   React.useEffect(() => {
     dispatch(fetchComplexes());
   }, [dispatch]);
 
-    return (
+  return (
+      
       <section className="catalog-complex-box catalog-complex">
       <div className="catalog-wrapper">
-        <div className="catalog-complex__list">
+          <div className={ classNames("catalog-complex__list",{"catalog-complex__list--display-list":displayItems==="Списком"})}>
             {isLoadingComplexes
               ? <Loading/>
-              : complexesitems && complexesitems.map((item) => {
-              return <ComplexCart key={item.id} {...item}/>
-            })}
+              : complexesitems && complexesitems.length ?
+                complexesitems.map((item) => {
+              return <ComplexCart key={item.id} {...item} />
+            }) : <div className="nothing">Страница пуста</div>}
         </div>
-        <div className="pink__btn catalog-complex__show-more">Показать еще <span className="count-flats">25 объектов</span><img
-            src="img/arrow__down-input-grey.svg" alt="img"/></div>
   
         <div className="pagination">
           <div className="pagination__prev">«</div>
@@ -50,8 +53,7 @@ const CatalogComplexes : React.FC < PropsTypes > = () => {
         </div>
       </div>
     </section>
-  
     )
 }
 
-export default CatalogComplexes;
+export default React.memo(ComplexesList);

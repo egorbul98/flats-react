@@ -46,7 +46,7 @@ body.body--fixed {
   opacity: 1;
   border: none;
   outline: none;
-  transition: all 0.3s;
+  transition: opacity 0.3s;
   margin-top: 18px;
 
   &:hover {

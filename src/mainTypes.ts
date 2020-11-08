@@ -8,10 +8,6 @@ export type FlatType = {
   num: number,
   room: number,
   img: string,
-  deadline: number,
-  typeProperty: number,
-  bank: string,
-  payment: string,
   corpus: number
 };
 
