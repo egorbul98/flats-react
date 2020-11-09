@@ -31,13 +31,13 @@ export const setLoading = (isLoading: boolean): SetLoadingType => {
 }
 
 export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null) => (dispatch: any): void => {
+  // filterItems - фильтры select'ов
+  // filterItemsDiapason - фильтры полей "от" и "до" типа "Стоимость" или "Площадь" 
   dispatch(setLoading(true));
   let args = "&";
   // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры участвуют, то будет происходить доп. фильтрация
   let deadlinesValues:Array<string | number> | null = null;
   let roomsValues:Array<string | number> | null = null;
-  let isCost = null;
-  let isSquare = null;
 
   if (filterItems) {
     filterItems.forEach((item) => {
@@ -66,6 +66,8 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
         const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);
         complex.maxCost = maxCost;
         complex.minCost = minCost;
+        complex.maxCostSquare = maxCostSquare;
+        complex.minCostSquare = minCostSquare;
         let inArray:boolean | undefined = true;
         if (deadlinesValues) {
           inArray = checkInArray(deadlinesValues, complex.deadline, "year");
@@ -94,25 +96,15 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
               } else {
                 return (+flat[nameProp] >= +filterItem.from && +flat[nameProp] <= +filterItem.to) ? true : false;
               }
-              
             });
 
-            console.log(inArray, "inArray1");
             if (!inArray) {
-              console.log(inArray, "inArray2");
               break;
             }
           }
         }
         
-        // filterItemsDiapason?.forEach((filterItem) => {
-        //   const nameProp:string = filterItem.type;
-        //   inArray = complex.flats?.some((flat: any) => {
-        //     console.log(nameProp, (flat[nameProp] >= filterItem.from && flat[nameProp] <= filterItem.to) ? 1 : -1, flat[nameProp]);
-            
-        //     return (flat[nameProp] >= filterItem.from && flat[nameProp] <= filterItem.to) ? 1 : -1;
-        //   });
-        // });
+        
         if (!inArray) {
           return false;
         } 

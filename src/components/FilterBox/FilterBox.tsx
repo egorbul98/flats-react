@@ -5,24 +5,24 @@ import upArrow from '../../assets/img/up-arrow.svg';
 import downArrowGray from '../../assets/img/arrow__down-input-grey.svg';
 import FormFilterBox from './FormFilterBox';
 import { SelectsDataType } from '../../mainTypes';
-
+import {area, bank, deadline,developer,finish,metro,name,payment,propertiesTypes,rooms} from './../../assets/data';
 type PropsTypes = {}
 
 const dataSelectTop:Array<SelectsDataType> = [
-    {name: "area", placeholder:"Район:", items: ["Район 1", "Район 2", "Район 3", "Район 4"]},
-    {name: "metro", placeholder:"Метро:", items: ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники']},
-    {name: "deadline", placeholder:"Срок сдачи:", items: [2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028]},
+    {name: "area", placeholder:"Район:", items: area},
+    {name: "metro", placeholder:"Метро:", items: metro},
+    {name: "deadline", placeholder:"Срок сдачи:", items: deadline},
 ]
 const dataSelectMiddle:Array<SelectsDataType> = [
-    {name: "name", placeholder:"Комплекс:", items: ['ЖК "Новое мурино"', 'ЖК "Старое мурино"', 'ЖК "Mandy"', 'ЖК "Kelli"', 'ЖК "Столичный"', 'ЖК "Северные высоты"']},
-    {name: "developer", placeholder:"Застройщик:", items: ['ООО «Инвест Строй»', 'ООО «Сбер Строй»', 'ООО «AnarcoBuild»', 'ООО «SenmeiBuild»', 'ООО «Lovepad»']},
-    {name: "rooms", placeholder:"Тип квартиры:", items: ["1-комнатная кв.", "2-комнатная кв.", "3-комнатная кв.", "Студия"]},
-    { name: "propertiesTypes", placeholder: "Тип собственности:", items: ['Личный', 'Коллективный', 'Смешанный'] },
-    {name: "finish", placeholder:"Отделка:", items: ['Чистовая', 'Черновая', 'Готовая', 'Без отделки']},
+    {name: "name", placeholder:"Комплекс:", items: name},
+    {name: "developer", placeholder:"Застройщик:", items: developer},
+    {name: "rooms", placeholder:"Тип квартиры:", items: rooms},
+    { name: "propertiesTypes", placeholder: "Тип собственности:", items: propertiesTypes },
+    {name: "finish", placeholder:"Отделка:", items: finish},
 ]
 const dataSelectBottom:Array<SelectsDataType> = [
-    {name: "bank", placeholder:"Банк:", items: ['АльфаБанк', 'Сбербанк', 'Тинькофф']},
-    {name: "payment", placeholder:"Оплата:", items: ["Оплата 1", "Оплата 2", "Оплата 3", "Оплата 4"]}
+    {name: "bank", placeholder:"Банк:", items: bank},
+    {name: "payment", placeholder:"Оплата:", items: payment}
 ]
   
 const FilterBox : React.FC < PropsTypes > = ({}) => {

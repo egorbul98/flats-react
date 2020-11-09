@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonsDisplayList from './ButtonsDisplayList';
+import TypeRoomsList from './TypeRoomsList';
 
 type PropsTypes = {
   onClickDisplayButton?: (titleBtn: string) => void;
@@ -23,21 +24,9 @@ const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
             <div className="count-complex__wrap">
               <span className="count-complex">47</span>жилых комплексов
             </div>
-          </div>
-          <div className="list-type-flats">
-            <button type="button" className="list-type-flats__btn oneRoom pink__btn" data-room='1 ккв'><span
-                className="text-large">1-комнатная
-                кв.</span><span className="text-small">1 ккв</span></button>
-            <button type="button" className="list-type-flats__btn twoRoom pink__btn" data-room='2 ккв'><span
-                className="text-large">2-комнатная
-                кв.</span><span className="text-small">2 ккв</span></button>
-            <button type="button" className="list-type-flats__btn threeRoom pink__btn" data-room='3 ккв'><span
-                className="text-large">3-комнатная
-                кв.</span><span className="text-small">3 ккв</span></button>
-            <button type="button" className="list-type-flats__btn studio pink__btn" data-room='Студия'><span
-                className="text-large">Студия</span><span className="text-small">Студия</span></button>
-          </div>
-  
+            </div>
+            <TypeRoomsList/>
+         
           <div className="sort-box__wrap">
             <h3 className="sort-box__text">Сортировать</h3>
             <div className="sort-box__inner">

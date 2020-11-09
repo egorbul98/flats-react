@@ -12,9 +12,12 @@ const ButtonsDisplayList : React.FC < PropsTypes > = ({className, onClickDisplay
   const [activeItem, setActiveItem] = React.useState("Плиткой");
   const onClickButton = (titleBtn:string) => {
     setActiveItem(titleBtn);
-    onClickDisplayButton && onClickDisplayButton(titleBtn);
   }
  
+  React.useEffect(() => {
+    onClickDisplayButton && onClickDisplayButton(activeItem);
+  }, [activeItem]);
+
   return (
     <div className={classNames('list-type', className)}>
       <ButtonDisplay

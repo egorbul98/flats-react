@@ -9,7 +9,8 @@ type PropsTypesSelectList = {
   filterItemsActive?: Array<FilterItemType>
 }
 const SelectList: React.FC<PropsTypesSelectList> = ({ arrSelects, onChangeItem, filterItemsActive }) => {
-  
+  console.log("ren");
+  // const activeItems = React.useMemo(()=>filterItemsActive?.filter(itemAtive => itemAtive.type === selectItem.name)[0], [filterItemsActive]);
   
   return (
       <>
@@ -32,22 +33,5 @@ const SelectList: React.FC<PropsTypesSelectList> = ({ arrSelects, onChangeItem, 
   
 }
 
-const It: React.FC<any> = (selectItem, onChangeItem) => {
-  return (
-    <div className="filter-field">
-    <span className="filter-field__name">{selectItem.placeholder}</span>
-        <Select
-            {...selectItem}
-            multi={true}
-            onChangeItem={onChangeItem}
-            // onClickShowSelect={(name) => {
-            //     console.log(name, "name");
-            //     setActiveSelect(name)
-            // }}
-        />
-    </div>
-  )
-  
-}
 
 export default React.memo(SelectList);

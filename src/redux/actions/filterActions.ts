@@ -3,6 +3,8 @@ import { ItemSelectType } from "../../mainTypes";
 export const CHANGE_FILTER = "CHANGE_FILTER";
 export const CHANGE_FILTER_DIAPASON_ITEMS = "CHANGE_FILTER_DIAPASON_ITEMS";
 export const CLEAR_FILTER = "CLEAR_FILTER";
+export const REMOVE_FILTER_ITEM_VALUE = "REMOVE_FILTER_ITEM_VALUE";
+export const ADD_FILTER_ITEM_VALUE = "ADD_FILTER_ITEM_VALUE";
 
 export type FilterItemType = {
   type: string,
@@ -12,6 +14,30 @@ export type FilterItemDiapasonType = {
   type: string,
   from: number,
   to: number,
+}
+
+export type addFilterItemValueType = {
+  type: typeof ADD_FILTER_ITEM_VALUE,
+  payload: {type: string, index: number, value: string | number}
+}
+
+export const addFilterItemValue = (type: string, index:number, value: string | number):addFilterItemValueType => {
+  return {
+    type: ADD_FILTER_ITEM_VALUE,
+    payload: {type, index, value}
+  }
+}
+
+export type RemoveFilterItemValueType = {
+  type: typeof REMOVE_FILTER_ITEM_VALUE,
+  payload: {type: string, removeValue: string | number}
+}
+
+export const removeFilterItemValue = (type: string, removeValue: string | number):RemoveFilterItemValueType => {
+  return {
+    type: REMOVE_FILTER_ITEM_VALUE,
+    payload: {type, removeValue}
+  }
 }
 
 

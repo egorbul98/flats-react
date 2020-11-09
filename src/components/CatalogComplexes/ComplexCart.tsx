@@ -67,6 +67,7 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({ srcImage }) => {
 
 const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
     const [currentSlide, setCurrentSlide] = React.useState(1);
+    
     const settingsSlider = { //настройки слайдера
         arrows: true,
         prevArrow: <SlickArrowLeft className="catalog-complex__slider-prev-btn"/>,
@@ -76,9 +77,10 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
         }
     }
 
-    const flatsGroupByRooms = getFlatsGroupByRooms(complex.flats); //возвращаем массив сгруппированных по кол-ву комнат квартир
-    const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);//возвращаем  максимальную/минимальную стоимость за кв/м среди всех квартир 
-    
+    const deadlinesItems = React.useMemo(()=>complex.deadline.sort((a,b)=>a.year>b.year?1:-1).map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), complex.deadline); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
+
+    const flatsGroupByRooms = React.useMemo(()=>getFlatsGroupByRooms(complex.flats), complex.flats); //возвращаем массив сгруппированных по кол-ву комнат квартир
+   
     const flatsTypesBlocks = flatsGroupByRooms.map((item, index) => {
         return (
             <div className="flat-type room" key={index + "_" + item.room}>
@@ -150,8 +152,8 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                     <span className="cost-block__cost-from">{complex.minCost && (complex.minCost/1000000).toFixed(1)}</span>-<span className="cost-block__cost-to">{complex.maxCost&&(complex.maxCost/1000000).toFixed(1)}</span>
                     млн. руб.</div>
                 <div className="catalog-container-wrap">
-                    <div className="square-metr">{minCostSquare}
-                        тыс. - {maxCostSquare}
+                    <div className="square-metr">{complex.minCostSquare && complex.minCostSquare}
+                        тыс. - {complex.maxCostSquare && complex.maxCostSquare}
                         тыс. руб/м2</div>
                     <ButtonPhone>{complex.tel}</ButtonPhone>
                 </div>
@@ -165,9 +167,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                 <Select 
                     classNames="filter-field complex-field-deadlines" 
                     placeholder="Срок сдачи:" 
-                    items={complex.deadline.sort((a,b)=>a.year>b.year?1:-1).map((item) => {
-                        return "корпус "+ item.corpus + ", " + item.year + "г."
-                    })}
+                    items={deadlinesItems}
                 />
             
                 <div className="catalog-complex-info-wrap">

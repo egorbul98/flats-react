@@ -19,12 +19,27 @@ type PropsType = {
   onClickShowSelect?: (name: string | null) => void
 }
 
+ // ***************************
+ const duration = 150;
+ const defaultStyle = {
+     transition: `opacity ${duration}ms ease-in-out`,
+     opacity: 0,
+ }
+   
+ const transitionStyles = {
+     entering: { opacity: 1, visibility: "visible" },
+     entered:  { opacity: 1 },
+     exiting:  { opacity: 0 },
+     exited: { opacity: 0, visibility: "hidden" },
+  };
+  // ***************************
 
 const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = false, classNames, placeholder, items, activeItems, name, onChangeItem, onClickShowSelect }) => {
 
   const [show, setShow] = React.useState(active);
   
   const [valuesSelect, setValuesSelect] = React.useState<Array<ItemSelectType>>(activeItems ? activeItems : []);
+  console.log(valuesSelect, "valuesSelect", activeItems, "activeItems");
   
   const onToggleShow = () => {
     if (onClickShowSelect && name) {
@@ -39,11 +54,13 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     if ((parent === null) || (name && parent.getAttribute("data-name") !== name)) {
       setShow(false);
     }
-  }, [name])
+  }, [name, setShow])
 
   React.useEffect(() => {
     if (activeItems === undefined) {
       setValuesSelect([])
+    } else {
+      // setValuesSelect(activeItems ? activeItems : [])
     }
   }, [activeItems]);
 
@@ -54,7 +71,6 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
 
   React.useEffect(() => {
     if (onChangeItem !== undefined && name ) {
-        // onChangeItem({type: name, values: valuesSelect})
         onChangeItem({type: name, values: valuesSelect})
     }
   }, [valuesSelect]);
@@ -72,21 +88,7 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     
     setValuesSelect(newStateValues);
   }
-// console.log("render");
-  // ***************************
-const duration = 150;
-const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
-    opacity: 0,
-}
-  
-const transitionStyles = {
-    entering: { opacity: 1, visibility: "visible" },
-    entered:  { opacity: 1 },
-    exiting:  { opacity: 0 },
-  exited: { opacity: 0, visibility: "hidden" },
-  };
-   // ***************************
+ 
   return (
     <div className={classnames("select-component", classNames, { "active": show, "multi": multi })} data-name={name}>
     <div className="filter-field__select-arrow select-arrow"><SvgArrow/></div>
