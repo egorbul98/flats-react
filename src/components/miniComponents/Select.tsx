@@ -38,15 +38,8 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
 
   const [show, setShow] = React.useState(active);
   
-  const [valuesSelect, setValuesSelect] = React.useState<Array<ItemSelectType>>(activeItems ? activeItems : []);
-  console.log(valuesSelect, "valuesSelect", activeItems, "activeItems");
-  
   const onToggleShow = () => {
-    if (onClickShowSelect && name) {
-      onClickShowSelect(name);
-    } else {
-      setShow(!show);
-    }
+    onClickShowSelect && name ? onClickShowSelect(name) : setShow(!show);
   };
 
   const onCloseSelect = React.useCallback( (e: any) => {
@@ -56,37 +49,27 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     }
   }, [name, setShow])
 
-  React.useEffect(() => {
-    if (activeItems === undefined) {
-      setValuesSelect([])
-    } else {
-      // setValuesSelect(activeItems ? activeItems : [])
-    }
-  }, [activeItems]);
-
+  
   React.useEffect(() => {
     document.body.addEventListener("click", onCloseSelect);
     return () => document.body.removeEventListener("click", onCloseSelect);
   }, [onCloseSelect]);
 
-  React.useEffect(() => {
-    if (onChangeItem !== undefined && name ) {
-        onChangeItem({type: name, values: valuesSelect})
-    }
-  }, [valuesSelect]);
-
 
   const onChangeCheckbox = (e: any) => {
     const val = e.target.value;
     const index = e.target.getAttribute("data-index");
-    let newStateValues: Array<ItemSelectType> = [];
-    if (e.target.checked) {
-      newStateValues = [...valuesSelect, { index: index, value: val, checked: e.target.checked}];
-    } else {
-      newStateValues = valuesSelect.filter((item:ItemSelectType) => item.index === index ? false : true )
-    }
     
-    setValuesSelect(newStateValues);
+    let newStateValues = [];
+    if (e.target.checked) {
+      let newObj = { index: index, value: val, checked: e.target.checked };
+      newStateValues = activeItems ? [...activeItems, newObj] : [newObj];
+    } else {
+      newStateValues = activeItems ? activeItems.filter((item: ItemSelectType) => item.index === index ? false : true) : [];
+    }
+    if (onChangeItem !== undefined && name) {
+      onChangeItem({type: name, values: newStateValues})
+    }
   }
  
   return (
@@ -94,11 +77,12 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     <div className="filter-field__select-arrow select-arrow"><SvgArrow/></div>
       <div className="select-input">
         <input type="text"
-          value={valuesSelect.map((item: ItemSelectType) => {
+          value={activeItems ? activeItems.map((item: ItemSelectType) => {
             return item.value;
-          }).join("; ")}
+          }).join("; ") : ""}
           className="select filter__input"
-          placeholder={placeholder} readOnly={readonly}
+          placeholder={placeholder}
+          readOnly={readonly}
           onClick={onToggleShow}/>
         
         <Transition in={show} timeout={duration}>
@@ -115,7 +99,7 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
                       type="checkbox"
                       value={item} onChange={onChangeCheckbox}
                       data-index={index}
-                      checked={valuesSelect ? valuesSelect.some((itemSel: ItemSelectType) => {
+                      checked={activeItems ? activeItems.some((itemSel: ItemSelectType) => {
                       return itemSel.value == item ? true: false
                     }) : false}/>
                         <span className="check"></span>
