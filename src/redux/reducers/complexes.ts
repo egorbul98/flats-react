@@ -10,7 +10,7 @@ const initialState = {
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType ;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {

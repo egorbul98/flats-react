@@ -1,13 +1,21 @@
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import logo from './../assets/img/logo.svg';
 import btnOpen from './../assets/img/btn-open-nav.svg';
 import {ReactComponent as HeartIcon} from './../assets/img/icons/heart.svg';
+import { useDispatch } from 'react-redux';
+import { setRegion } from '../redux/actions/filterActions';
 
 type PropsTypes = {}
 
 const Header : React.FC < PropsTypes > = ({}) => {
     
+    const dispatch = useDispatch();
+
+    const onHandleClick = useCallback((region: string) => {
+        dispatch(setRegion(region));
+    }, [dispatch]);
+
     return (
         <header className="header-catalog">
             <div className="header-catalog__wrap">
@@ -19,11 +27,11 @@ const Header : React.FC < PropsTypes > = ({}) => {
                         <button
                             type="button"
                             data-city='spb'
-                            className="header-catalog__cities-btn pink__btn header-catalog__cities-btn--active">Санкт-Петербург и ЛО</button>
+                            className="header-catalog__cities-btn pink__btn header-catalog__cities-btn--active" onClick={()=>onHandleClick("SP")}>Санкт-Петербург и ЛО</button>
                         <button
                             type="button"
                             data-city='moscow'
-                            className="header-catalog__cities-btn pink__btn">Москва и МО</button>
+                            className="header-catalog__cities-btn pink__btn" onClick={()=>onHandleClick("MOS")}>Москва и МО</button>
                     </div>
                     <nav className="header-catalog__nav catalog-nav ">
                         <div className="catalog-nav__item catalog-nav__item--active">
@@ -79,4 +87,4 @@ const Header : React.FC < PropsTypes > = ({}) => {
     )
 }
 
-export default Header;
+export default React.memo(Header);

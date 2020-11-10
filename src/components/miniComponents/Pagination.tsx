@@ -18,7 +18,7 @@ const Pagination : React.FC < PropsType > = ({countPage, currentPage, onClickIte
         PaginateItems.push(
             <div key={index+"_"+"pagination"}
                 className={ classNames("pagination__item",{"pagination__item--active": currentPage == (index)})}
-                onClick={() => onClickItem(index)}>
+                onClick={() => currentPage != (index) && onClickItem(index)}>
                 {index}
             </div>
         );

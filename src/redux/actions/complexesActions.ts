@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { getFlatsGroupByRooms, getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
 import { ComplexeType, ItemSelectType } from "../../mainTypes";
+import { AppStateType } from "../reducers/rootReducer";
 import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 
 export const SET_COMPLEXES = "SET_COMPLEXES";
@@ -55,17 +56,26 @@ export const setLoading = (isLoading: boolean): SetLoadingType => {
   }
 }
 
-export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null, currentPage: number = 1, perPage: number = 4) => (dispatch: any): void => {
+export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null, currentPage: number = 1, perPage: number = 4) => (dispatch: any, getState: ()=>AppStateType): void => {
+  
+  
   // filterItems - фильтры select'ов
   // filterItemsDiapason - фильтры полей "от" и "до" типа "Стоимость" или "Площадь" 
   dispatch(setLoading(true));
   dispatch(setCurrentPage(currentPage));
+
+  const {filterItems, filterItemsDiapason, region, sortBy} = getState().filter;
+
+  // if (filterItems && filterItems.length == 0) {
+  //   filterItems = getState().filter.filterItems;
+  // }
   
-  let args = "&";
+  let args = `&region=${region}&`;
   // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры участвуют, то будет происходить доп. фильтрация
   let deadlinesValues:Array<string | number> | null = null;
-  let roomsValues:Array<string | number> | null = null;
-
+  let roomsValues: Array<string | number> | null = null;
+  
+  console.log(filterItems, "filterItems", getState().filter.filterItems);
   if (filterItems) {
     filterItems.forEach((item) => {
       if (item.values.length) {
@@ -88,7 +98,7 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
   
   args += "_sort=" + sortBy + "&";
 
-  args += `_page=${currentPage}&_limit=${perPage}`;
+  // args += `_page=${currentPage}&_limit=${perPage}`;
   
   
   Axios.get("http://localhost:3004/complexes?_embed=flats"+args)
@@ -107,7 +117,8 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
             return false;
           } 
         }
-
+        
+        
         if (roomsValues) {
           inArray = checkInArray(roomsValues, complex.flats, "room");
           if (!inArray) {
@@ -169,7 +180,7 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
       } 
       
     
-      dispatch(setTotalCount(headers["x-total-count"] ? +headers["x-total-count"] : 0));
+      dispatch(setTotalCount(headers["x-total-count"] ? +headers["x-total-count"] : complexes.length));
       dispatch(setComplexes(complexes));
       dispatch(setLoading(false));
     })

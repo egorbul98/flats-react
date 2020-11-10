@@ -6,6 +6,7 @@ export const CLEAR_FILTER = "CLEAR_FILTER";
 export const REMOVE_FILTER_ITEM_VALUE = "REMOVE_FILTER_ITEM_VALUE";
 export const ADD_FILTER_ITEM_VALUE = "ADD_FILTER_ITEM_VALUE";
 export const SET_SORT_BY = "SET_SORT_BY";
+export const SET_REGION = "SET_REGION";
 
 export type FilterItemType = {
   type: string,
@@ -17,6 +18,17 @@ export type FilterItemDiapasonType = {
   to: number,
 }
 
+export type SetRegionType = {
+  type: typeof SET_REGION,
+  payload: string
+}
+
+export const setRegion = (region: string): SetRegionType => {
+  return {
+    type: SET_REGION, 
+    payload: region
+  }
+}
 
 export type setSortByType = {
   type: typeof SET_SORT_BY,

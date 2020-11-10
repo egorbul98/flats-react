@@ -19,8 +19,9 @@ type PropsTypes = {
 const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
 
     const dispatch = useDispatch();
-    const {filterItems, filterItemsDiapason, sortBy} = useSelector(({ filter }:AppStateType) => {
+    const {filterItems, filterItemsDiapason, sortBy, region} = useSelector(({ filter, complexes }:AppStateType) => {
       return {
+        region: filter.region,
        filterItems: filter.filterItems,   
        filterItemsDiapason: filter.filterItemsDiapason,   
        sortBy: filter.sortBy,   
@@ -29,8 +30,8 @@ const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton}) =
     const onClickBtn = useCallback((name: string) => {
       dispatch(setSortBy(name));
       
-      dispatch(fetchComplexes(filterItems, filterItemsDiapason, name));
-    }, [dispatch, filterItems, filterItemsDiapason])
+      dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, name));
+    }, [dispatch, region, filterItems, filterItemsDiapason])
     
     return (
       <div className="sort-box__list-character list-character">

@@ -1,16 +1,17 @@
-import { CLEAR_FILTER, CHANGE_FILTER_DIAPASON_ITEMS, CHANGE_FILTER, REMOVE_FILTER_ITEM_VALUE, ADD_FILTER_ITEM_VALUE, SET_SORT_BY, setSortByType, addFilterItemValueType, RemoveFilterItemValueType,FilterItemType, SetClearFilterType, SetChangeFilterItemDiapasonType, SetChangeFilterItemType, FilterItemDiapasonType } from "../actions/filterActions";
+import { CLEAR_FILTER, CHANGE_FILTER_DIAPASON_ITEMS, SET_REGION, CHANGE_FILTER, REMOVE_FILTER_ITEM_VALUE, ADD_FILTER_ITEM_VALUE, SET_SORT_BY, setSortByType, addFilterItemValueType, RemoveFilterItemValueType,FilterItemType, SetRegionType,SetClearFilterType, SetChangeFilterItemDiapasonType, SetChangeFilterItemType, FilterItemDiapasonType } from "../actions/filterActions";
 
 
 
 const initialState = {
   filterItems: [] as Array<FilterItemType>,
   filterItemsDiapason: [] as Array<FilterItemDiapasonType>,
-  sortBy: null as string | null
+  sortBy: null as string | null,
+  region: "SP" as string,
 }
 
 export type StateFilterType = typeof initialState;
 
-type ActionsTypes = SetClearFilterType | SetChangeFilterItemType | SetChangeFilterItemDiapasonType | RemoveFilterItemValueType | addFilterItemValueType | setSortByType;
+type ActionsTypes = SetClearFilterType | SetChangeFilterItemType | SetChangeFilterItemDiapasonType | RemoveFilterItemValueType | addFilterItemValueType | setSortByType | SetRegionType;
 
 
 export const filterReducer = (state = initialState, action: ActionsTypes):StateFilterType => {
@@ -67,6 +68,9 @@ export const filterReducer = (state = initialState, action: ActionsTypes):StateF
 
       return newState;
     }
+    case SET_REGION:
+      return { ...state, region: action.payload };
+    
     case CLEAR_FILTER:
       return initialState;
   

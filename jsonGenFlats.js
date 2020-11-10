@@ -1,9 +1,9 @@
 [
-  '{{repeat(50)}}',
+  '{{repeat(150)}}',
   {
     "id": '{{index()}}',
       "square": "{{integer(16, 120)}}",
-      "complexId": "{{integer(0, 8)}}",
+      "complexId": "{{integer(0, 24)}}",
       "cost": "{{integer(3000000, 30000000)}}",
       "finish": function (tags) {
         var values = ['Чистовая', 'Черновая', 'Готовая', 'Без отделки'];
@@ -17,7 +17,6 @@
       },
       "img": "img/analog_1.jpg",
       "corpus": "{{integer(1, 4)}}"
-      
 
   }
 ]

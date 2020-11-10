@@ -6,6 +6,7 @@ import ComplexCart from './ComplexCart';
 import Loading from '../miniComponents/Loading';
 import classNames from 'classnames';
 import Pagination from '../miniComponents/Pagination';
+import { setClearFilter } from '../../redux/actions/filterActions';
 type PropsTypes = {
   displayItems: string
 }
@@ -13,9 +14,10 @@ type PropsTypes = {
 const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
-  const {complexesItems, isLoadingComplexes, filterItems, filterItemsDiapason, sortBy, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
+  const {complexesItems, region, isLoadingComplexes, filterItems, filterItemsDiapason, sortBy, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
     return {
       complexesItems: complexes.items,
+      region: filter.region,
       countComplexes: complexes.totalCount,
       perPage: complexes.perPage,
       currentPage: complexes.currentPage,
@@ -29,12 +31,13 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
   const countPages = React.useMemo(() =>  Math.ceil(countComplexes / perPage), [countComplexes, perPage]); //Считаем количество страниц
   
   React.useEffect(() => {
-    dispatch(fetchComplexes());
-  }, [dispatch]);
+    dispatch(setClearFilter());
+    dispatch(fetchComplexes(region));
+  }, [dispatch, region]);
 
   const onClickPaginateItem = useCallback((currentPage:number) => {
-    dispatch(fetchComplexes(filterItems, filterItemsDiapason, sortBy, currentPage, perPage));
-  }, [dispatch, filterItems, filterItemsDiapason, sortBy, perPage])
+    dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, sortBy, currentPage, perPage));
+  }, [dispatch, region, filterItems, filterItemsDiapason, sortBy, perPage])
 
  
   return (

@@ -1,7 +1,11 @@
 [
-  '{{repeat(7, 8)}}',
+  '{{repeat(25)}}',
   {
     "id": '{{index()}}',
+    "region": function (tags) {
+      var values = ['MOS', 'SP'];
+      return values[tags.integer(0, values.length - 1)];
+    },
     "tel": "+7 {{phone()}}",
     "name": function (tags) {
       var values = ['Новое мурино', 'Старое мурино', 'Mandy', "Kelli", "Столичный", "Северные высоты"];

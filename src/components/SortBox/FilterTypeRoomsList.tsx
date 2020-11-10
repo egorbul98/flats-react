@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { Dispatch, useCallback } from 'react';
 import classNames from 'classnames';
 import ButtonTypeRoom from './ButtonTypeRoom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,11 +19,10 @@ const FilterTypeRoomsList : React.FC < PropsTypes > = () => {
   //     })[0]
   //   }
   // });
-  const { filterItems, filterItemsDiapason, sortBy } = useSelector(({ filter }: AppStateType) => {
+  const { region, filterItems } = useSelector(({ filter }: AppStateType) => {
     return {
-      filterItems: filter.filterItems,
-      filterItemsDiapason: filter.filterItemsDiapason,
-      sortBy: filter.sortBy
+      region: filter.region,
+      filterItems: filter.filterItems
     }
   });
 
@@ -39,8 +38,8 @@ const FilterTypeRoomsList : React.FC < PropsTypes > = () => {
     } else {
       dispatch(addFilterItemValue("rooms", index, value));
     }
-    dispatch(fetchComplexes(filterItems, filterItemsDiapason, sortBy));
-  }, [dispatch, filterItems, filterItemsDiapason, sortBy]);
+    dispatch(fetchComplexes());
+  }, [dispatch]);
 
   return (
     <div className="list-type-flats">

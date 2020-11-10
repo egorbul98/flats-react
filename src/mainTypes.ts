@@ -13,6 +13,7 @@ export type FlatType = {
 
 export type ComplexeType = {
   id: number,
+  region: string,
   tel: number,
   name: string,
   developer: string,

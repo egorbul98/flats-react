@@ -22,7 +22,7 @@ type PropsTypes = {
 const ButtonSortBy : React.FC < PropsTypes > = ({icon, title, name, active, className, onClick}) => {
 
   const onHandlerClick = () => {
-    onClick && onClick(name);
+    !active && onClick && onClick(name);
   }
   return (
     <button type='button'
