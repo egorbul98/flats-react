@@ -44,12 +44,9 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
       dispatch(setClearFilter())
   }, [dispatch]);
 
-  const onApplyFilter = useCallback(() => {//очищаем фильтры
+  const onApplyFilter = useCallback(() => {//применяем фильтры
     dispatch(fetchComplexes(filterItems, filterItemsDiapason, sortBy))
   }, [dispatch, filterItems, filterItemsDiapason, sortBy]);
-
-
-
 
   return (
       
@@ -73,24 +70,24 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
                 <DropDown open={openInnerFields}>
                   <>
                     <div className="filter-wrap-middle">
-                  {dataSelectMiddle &&
-                    <SelectList 
-                      arrSelects={dataSelectMiddle} 
-                      onChangeItem={onChangeFilterItem}
-                      filterItemsActive={filterItems}
-                    />}
-                  <FieldsFromToWrap name="square" placeholder="Площадь:"
-                    values={filterItemsDiapason.filter((item) => item.type === "square")[0]}
-                  onChangeFilterItem={onChangeFilterItemDiapason}/>
+                    {dataSelectMiddle &&
+                      <SelectList 
+                        arrSelects={dataSelectMiddle} 
+                        onChangeItem={onChangeFilterItem}
+                        filterItemsActive={filterItems}
+                      />}
+                    <FieldsFromToWrap name="square" placeholder="Площадь:"
+                      values={filterItemsDiapason.filter((item) => item.type === "square")[0]}
+                    onChangeFilterItem={onChangeFilterItemDiapason}/>
                     </div>
                 
                     <div className="filter-wrap-bottom">
-                  {dataSelectBottom &&
-                    <SelectList 
-                      arrSelects={dataSelectBottom} 
-                      onChangeItem={onChangeFilterItem}
-                      filterItemsActive={filterItems}
-                    />}
+                    {dataSelectBottom &&
+                      <SelectList 
+                        arrSelects={dataSelectBottom} 
+                        onChangeItem={onChangeFilterItem}
+                        filterItemsActive={filterItems}
+                      />}
                     </div>
                   </>
                 </DropDown>

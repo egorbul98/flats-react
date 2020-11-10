@@ -12,7 +12,7 @@ const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placehol
   const [fromValue, setFromValue] = React.useState(values?.from ? values.from : '');
   const [toValue, setToValue] = React.useState(values?.to ? values.to : '');
 
-  const onChange = (e: any) => {
+  const onChange = (e: any) => {//ввод только цифр
     if (/\d+/.test(String(+e.target.value))) {
       const type = e.target.getAttribute("data-type");
       type === "from" ? setFromValue(e.target.value) : setToValue(e.target.value);

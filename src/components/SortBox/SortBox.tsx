@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reducers/rootReducer';
 import ButtonsDisplayList from './ButtonsDisplayList';
 import TypeRoomsList from './FilterTypeRoomsList';
 import SortByCharacterList from './SortByCharacterList';
@@ -8,6 +10,12 @@ type PropsTypes = {
 }
 
 const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
+
+  const { countComplexes } = useSelector(({ complexes }:AppStateType) => {
+    return {
+      countComplexes:complexes.totalCount
+      }
+  })
 
     return (
       <section className="sort-box">
@@ -23,7 +31,7 @@ const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
           <div className="sort-box__title-box">
             <h2 className="title">Новостройки Санкт-Петербурга</h2>
             <div className="count-complex__wrap">
-              <span className="count-complex">47</span>жилых комплексов
+              <span className="count-complex">{countComplexes ? countComplexes : 0}</span>жилых комплексов
             </div>
             </div>
             <TypeRoomsList/>

@@ -5,6 +5,31 @@ import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 
 export const SET_COMPLEXES = "SET_COMPLEXES";
 export const SET_LOADING = "SET_LOADING";
+export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+
+export type SetCurrentPageType = {
+  type: typeof SET_CURRENT_PAGE,
+  payload: number
+}
+
+export const setCurrentPage = (currentPage: number): SetCurrentPageType => {
+  return {
+    type: SET_CURRENT_PAGE, 
+    payload: currentPage
+  }
+}
+export type SetTotalCountType = {
+  type: typeof SET_TOTAL_COUNT,
+  payload: number
+}
+
+export const setTotalCount = (totalCount: number): SetTotalCountType => {
+  return {
+    type: SET_TOTAL_COUNT, 
+    payload: totalCount
+  }
+}
 
 export type SetComplexesType = {
   type: typeof SET_COMPLEXES,
@@ -30,10 +55,12 @@ export const setLoading = (isLoading: boolean): SetLoadingType => {
   }
 }
 
-export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null) => (dispatch: any): void => {
+export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null, currentPage: number = 1, perPage: number = 4) => (dispatch: any): void => {
   // filterItems - фильтры select'ов
   // filterItemsDiapason - фильтры полей "от" и "до" типа "Стоимость" или "Площадь" 
   dispatch(setLoading(true));
+  dispatch(setCurrentPage(currentPage));
+  
   let args = "&";
   // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры участвуют, то будет происходить доп. фильтрация
   let deadlinesValues:Array<string | number> | null = null;
@@ -58,12 +85,15 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
       }
     })
   }
-  args += "_sort="+sortBy;
+  
+  args += "_sort=" + sortBy + "&";
+
+  args += `_page=${currentPage}&_limit=${perPage}`;
+  
   
   Axios.get("http://localhost:3004/complexes?_embed=flats"+args)
-    .then(({ data }) => {
-      console.log(data);
-      
+    .then(({ data, headers }) => {
+     
       const complexes = data.filter((complex: ComplexeType) => {
         const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);
         complex.maxCost = maxCost;
@@ -139,11 +169,11 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
       } 
       
     
-      
+      dispatch(setTotalCount(headers["x-total-count"] ? +headers["x-total-count"] : 0));
       dispatch(setComplexes(complexes));
       dispatch(setLoading(false));
     })
-    .catch((e)=>console.log(e))
+    .catch((e)=>console.error(e))
 }
 
 function checkInArray(arrayIncludes:Array<string | number>, arr:any, nameProp:string) {//Проверяет есть ли в массиве arrayIncludes какие-либо элементы из массива arr. Проверка по свойству nameProp элементов массива arr

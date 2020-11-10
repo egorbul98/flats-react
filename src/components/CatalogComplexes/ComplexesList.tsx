@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchComplexes } from '../../redux/actions/complexesActions';
+import { fetchComplexes, setCurrentPage } from '../../redux/actions/complexesActions';
 import { AppStateType } from '../../redux/reducers/rootReducer';
 import ComplexCart from './ComplexCart';
 import Loading from '../miniComponents/Loading';
 import classNames from 'classnames';
+import Pagination from '../miniComponents/Pagination';
 type PropsTypes = {
   displayItems: string
 }
@@ -12,18 +13,30 @@ type PropsTypes = {
 const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
-  const {complexesitems, isLoadingComplexes} = useSelector(({complexes}: AppStateType) => {
+  const {complexesItems, isLoadingComplexes, filterItems, filterItemsDiapason, sortBy, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
     return {
-      complexesitems: complexes.items,
-      isLoadingComplexes: complexes.isLoading
+      complexesItems: complexes.items,
+      countComplexes: complexes.totalCount,
+      perPage: complexes.perPage,
+      currentPage: complexes.currentPage,
+      isLoadingComplexes: complexes.isLoading,
+      filterItems: filter.filterItems,
+      filterItemsDiapason: filter.filterItemsDiapason,
+      sortBy: filter.sortBy
     }
   });
 
+  const countPages = React.useMemo(() =>  Math.ceil(countComplexes / perPage), [countComplexes, perPage]); //Считаем количество страниц
   
   React.useEffect(() => {
     dispatch(fetchComplexes());
   }, [dispatch]);
 
+  const onClickPaginateItem = useCallback((currentPage:number) => {
+    dispatch(fetchComplexes(filterItems, filterItemsDiapason, sortBy, currentPage, perPage));
+  }, [dispatch, filterItems, filterItemsDiapason, sortBy, perPage])
+
+ 
   return (
       
       <section className="catalog-complex-box catalog-complex">
@@ -31,26 +44,19 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
           <div className={ classNames("catalog-complex__list",{"catalog-complex__list--display-list":displayItems==="Списком"})}>
             {isLoadingComplexes
               ? <Loading/>
-              : complexesitems && complexesitems.length ?
-                complexesitems.map((item) => {
+              : complexesItems && complexesItems.length ?
+                complexesItems.map((item) => {
               return <ComplexCart key={item.id} {...item} />
             }) : <div className="nothing">Страница пуста</div>}
         </div>
   
-        <div className="pagination">
-          <div className="pagination__prev">«</div>
-          <div className="pagination__item pagination__item--active first-page">1</div>
-          <div className="pagination__item">2</div>
-          <div className="pagination__item">3</div>
-          <div className="pagination__item">4</div>
-          <div className="pagination__item">5</div>
-          <div className="pagination__item">6</div>
-          <div className="pagination__item">7</div>
-          <div className="pagination__item">8</div>
-          <div className="pagination__item">9</div>
-          <div className="pagination__item">10</div>
-          <div className="pagination__next">»</div>
-        </div>
+        {countPages > 1 &&
+          <Pagination
+          countPage={countPages}
+          currentPage={currentPage}
+          onClickItem={onClickPaginateItem}
+        />}
+        
       </div>
     </section>
     )

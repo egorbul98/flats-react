@@ -7,10 +7,11 @@ type PropsType = {
   open: boolean,
   children: React.ReactChildren | React.ReactChild
 }
-export default function DropDown(props:PropsType) {
+const DropDown: React.FC<PropsType> = (props) => {
   return (
     <SlideDown className={'my-dropdown-slidedown'}>
       {props.open ? props.children : null}
     </SlideDown>
   )
 }
+export default React.memo(DropDown);
