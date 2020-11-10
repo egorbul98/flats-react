@@ -30,9 +30,7 @@
     "address": "Большой проспект Васильевского острова '{{index()}}'",
     "images": ["/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg"],
     "totalFloor": '{{integer(9, 17)}}',
-    // "bank": "Банк '{{integer(1, 4)}}'",
-    // "payment": "Оплата '{{integer(1, 4)}}'",
-    // "deadline": '{{integer(2020, 2030)}}',
+    
     "bank": function (tags) {
       var values = ['АльфаБанк', 'Сбербанк', 'Тинькофф'];
       return values[tags.integer(0, values.length - 1)];
@@ -46,6 +44,7 @@
       var values = ['Личный', 'Коллективный', 'Смешанный'];
       return values[tags.integer(0, values.length - 1)];
     },
-    "payment": 'Оплата {{integer(1, 4)}}'
+    "payment": 'Оплата {{integer(1, 4)}}',
+    "recomend": '{{integer(1, 10)}}'
   }
 ]

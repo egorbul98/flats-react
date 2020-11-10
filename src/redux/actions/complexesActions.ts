@@ -30,7 +30,7 @@ export const setLoading = (isLoading: boolean): SetLoadingType => {
   }
 }
 
-export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null) => (dispatch: any): void => {
+export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null) => (dispatch: any): void => {
   // filterItems - фильтры select'ов
   // filterItemsDiapason - фильтры полей "от" и "до" типа "Стоимость" или "Площадь" 
   dispatch(setLoading(true));
@@ -58,9 +58,11 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
       }
     })
   }
-
+  args += "_sort="+sortBy;
+  
   Axios.get("http://localhost:3004/complexes?_embed=flats"+args)
     .then(({ data }) => {
+      console.log(data);
       
       const complexes = data.filter((complex: ComplexeType) => {
         const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);
@@ -104,12 +106,40 @@ export const fetchComplexes = (filterItems: Array<FilterItemType> | null = null,
           }
         }
         
-        
         if (!inArray) {
           return false;
         } 
+
+        //сортируем срок сдачи по годам
+        complex.deadline.sort((a, b) => a.year > b.year ? 1 : -1);
+        complex.maxDeadline = complex.deadline[complex.deadline.length - 1].year;
         return true;
       })
+      
+      if (sortBy === "cost" || sortBy === "costSquare" || sortBy === "deadline") {
+        let sortPropName = "";
+        if (sortBy === "cost") {
+          sortPropName = "minCost";
+        }else if (sortBy === "costSquare") {
+          sortPropName = "minCostSquare";
+        }else {
+          sortPropName = "maxDeadline";
+        }
+       
+        complexes.sort((a: any, b: any) => {
+          if (a[sortPropName] && b[sortPropName]) {
+            if (sortBy === "deadline") {
+              return a[sortPropName] < b[sortPropName] ? 1 : -1;
+            }
+            return a[sortPropName] > b[sortPropName] ? 1 : -1;
+          } else {
+            return -1;
+          }
+        })
+      } 
+      
+    
+      
       dispatch(setComplexes(complexes));
       dispatch(setLoading(false));
     })

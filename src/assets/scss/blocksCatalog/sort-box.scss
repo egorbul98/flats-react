@@ -102,6 +102,8 @@
       img {
         width: 15px;
       }
+
+     
     }
 
 
@@ -120,7 +122,7 @@
       background-color: $btn-optional;
       margin-right: 32px;
 
-      &:last-child {
+      &:last-of-type {
         margin-right: 0;
       }
 
@@ -137,9 +139,11 @@
       }
     }
 
-    &__btn-map{
+    
+    &__btn-map, &__btn-map-wrap{
       display: none;
     }
+    
   }
   
 
@@ -270,11 +274,17 @@
         align-items: center;
         width: 100%;
         font-size: 12px;
+        
         img{
           display: block;
           width: 10px;
           height: 12px;
         }
+      }
+
+      &__btn-map-wrap{
+        display: block;
+        width: 100%;
       }
     }
   }

@@ -24,6 +24,7 @@ export type ComplexeType = {
   coords: [number, number],
   minCost?: number,
   maxCost?: number,
+  maxDeadline?: number,
   // minSquare: number,
   // maxSquare: number,
   minCostSquare?: number,

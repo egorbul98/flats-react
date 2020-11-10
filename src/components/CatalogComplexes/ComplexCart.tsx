@@ -77,7 +77,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
         }
     }
 
-    const deadlinesItems = React.useMemo(()=>complex.deadline.sort((a,b)=>a.year>b.year?1:-1).map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), complex.deadline); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
+    const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), complex.deadline); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
 
     const flatsGroupByRooms = React.useMemo(()=>getFlatsGroupByRooms(complex.flats), complex.flats); //возвращаем массив сгруппированных по кол-ву комнат квартир
    

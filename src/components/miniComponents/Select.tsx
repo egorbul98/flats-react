@@ -49,7 +49,7 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
     }
   }, [name, setShow])
 
-  
+
   React.useEffect(() => {
     document.body.addEventListener("click", onCloseSelect);
     return () => document.body.removeEventListener("click", onCloseSelect);
@@ -58,19 +58,20 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
 
   const onChangeCheckbox = (e: any) => {
     const val = e.target.value;
-    const index = e.target.getAttribute("data-index");
+    const index = +e.target.getAttribute("data-index");
     
-    let newStateValues = [];
+    let newStateValues:any = [];
     if (e.target.checked) {
       let newObj = { index: index, value: val, checked: e.target.checked };
       newStateValues = activeItems ? [...activeItems, newObj] : [newObj];
     } else {
-      newStateValues = activeItems ? activeItems.filter((item: ItemSelectType) => item.index === index ? false : true) : [];
+      newStateValues = activeItems ? activeItems.filter((item: ItemSelectType) => item.index == index ? false : true) : [];
     }
     if (onChangeItem !== undefined && name) {
       onChangeItem({type: name, values: newStateValues})
     }
   }
+ 
  
   return (
     <div className={classnames("select-component", classNames, { "active": show, "multi": multi })} data-name={name}>

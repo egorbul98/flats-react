@@ -5,6 +5,7 @@ export const CHANGE_FILTER_DIAPASON_ITEMS = "CHANGE_FILTER_DIAPASON_ITEMS";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const REMOVE_FILTER_ITEM_VALUE = "REMOVE_FILTER_ITEM_VALUE";
 export const ADD_FILTER_ITEM_VALUE = "ADD_FILTER_ITEM_VALUE";
+export const SET_SORT_BY = "SET_SORT_BY";
 
 export type FilterItemType = {
   type: string,
@@ -15,6 +16,20 @@ export type FilterItemDiapasonType = {
   from: number,
   to: number,
 }
+
+
+export type setSortByType = {
+  type: typeof SET_SORT_BY,
+  payload: string
+}
+
+export const setSortBy = (sortBy: string):setSortByType => {
+  return {
+    type: SET_SORT_BY,
+    payload: sortBy
+  }
+}
+
 
 export type addFilterItemValueType = {
   type: typeof ADD_FILTER_ITEM_VALUE,

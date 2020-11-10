@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonsDisplayList from './ButtonsDisplayList';
-import TypeRoomsList from './TypeRoomsList';
+import TypeRoomsList from './FilterTypeRoomsList';
+import SortByCharacterList from './SortByCharacterList';
 
 type PropsTypes = {
   onClickDisplayButton?: (titleBtn: string) => void;
@@ -30,22 +31,7 @@ const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
           <div className="sort-box__wrap">
             <h3 className="sort-box__text">Сортировать</h3>
             <div className="sort-box__inner">
-              <div className="sort-box__list-character list-character">
-                <button type='button'
-                  className="list-character__btn list-character__btn-sort-by-recomend list-character__btn--active "><img
-                    src="img/bookmark-star.svg" alt=""/>Рекомендуемые</button>
-                <button type='button' className="list-character__btn list-character__btn-sort-by-coast"><img
-                    src="img/coin-stack.svg" alt=""/>По
-                  цене</button>
-                <button type='button' className="list-character__btn list-character__btn-sort-by-coast-square"><img
-                    src="img/coin-stack.svg" alt=""/>По цене за
-                  м2</button>
-                <button type='button' className="list-character__btn list-character__btn-sort-by-deadline"><img
-                    src="img/clock.svg" alt=""/>По сроку
-                  сдачи</button>
-                <button type='button' className="list-character__btn list-character__btn-map"><img
-                    src="img/placeholder-red.svg" alt=""/>На карте</button>
-              </div>
+                <SortByCharacterList/>
                 <ButtonsDisplayList className="sort-box__list-type" onClickDisplayButton={ onClickDisplayButton }/>
             </div>
           </div>

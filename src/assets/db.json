@@ -2,368 +2,403 @@
   "complexes":[
     {
       "id": 0,
-      "tel": "+7 (822) 552-3731",
-      "name": "ЖК \"Новое мурино\"",
+      "tel": "+7 (995) 503-2617",
+      "name": "ЖК \"Kelli\"",
       "developer": "ООО «SenmeiBuild»",
-      "description": "Sint fugiat ullamco veniam ad amet ullamco ullamco cillum. Eiusmod magna mollit deserunt qui veniam. Pariatur dolor ea qui quis et officia ullamco.\r\n",
-      "metro": "Сокольники",
+      "description": "Tempor incididunt magna in ipsum laboris commodo cillum adipisicing ea. Eu fugiat sunt enim pariatur sint aliqua deserunt in incididunt id ut magna et exercitation. Officia quis nisi sint culpa. Labore incididunt fugiat magna quis aute ipsum laboris cupidatat irure mollit.\r\n",
+      "metro": "Лихоборы",
       "deadline": [
         {
-          "corpus": 1,
-          "year": 2029
-        },
-        {
-          "corpus": 1,
-          "year": 2024
-        },
-        {
-          "corpus": 1,
-          "year": 2028
-        },
-        {
-          "corpus": 4,
+          "corpus": 2,
           "year": 2023
         },
         {
-          "corpus": 1,
-          "year": 2027
+          "corpus": 4,
+          "year": 2022
         },
         {
-          "corpus": 4,
-          "year": 2029
-        }
-      ],
-      "metroDistance": 28,
-      "area": "Район 4",
-      "coords": [
-        59.96366228831895,
-        30.33065350936145
-      ],
-      "address": "Большой проспект Васильевского острова '0'",
-      "images": [
-        "/img/complexesImages/img-2.jpg",
-        "/img/complexesImages/img-4.jpg",
-        "/img/complexesImages/img-1.jpg"
-      ],
-      "totalFloor": 11,
-      "bank": "АльфаБанк",
-      "finish": "Чистовая",
-      "propertiesTypes": "Коллективный",
-      "payment": "Оплата 2"
-    },
-    {
-      "id": 1,
-      "tel": "+7 (830) 458-3195",
-      "name": "ЖК \"Mandy\"",
-      "developer": "ООО «Lovepad»",
-      "description": "Eiusmod anim consectetur dolor proident tempor magna amet Lorem excepteur est veniam proident dolor consequat. Aute occaecat esse ut cillum sunt. Cupidatat occaecat est duis voluptate officia ad. Tempor do dolor ipsum non minim ex. Consectetur elit sit tempor laboris eu.\r\n",
-      "metro": "Измайловская",
-      "deadline": [
-        {
-          "corpus": 4,
+          "corpus": 2,
           "year": 2025
         },
         {
-          "corpus": 1,
+          "corpus": 2,
           "year": 2021
         },
         {
-          "corpus": 1,
-          "year": 2024
-        },
-        {
-          "corpus": 4,
-          "year": 2022
-        },
-        {
-          "corpus": 1,
-          "year": 2023
-        },
-        {
-          "corpus": 4,
-          "year": 2021
-        },
-        {
-          "corpus": 1,
-          "year": 2022
+          "corpus": 2,
+          "year": 2028
         }
       ],
-      "metroDistance": 16,
+      "metroDistance": 17,
       "area": "Район 1",
       "coords": [
         59.96366228831896,
-        30.33065350936142
+        30.33065350936131
       ],
-      "address": "Большой проспект Васильевского острова '1'",
-      "images": [
-        "/img/complexesImages/img-8.jpg",
-        "/img/complexesImages/img-5.jpg",
-        "/img/complexesImages/img-4.jpg"
-      ],
-      "totalFloor": 9,
-      "bank": "Сбербанк",
-      "finish": "Готовая",
-      "propertiesTypes": "Смешанный",
-      "payment": "Оплата 4"
-    },
-    {
-      "id": 2,
-      "tel": "+7 (977) 541-3607",
-      "name": "ЖК \"Kelli\"",
-      "developer": "ООО «Сбер Строй»",
-      "description": "In laboris esse Lorem veniam cupidatat tempor ea esse. Est id incididunt incididunt veniam sit minim incididunt irure. Amet sit aliquip veniam magna amet aliquip cupidatat cupidatat laborum sit pariatur. Est aute irure voluptate non cillum commodo nisi. Velit id veniam id qui enim officia ex incididunt dolore cillum eu ipsum sit excepteur. Id pariatur in amet dolore incididunt tempor incididunt Lorem do irure sunt cupidatat tempor. Aute sint nulla dolor irure eiusmod quis.\r\n",
-      "metro": "Рассказовка",
-      "deadline": [
-        {
-          "corpus": 4,
-          "year": 2028
-        },
-        {
-          "corpus": 2,
-          "year": 2023
-        },
-        {
-          "corpus": 1,
-          "year": 2027
-        },
-        {
-          "corpus": 4,
-          "year": 2025
-        },
-        {
-          "corpus": 1,
-          "year": 2023
-        },
-        {
-          "corpus": 2,
-          "year": 2029
-        },
-        {
-          "corpus": 1,
-          "year": 2021
-        }
-      ],
-      "metroDistance": 12,
-      "area": "Район 4",
-      "coords": [
-        59.96366228831898,
-        30.33065350936143
-      ],
-      "address": "Большой проспект Васильевского острова '2'",
-      "images": [
-        "/img/complexesImages/img-8.jpg",
-        "/img/complexesImages/img-5.jpg",
-        "/img/complexesImages/img-7.jpg"
-      ],
-      "totalFloor": 9,
-      "bank": "Тинькофф",
-      "finish": "Готовая",
-      "propertiesTypes": "Смешанный",
-      "payment": "Оплата 4"
-    },
-    {
-      "id": 3,
-      "tel": "+7 (800) 566-2200",
-      "name": "ЖК \"Столичный\"",
-      "developer": "ООО «Сбер Строй»",
-      "description": "Aliqua ut do labore enim. Est irure excepteur quis cillum mollit ullamco veniam ut veniam elit adipisicing irure ut. Occaecat Lorem et exercitation deserunt eiusmod elit officia Lorem Lorem ut dolor excepteur. Velit deserunt laborum amet consequat cupidatat duis fugiat pariatur magna dolor sunt.\r\n",
-      "metro": "Сокольники",
-      "deadline": [
-        {
-          "corpus": 1,
-          "year": 2023
-        },
-        {
-          "corpus": 4,
-          "year": 2028
-        },
-        {
-          "corpus": 1,
-          "year": 2023
-        },
-        {
-          "corpus": 3,
-          "year": 2026
-        },
-        {
-          "corpus": 2,
-          "year": 2029
-        },
-        {
-          "corpus": 1,
-          "year": 2021
-        }
-      ],
-      "metroDistance": 22,
-      "area": "Район 3",
-      "coords": [
-        59.96366228831888,
-        30.33065350936125
-      ],
-      "address": "Большой проспект Васильевского острова '3'",
-      "images": [
-        "/img/complexesImages/img-6.jpg",
-        "/img/complexesImages/img-1.jpg",
-        "/img/complexesImages/img-7.jpg"
-      ],
-      "totalFloor": 11,
-      "bank": "Сбербанк",
-      "finish": "Чистовая",
-      "propertiesTypes": "Смешанный",
-      "payment": "Оплата 2"
-    },
-    {
-      "id": 4,
-      "tel": "+7 (847) 593-2579",
-      "name": "ЖК \"Kelli\"",
-      "developer": "ООО «Сбер Строй»",
-      "description": "Tempor occaecat eu velit velit ad enim veniam laboris dolore anim proident ex. Nulla qui laboris consectetur sunt. Reprehenderit do excepteur nisi ea minim ut sint aute. Culpa sunt culpa non culpa commodo mollit cillum duis magna occaecat culpa esse laborum ut. Officia aliqua do ad culpa non. Labore dolore id sunt fugiat esse eu nulla ullamco fugiat nisi labore.\r\n",
-      "metro": "Сокольники",
-      "deadline": [
-        {
-          "corpus": 4,
-          "year": 2024
-        },
-        {
-          "corpus": 3,
-          "year": 2021
-        },
-        {
-          "corpus": 3,
-          "year": 2024
-        },
-        {
-          "corpus": 1,
-          "year": 2028
-        },
-        {
-          "corpus": 3,
-          "year": 2023
-        }
-      ],
-      "metroDistance": 19,
-      "area": "Район 4",
-      "coords": [
-        59.963662288319,
-        30.33065350936142
-      ],
-      "address": "Большой проспект Васильевского острова '4'",
-      "images": [
-        "/img/complexesImages/img-6.jpg",
-        "/img/complexesImages/img-3.jpg",
-        "/img/complexesImages/img-2.jpg"
-      ],
-      "totalFloor": 15,
-      "bank": "Сбербанк",
-      "finish": "Без отделки",
-      "propertiesTypes": "Коллективный",
-      "payment": "Оплата 1"
-    },
-    {
-      "id": 5,
-      "tel": "+7 (980) 426-3384",
-      "name": "ЖК \"Северные высоты\"",
-      "developer": "ООО «AnarcoBuild»",
-      "description": "Nisi sunt id velit officia laboris ipsum esse velit. Ullamco dolor duis sunt exercitation proident minim consequat ipsum. In ex irure consequat eiusmod quis reprehenderit ea id consequat mollit. Cupidatat sint elit amet dolor non laboris culpa ad voluptate ad. Ea nisi eiusmod aliqua velit ut laboris consectetur veniam mollit.\r\n",
-      "metro": "Котельники",
-      "deadline": [
-        {
-          "corpus": 3,
-          "year": 2027
-        },
-        {
-          "corpus": 1,
-          "year": 2027
-        },
-        {
-          "corpus": 1,
-          "year": 2025
-        },
-        {
-          "corpus": 2,
-          "year": 2025
-        },
-        {
-          "corpus": 4,
-          "year": 2021
-        },
-        {
-          "corpus": 4,
-          "year": 2022
-        }
-      ],
-      "metroDistance": 15,
-      "area": "Район 3",
-      "coords": [
-        59.96366228831893,
-        30.33065350936124
-      ],
-      "address": "Большой проспект Васильевского острова '5'",
-      "images": [
-        "/img/complexesImages/img-2.jpg",
-        "/img/complexesImages/img-4.jpg",
-        "/img/complexesImages/img-4.jpg"
-      ],
-      "totalFloor": 10,
-      "bank": "АльфаБанк",
-      "finish": "Без отделки",
-      "propertiesTypes": "Смешанный",
-      "payment": "Оплата 1"
-    },
-    {
-      "id": 6,
-      "tel": "+7 (868) 505-3114",
-      "name": "ЖК \"Северные высоты\"",
-      "developer": "ООО «SenmeiBuild»",
-      "description": "Magna do esse sit labore pariatur anim qui sit magna. Incididunt sint deserunt quis eu pariatur excepteur ut ut labore quis reprehenderit est. Ut aliquip ad aute reprehenderit amet reprehenderit. Officia eu officia Lorem nostrud id. Ullamco velit amet consectetur reprehenderit dolore dolore aute amet nulla ea cupidatat do duis. Et cupidatat ad quis aliqua eu. Anim commodo elit qui ad excepteur ex laborum adipisicing magna ipsum culpa aliqua nisi elit.\r\n",
-      "metro": "Рассказовка",
-      "deadline": [
-        {
-          "corpus": 3,
-          "year": 2026
-        },
-        {
-          "corpus": 1,
-          "year": 2021
-        },
-        {
-          "corpus": 3,
-          "year": 2029
-        },
-        {
-          "corpus": 2,
-          "year": 2022
-        },
-        {
-          "corpus": 4,
-          "year": 2024
-        },
-        {
-          "corpus": 4,
-          "year": 2026
-        },
-        {
-          "corpus": 2,
-          "year": 2024
-        }
-      ],
-      "metroDistance": 6,
-      "area": "Район 3",
-      "coords": [
-        59.96366228831891,
-        30.33065350936148
-      ],
-      "address": "Большой проспект Васильевского острова '6'",
+      "address": "Большой проспект Васильевского острова '0'",
       "images": [
         "/img/complexesImages/img-1.jpg",
-        "/img/complexesImages/img-5.jpg",
-        "/img/complexesImages/img-8.jpg"
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-1.jpg"
       ],
       "totalFloor": 15,
       "bank": "Тинькофф",
       "finish": "Чистовая",
       "propertiesTypes": "Личный",
-      "payment": "Оплата 1"
+      "payment": "Оплата 3",
+      "recomend": 4
+    },
+    {
+      "id": 1,
+      "tel": "+7 (805) 585-3976",
+      "name": "ЖК \"Старое мурино\"",
+      "developer": "ООО «AnarcoBuild»",
+      "description": "Laboris laborum id id excepteur esse consequat cillum magna sit laboris culpa adipisicing pariatur. Incididunt irure fugiat excepteur cupidatat reprehenderit cupidatat incididunt dolore culpa. Labore ut consectetur officia occaecat sunt proident sit laboris quis incididunt proident pariatur fugiat qui.\r\n",
+      "metro": "Котельники",
+      "deadline": [
+        {
+          "corpus": 2,
+          "year": 2028
+        },
+        {
+          "corpus": 3,
+          "year": 2021
+        },
+        {
+          "corpus": 1,
+          "year": 2028
+        },
+        {
+          "corpus": 1,
+          "year": 2025
+        },
+        {
+          "corpus": 3,
+          "year": 2029
+        }
+      ],
+      "metroDistance": 30,
+      "area": "Район 1",
+      "coords": [
+        59.96366228831891,
+        30.33065350936131
+      ],
+      "address": "Большой проспект Васильевского острова '1'",
+      "images": [
+        "/img/complexesImages/img-1.jpg",
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-4.jpg"
+      ],
+      "totalFloor": 16,
+      "bank": "Сбербанк",
+      "finish": "Черновая",
+      "propertiesTypes": "Коллективный",
+      "payment": "Оплата 4",
+      "recomend": 9
+    },
+    {
+      "id": 2,
+      "tel": "+7 (868) 559-2175",
+      "name": "ЖК \"Новое мурино\"",
+      "developer": "ООО «AnarcoBuild»",
+      "description": "Enim deserunt sunt nulla mollit sit dolore ipsum consectetur tempor sit proident. Fugiat ad est amet aute et occaecat enim voluptate officia ut sunt voluptate ipsum laboris. Excepteur cupidatat labore qui laborum dolor nulla sint laborum irure commodo occaecat non. Voluptate velit nisi sit aute culpa cillum laboris. Et cupidatat quis labore esse quis reprehenderit cillum incididunt labore incididunt. Non fugiat velit sunt deserunt.\r\n",
+      "metro": "Измайловская",
+      "deadline": [
+        {
+          "corpus": 3,
+          "year": 2023
+        },
+        {
+          "corpus": 1,
+          "year": 2021
+        },
+        {
+          "corpus": 3,
+          "year": 2026
+        },
+        {
+          "corpus": 3,
+          "year": 2028
+        },
+        {
+          "corpus": 3,
+          "year": 2028
+        }
+      ],
+      "metroDistance": 5,
+      "area": "Район 4",
+      "coords": [
+        59.96366228831899,
+        30.33065350936124
+      ],
+      "address": "Большой проспект Васильевского острова '2'",
+      "images": [
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-6.jpg"
+      ],
+      "totalFloor": 11,
+      "bank": "Сбербанк",
+      "finish": "Готовая",
+      "propertiesTypes": "Личный",
+      "payment": "Оплата 2",
+      "recomend": 5
+    },
+    {
+      "id": 3,
+      "tel": "+7 (929) 511-2354",
+      "name": "ЖК \"Старое мурино\"",
+      "developer": "ООО «Инвест Строй»",
+      "description": "Est labore esse reprehenderit id in dolore eu deserunt duis ex consequat magna duis. Quis consequat incididunt anim excepteur ex aliqua deserunt anim mollit ullamco ex. Mollit in non laborum eiusmod. Aute occaecat incididunt non anim. Ut consectetur do consectetur nulla.\r\n",
+      "metro": "Лихоборы",
+      "deadline": [
+        {
+          "corpus": 1,
+          "year": 2025
+        },
+        {
+          "corpus": 3,
+          "year": 2027
+        },
+        {
+          "corpus": 3,
+          "year": 2021
+        },
+        {
+          "corpus": 2,
+          "year": 2024
+        },
+        {
+          "corpus": 3,
+          "year": 2024
+        }
+      ],
+      "metroDistance": 27,
+      "area": "Район 1",
+      "coords": [
+        59.963662288319,
+        30.33065350936139
+      ],
+      "address": "Большой проспект Васильевского острова '3'",
+      "images": [
+        "/img/complexesImages/img-3.jpg",
+        "/img/complexesImages/img-1.jpg",
+        "/img/complexesImages/img-1.jpg"
+      ],
+      "totalFloor": 9,
+      "bank": "АльфаБанк",
+      "finish": "Черновая",
+      "propertiesTypes": "Коллективный",
+      "payment": "Оплата 3",
+      "recomend": 6
+    },
+    {
+      "id": 4,
+      "tel": "+7 (841) 488-3146",
+      "name": "ЖК \"Северные высоты\"",
+      "developer": "ООО «Lovepad»",
+      "description": "Minim nostrud commodo eiusmod Lorem nisi laborum eu Lorem pariatur occaecat deserunt non qui quis. Ipsum cillum proident consequat amet. Veniam voluptate consectetur laborum cupidatat do officia aliqua sit do reprehenderit excepteur et occaecat proident. Consectetur ullamco in labore proident qui aute esse consectetur dolore. Do et duis elit mollit proident tempor anim eiusmod cillum culpa ea aute. Duis dolore tempor mollit anim exercitation dolore laboris consequat irure eu proident officia. Et pariatur eiusmod esse eu anim dolore mollit occaecat sunt.\r\n",
+      "metro": "Котельники",
+      "deadline": [
+        {
+          "corpus": 1,
+          "year": 2025
+        },
+        {
+          "corpus": 2,
+          "year": 2022
+        },
+        {
+          "corpus": 2,
+          "year": 2022
+        },
+        {
+          "corpus": 4,
+          "year": 2021
+        },
+        {
+          "corpus": 2,
+          "year": 2025
+        }
+      ],
+      "metroDistance": 30,
+      "area": "Район 1",
+      "coords": [
+        59.96366228831893,
+        30.33065350936132
+      ],
+      "address": "Большой проспект Васильевского острова '4'",
+      "images": [
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-5.jpg"
+      ],
+      "totalFloor": 16,
+      "bank": "Сбербанк",
+      "finish": "Черновая",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 4",
+      "recomend": 3
+    },
+    {
+      "id": 5,
+      "tel": "+7 (866) 488-3870",
+      "name": "ЖК \"Старое мурино\"",
+      "developer": "ООО «Инвест Строй»",
+      "description": "Do et aute in consequat aute nulla velit ut sint aliquip. Et est dolore sit eu do enim sit esse dolore consequat enim labore id. Exercitation adipisicing dolore ipsum in et nostrud qui consectetur eiusmod elit qui. Nulla cupidatat deserunt officia anim est est irure sunt veniam ea laboris tempor aliquip Lorem.\r\n",
+      "metro": "Сокольники",
+      "deadline": [
+        {
+          "corpus": 2,
+          "year": 2024
+        },
+        {
+          "corpus": 4,
+          "year": 2029
+        },
+        {
+          "corpus": 2,
+          "year": 2025
+        },
+        {
+          "corpus": 3,
+          "year": 2025
+        },
+        {
+          "corpus": 1,
+          "year": 2026
+        },
+        {
+          "corpus": 3,
+          "year": 2027
+        },
+        {
+          "corpus": 2,
+          "year": 2022
+        }
+      ],
+      "metroDistance": 8,
+      "area": "Район 1",
+      "coords": [
+        59.96366228831893,
+        30.33065350936126
+      ],
+      "address": "Большой проспект Васильевского острова '5'",
+      "images": [
+        "/img/complexesImages/img-8.jpg",
+        "/img/complexesImages/img-5.jpg",
+        "/img/complexesImages/img-8.jpg"
+      ],
+      "totalFloor": 14,
+      "bank": "АльфаБанк",
+      "finish": "Без отделки",
+      "propertiesTypes": "Личный",
+      "payment": "Оплата 2",
+      "recomend": 1
+    },
+    {
+      "id": 6,
+      "tel": "+7 (802) 502-3175",
+      "name": "ЖК \"Новое мурино\"",
+      "developer": "ООО «AnarcoBuild»",
+      "description": "Quis consequat sint esse aute nulla qui velit. Nostrud eu labore in nulla tempor dolore ex aliqua id mollit consectetur esse. Consectetur pariatur ex occaecat velit aliqua irure enim cupidatat elit duis reprehenderit. Ut adipisicing et eu eiusmod ut pariatur anim sint Lorem commodo dolor commodo.\r\n",
+      "metro": "Измайловская",
+      "deadline": [
+        {
+          "corpus": 2,
+          "year": 2029
+        },
+        {
+          "corpus": 2,
+          "year": 2024
+        },
+        {
+          "corpus": 2,
+          "year": 2029
+        },
+        {
+          "corpus": 2,
+          "year": 2027
+        },
+        {
+          "corpus": 3,
+          "year": 2026
+        }
+      ],
+      "metroDistance": 14,
+      "area": "Район 1",
+      "coords": [
+        59.96366228831895,
+        30.33065350936149
+      ],
+      "address": "Большой проспект Васильевского острова '6'",
+      "images": [
+        "/img/complexesImages/img-6.jpg",
+        "/img/complexesImages/img-7.jpg",
+        "/img/complexesImages/img-8.jpg"
+      ],
+      "totalFloor": 17,
+      "bank": "Сбербанк",
+      "finish": "Чистовая",
+      "propertiesTypes": "Личный",
+      "payment": "Оплата 2",
+      "recomend": 7
+    },
+    {
+      "id": 7,
+      "tel": "+7 (857) 549-3931",
+      "name": "ЖК \"Mandy\"",
+      "developer": "ООО «Lovepad»",
+      "description": "Dolor nulla id id exercitation cupidatat cupidatat. Aute in eu laborum reprehenderit eiusmod velit. Do in ut irure officia veniam velit cupidatat commodo officia quis ut qui ex et.\r\n",
+      "metro": "Сокольники",
+      "deadline": [
+        {
+          "corpus": 3,
+          "year": 2023
+        },
+        {
+          "corpus": 1,
+          "year": 2023
+        },
+        {
+          "corpus": 2,
+          "year": 2023
+        },
+        {
+          "corpus": 3,
+          "year": 2028
+        },
+        {
+          "corpus": 1,
+          "year": 2025
+        },
+        {
+          "corpus": 4,
+          "year": 2024
+        },
+        {
+          "corpus": 3,
+          "year": 2021
+        }
+      ],
+      "metroDistance": 16,
+      "area": "Район 4",
+      "coords": [
+        59.96366228831892,
+        30.3306535093615
+      ],
+      "address": "Большой проспект Васильевского острова '7'",
+      "images": [
+        "/img/complexesImages/img-4.jpg",
+        "/img/complexesImages/img-6.jpg",
+        "/img/complexesImages/img-1.jpg"
+      ],
+      "totalFloor": 17,
+      "bank": "Сбербанк",
+      "finish": "Без отделки",
+      "propertiesTypes": "Смешанный",
+      "payment": "Оплата 2",
+      "recomend": 6
     }
   ],
 

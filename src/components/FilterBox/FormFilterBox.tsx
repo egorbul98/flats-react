@@ -24,10 +24,11 @@ type PropsTypesForm = {
 const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBottom, dataSelectMiddle, dataSelectTop }) => {
     
   const dispatch = useDispatch();
-  const {filterItems, filterItemsDiapason} = useSelector(({ filter }:AppStateType) => {
+  const {filterItems, filterItemsDiapason, sortBy} = useSelector(({ filter }:AppStateType) => {
       return {
         filterItems: filter.filterItems,
         filterItemsDiapason: filter.filterItemsDiapason,
+        sortBy: filter.sortBy
       }
   })
 
@@ -43,9 +44,11 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
       dispatch(setClearFilter())
   }, [dispatch]);
 
-  const onApplyFilter = () => {//принять фильтры
-      dispatch(fetchComplexes(filterItems, filterItemsDiapason))
-  };
+  const onApplyFilter = useCallback(() => {//очищаем фильтры
+    dispatch(fetchComplexes(filterItems, filterItemsDiapason, sortBy))
+  }, [dispatch, filterItems, filterItemsDiapason, sortBy]);
+
+
 
 
   return (
