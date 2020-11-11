@@ -11,9 +11,11 @@ type PropsTypes = {
 
 const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
 
-  const { countComplexes } = useSelector(({ complexes }:AppStateType) => {
+  const { countComplexes, region, isLoading } = useSelector(({ complexes, filter }:AppStateType) => {
     return {
-      countComplexes:complexes.totalCount
+      countComplexes: complexes.totalCount,
+      isLoading: complexes.isLoading,
+      region: filter.region
       }
   })
 
@@ -29,9 +31,10 @@ const SortBox : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
   
         <div className="sort-box-header">
           <div className="sort-box__title-box">
-            <h2 className="title">Новостройки Санкт-Петербурга</h2>
-            <div className="count-complex__wrap">
-              <span className="count-complex">{countComplexes ? countComplexes : 0}</span>жилых комплексов
+            <h2 className="title">Новостройки {region === "SP" ? "Санкт-Петербурга" : "Москвы и МО"}</h2>
+              <div className="count-complex__wrap">
+                {isLoading ? "..." : <span className="count-complex">{countComplexes ? countComplexes : 0} жилых комплексов</span>}
+              
             </div>
             </div>
             <TypeRoomsList/>

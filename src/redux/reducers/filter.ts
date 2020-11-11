@@ -5,7 +5,7 @@ import { CLEAR_FILTER, CHANGE_FILTER_DIAPASON_ITEMS, SET_REGION, CHANGE_FILTER, 
 const initialState = {
   filterItems: [] as Array<FilterItemType>,
   filterItemsDiapason: [] as Array<FilterItemDiapasonType>,
-  sortBy: null as string | null,
+  sortBy: "" as string,
   region: "SP" as string,
 }
 
@@ -72,7 +72,7 @@ export const filterReducer = (state = initialState, action: ActionsTypes):StateF
       return { ...state, region: action.payload };
     
     case CLEAR_FILTER:
-      return initialState;
+      return {...initialState, region:state.region};
   
     default:
       return state;

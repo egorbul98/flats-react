@@ -1,10 +1,13 @@
 
 import React, { useCallback } from 'react';
+import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+
 import logo from './../assets/img/logo.svg';
 import btnOpen from './../assets/img/btn-open-nav.svg';
 import {ReactComponent as HeartIcon} from './../assets/img/icons/heart.svg';
-import { useDispatch } from 'react-redux';
 import { setRegion } from '../redux/actions/filterActions';
+import { AppStateType } from '../redux/reducers/rootReducer';
 
 type PropsTypes = {}
 
@@ -12,9 +15,14 @@ const Header : React.FC < PropsTypes > = ({}) => {
     
     const dispatch = useDispatch();
 
-    const onHandleClick = useCallback((region: string) => {
-        dispatch(setRegion(region));
-    }, [dispatch]);
+    const { region } = useSelector(({filter}:AppStateType ) => {
+        return {
+            region: filter.region
+        }
+    })
+    const onHandleClick = useCallback((newRegion: string) => {
+        region !== newRegion && dispatch(setRegion(newRegion));
+    }, [dispatch, region]);
 
     return (
         <header className="header-catalog">
@@ -27,11 +35,11 @@ const Header : React.FC < PropsTypes > = ({}) => {
                         <button
                             type="button"
                             data-city='spb'
-                            className="header-catalog__cities-btn pink__btn header-catalog__cities-btn--active" onClick={()=>onHandleClick("SP")}>Санкт-Петербург и ЛО</button>
+                            className={classNames("header-catalog__cities-btn pink__btn",{"header-catalog__cities-btn--active":region==="SP"})} onClick={()=>onHandleClick("SP")}>Санкт-Петербург и ЛО</button>
                         <button
                             type="button"
                             data-city='moscow'
-                            className="header-catalog__cities-btn pink__btn" onClick={()=>onHandleClick("MOS")}>Москва и МО</button>
+                            className={classNames("header-catalog__cities-btn pink__btn",{"header-catalog__cities-btn--active":region==="MOS"})} onClick={()=>onHandleClick("MOS")}>Москва и МО</button>
                     </div>
                     <nav className="header-catalog__nav catalog-nav ">
                         <div className="catalog-nav__item catalog-nav__item--active">

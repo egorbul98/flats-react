@@ -10,7 +10,7 @@ import ButtonSortBy from './ButtonSortBy';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSortBy } from '../../redux/actions/filterActions';
 import { AppStateType } from '../../redux/reducers/rootReducer';
-import { fetchComplexes } from '../../redux/actions/complexesActions';
+import { fetchComplexes, sortComplexes } from '../../redux/actions/complexesActions';
 
 type PropsTypes = {
   onClickDisplayButton?: (titleBtn: string) => void;
@@ -29,8 +29,8 @@ const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton}) =
     })
     const onClickBtn = useCallback((name: string) => {
       dispatch(setSortBy(name));
-      
-      dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, name));
+      dispatch(sortComplexes(name));
+      // dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, name));
     }, [dispatch, region, filterItems, filterItemsDiapason])
     
     return (

@@ -14,17 +14,14 @@ type PropsTypes = {
 const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
-  const {complexesItems, region, isLoadingComplexes, filterItems, filterItemsDiapason, sortBy, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
+  const {complexes, region, isLoadingComplexes, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
     return {
-      complexesItems: complexes.items,
+      complexes: complexes.items,
       region: filter.region,
       countComplexes: complexes.totalCount,
       perPage: complexes.perPage,
       currentPage: complexes.currentPage,
-      isLoadingComplexes: complexes.isLoading,
-      filterItems: filter.filterItems,
-      filterItemsDiapason: filter.filterItemsDiapason,
-      sortBy: filter.sortBy
+      isLoadingComplexes: complexes.isLoading
     }
   });
 
@@ -35,11 +32,15 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
     dispatch(fetchComplexes(region));
   }, [dispatch, region]);
 
+  const lastIndexItemPage = perPage * currentPage;
+  const firstIndexItemPage = lastIndexItemPage - perPage;
+  const complexesItems = complexes.slice(firstIndexItemPage, lastIndexItemPage);
+  
   const onClickPaginateItem = useCallback((currentPage:number) => {
-    dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, sortBy, currentPage, perPage));
-  }, [dispatch, region, filterItems, filterItemsDiapason, sortBy, perPage])
+    dispatch(setCurrentPage(currentPage));
+  }, [dispatch])
 
- 
+  
   return (
       
       <section className="catalog-complex-box catalog-complex">
@@ -47,7 +48,7 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
           <div className={ classNames("catalog-complex__list",{"catalog-complex__list--display-list":displayItems==="Списком"})}>
             {isLoadingComplexes
               ? <Loading/>
-              : complexesItems && complexesItems.length ?
+              : complexesItems.length ?
                 complexesItems.map((item) => {
               return <ComplexCart key={item.id} {...item} />
             }) : <div className="nothing">Страница пуста</div>}

@@ -1,30 +1,13 @@
 import React, {useCallback, useState} from 'react';
-import DropDown from '../DropDown';
 import classnames from 'classnames';
+
+import DropDown from '../DropDown';
+import FormFilterBox from './FormFilterBox';
 import upArrow from '../../assets/img/up-arrow.svg';
 import downArrowGray from '../../assets/img/arrow__down-input-grey.svg';
-import FormFilterBox from './FormFilterBox';
-import { SelectsDataType } from '../../mainTypes';
-import {area, bank, deadline,developer,finish,metro,name,payment,propertiesTypes,rooms} from './../../assets/data';
+
 type PropsTypes = {}
 
-const dataSelectTop:Array<SelectsDataType> = [
-    {name: "area", placeholder:"Район:", items: area},
-    {name: "metro", placeholder:"Метро:", items: metro},
-    {name: "deadline", placeholder:"Срок сдачи:", items: deadline},
-]
-const dataSelectMiddle:Array<SelectsDataType> = [
-    {name: "name", placeholder:"Комплекс:", items: name},
-    {name: "developer", placeholder:"Застройщик:", items: developer},
-    {name: "rooms", placeholder:"Тип квартиры:", items: rooms},
-    { name: "propertiesTypes", placeholder: "Тип собственности:", items: propertiesTypes },
-    {name: "finish", placeholder:"Отделка:", items: finish},
-]
-const dataSelectBottom:Array<SelectsDataType> = [
-    {name: "bank", placeholder:"Банк:", items: bank},
-    {name: "payment", placeholder:"Оплата:", items: payment}
-]
-  
 const FilterBox : React.FC < PropsTypes > = ({}) => {
     const [slideDown, setSlideDown] = useState(true);
     const [formSlideDown, setFormSlideDown] = useState(true);
@@ -51,9 +34,6 @@ const FilterBox : React.FC < PropsTypes > = ({}) => {
                     <div className="filter__collapse-wrap">
                         <FormFilterBox
                             openInnerFields={formSlideDown}
-                            dataSelectBottom={dataSelectBottom}
-                            dataSelectMiddle={dataSelectMiddle}
-                            dataSelectTop={dataSelectTop}
                         />
                     </div>
                 </DropDown>

@@ -19,9 +19,8 @@ const FilterTypeRoomsList : React.FC < PropsTypes > = () => {
   //     })[0]
   //   }
   // });
-  const { region, filterItems } = useSelector(({ filter }: AppStateType) => {
+  const { filterItems } = useSelector(({ filter }: AppStateType) => {
     return {
-      region: filter.region,
       filterItems: filter.filterItems
     }
   });

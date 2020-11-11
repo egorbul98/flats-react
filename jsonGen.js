@@ -18,6 +18,9 @@
     "description": '{{lorem(1, "paragraphs")}}',
     "metro": function (tags) {
       var values = ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники'];
+      if(this.region == "SP"){
+        values = ['Автово', 'Комендантский пр.', 'Василеостровская', 'Беговая', 'Озерки', 'Звенигородская'];
+      }
       return values[tags.integer(0, values.length - 1)];
     },
     "deadline": [
@@ -31,7 +34,14 @@
     "metroDistance": '{{integer(5, 32)}}',
     "area": "Район {{integer(1, 4)}}",
     "coords": ['{{floating(59.96366228831886, 59.96366228831899)}}', '{{floating(30.33065350936121, 30.33065350936150)}}'],
-    "address": "Большой проспект Васильевского острова '{{index()}}'",
+    "address": function (tags) {
+      var value = "Землянной вал";
+      if(this.region == "SP"){
+        value = "Большой проспект Васильевского острова";
+      };
+      
+      return value + " " +this.id;
+    },
     "images": ["/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg", "/img/complexesImages/img-{{integer(1, 8)}}.jpg"],
     "totalFloor": '{{integer(9, 17)}}',
     

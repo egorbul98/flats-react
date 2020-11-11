@@ -1,14 +1,26 @@
 import Axios from "axios";
-import { getFlatsGroupByRooms, getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
+import { getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
 import { ComplexeType, ItemSelectType } from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
-import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
+import { FilterItemDiapasonType, FilterItemType, setSortBy } from "./filterActions";
 
 export const SET_COMPLEXES = "SET_COMPLEXES";
 export const SET_LOADING = "SET_LOADING";
 export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SORT_COMPLEXES = "SORT_COMPLEXES";
 
+export type SortComplexesType = {
+  type: typeof SORT_COMPLEXES,
+  payload: string
+}
+
+export const sortComplexes = (sortBy: string): SortComplexesType => {
+  return {
+    type: SORT_COMPLEXES, 
+    payload: sortBy
+  }
+}
 export type SetCurrentPageType = {
   type: typeof SET_CURRENT_PAGE,
   payload: number
@@ -56,27 +68,24 @@ export const setLoading = (isLoading: boolean): SetLoadingType => {
   }
 }
 
-export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null, currentPage: number = 1, perPage: number = 4) => (dispatch: any, getState: ()=>AppStateType): void => {
-  
-  
+export const fetchComplexes = (region: string | null = null, filterItems: Array<FilterItemType> | null = null, filterItemsDiapason: Array<FilterItemDiapasonType> | null = null, sortBy: string | null = null) => (dispatch: any, getState: ()=>AppStateType): void => {
   // filterItems - фильтры select'ов
   // filterItemsDiapason - фильтры полей "от" и "до" типа "Стоимость" или "Площадь" 
   dispatch(setLoading(true));
-  dispatch(setCurrentPage(currentPage));
+ 
+  const filterState = getState().filter;
 
-  const {filterItems, filterItemsDiapason, region, sortBy} = getState().filter;
+  if (!region) { region = filterState.region; }
+  if (!filterItems || filterItems.length == 0) { filterItems = filterState.filterItems; }
+  if (!filterItemsDiapason || filterItemsDiapason.length == 0) { filterItemsDiapason = filterState.filterItemsDiapason; }
 
-  // if (filterItems && filterItems.length == 0) {
-  //   filterItems = getState().filter.filterItems;
-  // }
-  
   let args = `&region=${region}&`;
-  // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры участвуют, то будет происходить доп. фильтрация
+  // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры есть, то будет происходить доп. фильтрация
   let deadlinesValues:Array<string | number> | null = null;
   let roomsValues: Array<string | number> | null = null;
   
-  console.log(filterItems, "filterItems", getState().filter.filterItems);
-  if (filterItems) {
+  // console.log(filterItems, "filterItems", getState().filter.filterItems);
+  if (filterItems && filterItems.length != 0) {
     filterItems.forEach((item) => {
       if (item.values.length) {
         item.values.forEach((valItem) => {
@@ -96,7 +105,6 @@ export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterI
     })
   }
   
-  args += "_sort=" + sortBy + "&";
 
   // args += `_page=${currentPage}&_limit=${perPage}`;
   
@@ -105,7 +113,7 @@ export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterI
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
-        const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);
+        const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);//получаем мин/max стоимости квартир в данном комплексе
         complex.maxCost = maxCost;
         complex.minCost = minCost;
         complex.maxCostSquare = maxCostSquare;
@@ -118,7 +126,6 @@ export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterI
           } 
         }
         
-        
         if (roomsValues) {
           inArray = checkInArray(roomsValues, complex.flats, "room");
           if (!inArray) {
@@ -126,7 +133,7 @@ export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterI
           } 
         }
         
-        if (filterItemsDiapason) {
+        if (filterItemsDiapason && filterItemsDiapason.length != 0) {
           for (let i = 0; i < filterItemsDiapason.length; i++) {
             const filterItem = filterItemsDiapason[i];
             const nameProp: string = filterItem.type;
@@ -156,32 +163,13 @@ export const fetchComplexes = (region: string = "SP", filterItems: Array<FilterI
         complex.maxDeadline = complex.deadline[complex.deadline.length - 1].year;
         return true;
       })
-      
-      if (sortBy === "cost" || sortBy === "costSquare" || sortBy === "deadline") {
-        let sortPropName = "";
-        if (sortBy === "cost") {
-          sortPropName = "minCost";
-        }else if (sortBy === "costSquare") {
-          sortPropName = "minCostSquare";
-        }else {
-          sortPropName = "maxDeadline";
-        }
-       
-        complexes.sort((a: any, b: any) => {
-          if (a[sortPropName] && b[sortPropName]) {
-            if (sortBy === "deadline") {
-              return a[sortPropName] < b[sortPropName] ? 1 : -1;
-            }
-            return a[sortPropName] > b[sortPropName] ? 1 : -1;
-          } else {
-            return -1;
-          }
-        })
-      } 
-      
-    
+
       dispatch(setTotalCount(headers["x-total-count"] ? +headers["x-total-count"] : complexes.length));
+      dispatch(setCurrentPage(1));
       dispatch(setComplexes(complexes));
+      if (sortBy) {
+        dispatch(sortComplexes(sortBy));
+      }
       dispatch(setLoading(false));
     })
     .catch((e)=>console.error(e))

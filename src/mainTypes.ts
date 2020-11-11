@@ -36,7 +36,8 @@ export type ComplexeType = {
   bank: string,
   finish: string,
   deadline: Array<DeadlineItemType>,
-  flats ? : Array < FlatType >
+  flats ? : Array < FlatType >,
+  recomend: number,
 };
 
 type DeadlineItemType = {

@@ -8,31 +8,52 @@ import FieldsFromToWrap from './FieldsFromToWrap';
 import SelectList from './SelectList';
 import classNames from 'classnames';
 
-
+import {area, bank, deadline,developer,finish, metroMOS, metroSP,name,payment,propertiesTypes,rooms} from './../../assets/data';
 import resetIcon from '../../assets/img/modal-close-red.svg';
 import placeholderRed from '../../assets/img/placeholder-red.svg';
 import { fetchComplexes } from '../../redux/actions/complexesActions';
 
+let dataSelectTop:Array<SelectsDataType> = [
+  {name: "area", placeholder:"Район:", items: area},
+  {name: "metro", placeholder:"Метро:", items: metroSP},
+  {name: "deadline", placeholder:"Срок сдачи:", items: deadline},
+]
+const dataSelectMiddle:Array<SelectsDataType> = [
+  {name: "name", placeholder:"Комплекс:", items: name},
+  {name: "developer", placeholder:"Застройщик:", items: developer},
+  {name: "rooms", placeholder:"Тип квартиры:", items: rooms},
+  { name: "propertiesTypes", placeholder: "Тип собственности:", items: propertiesTypes },
+  {name: "finish", placeholder:"Отделка:", items: finish},
+]
+const dataSelectBottom:Array<SelectsDataType> = [
+  {name: "bank", placeholder:"Банк:", items: bank},
+  {name: "payment", placeholder:"Оплата:", items: payment}
+]
+
 type PropsTypesForm = {
-  openInnerFields: boolean,
-  dataSelectTop?:Array<SelectsDataType>,
-  dataSelectMiddle?:Array<SelectsDataType>,
-  dataSelectBottom?:Array<SelectsDataType>
+  openInnerFields: boolean
 }
 
-
-const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBottom, dataSelectMiddle, dataSelectTop }) => {
+const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields}) => {
     
   const dispatch = useDispatch();
-  const {filterItems, filterItemsDiapason, sortBy, region} = useSelector(({ filter, complexes }:AppStateType) => {
+  const {filterItems, filterItemsDiapason, region} = useSelector(({ filter}:AppStateType) => {
     return {
-        region: filter.region,
-        filterItems: filter.filterItems,
-        filterItemsDiapason: filter.filterItemsDiapason,
-        sortBy: filter.sortBy
-      }
+      filterItems: filter.filterItems,
+      filterItemsDiapason: filter.filterItemsDiapason,
+      region: filter.region
+    }
   })
 
+  React.useEffect(() => {
+    dataSelectTop = dataSelectTop.map((item) => {
+        if (item.name === "metro") {
+            region === "MOS" ? item.items = metroMOS : item.items = metroSP
+        }
+        return item;
+    });
+  }, [region]);
+  
   const onChangeFilterItem = useCallback(({ type, values }: FilterItemType) => {//Добавляет фильтры в redux
       dispatch(setChangeFilterItem({ type, values }))
   }, [dispatch]);
@@ -43,11 +64,12 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, dataSelectBo
   
   const onClearFilter = useCallback(() => {//очищаем фильтры
       dispatch(setClearFilter())
+      dispatch(fetchComplexes())
   }, [dispatch]);
 
   const onApplyFilter = useCallback(() => {//применяем фильтры
-    dispatch(fetchComplexes(region, filterItems, filterItemsDiapason, sortBy))
-  }, [dispatch, region, filterItems, filterItemsDiapason, sortBy]);
+    dispatch(fetchComplexes())
+  }, [dispatch]);
 
   return (
       
