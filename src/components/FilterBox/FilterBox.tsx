@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import classnames from 'classnames';
 
 import DropDown from '../DropDown';
-import FormFilterBox from '../miniComponents/FormFilterBox';
+import FormFilterBox from './FormFilterBox';
 import upArrow from '../../assets/img/up-arrow.svg';
 import downArrowGray from '../../assets/img/arrow__down-input-grey.svg';
 

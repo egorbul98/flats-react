@@ -1,11 +1,13 @@
 import React from 'react';
 import Slider from 'react-slick';
 import classnames from 'classnames';
+import { Placemark, Map, YMaps} from 'react-yandex-maps';
+
 
 import { ComplexeType, FlatType } from '../../mainTypes';
 import Select from '../miniComponents/Select';
 
-
+import iconPlacemark from '../../assets/img/placemark.svg';
 import iconHeart from '../../assets/img/slide-heart.svg';
 import iconBuild from '../../assets/img/slide-build.svg';
 import iconDevLogo from '../../assets/img/developer_logo.svg';
@@ -65,9 +67,13 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({ srcImage }) => {
     )
 }
 
-const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
+type propTypes = {
+    mini?: boolean, //true - некоторые элементы в разметке будут отсутсовать
+}
+const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, ...complex }) => {
     const [currentSlide, setCurrentSlide] = React.useState(1);
-    
+    const [openMap, setOpenMap] = React.useState(false);
+
     const settingsSlider = { //настройки слайдера
         arrows: true,
         prevArrow: <SlickArrowLeft className="catalog-complex__slider-prev-btn"/>,
@@ -75,6 +81,12 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
         afterChange: (currentSlide:number) => {
             setCurrentSlide(currentSlide+1);
         }
+    }
+
+    const onToggleOpenComplexMap = () => {
+        console.log(openMap);
+        
+        setOpenMap(!openMap);
     }
 
     const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), complex.deadline); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
@@ -103,17 +115,33 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
     return (
         <div className="catalog-complex__item">
             <div className="catalog-complex__item-header">
+                
+                {openMap && <div className="catalog-complex__item-map">
+                    <YMaps preload={true}>
+                        <Map width={"100%"} height={"302px"} defaultState={{ center: complex.coords, zoom: 10 }} >
+                            <Placemark
+                                key={complex.id}
+                                geometry={[complex.coords[0], complex.coords[1]]} 
+                                options={{
+                                iconLayout: 'default#image',
+                                placemarkClick: false,
+                                center: [complex.coords[0], complex.coords[1]],
+                                clusterCaption: 'Geo object №2',
+                                balloonContent: () => <span>item.name</span>
+                            }}/>
+                        </Map>
+                    </YMaps> 
+                    </div>}
+                
                 <Slider className="catalog-complex__slider" {...settingsSlider}>
-                    {complex.images && complex.images.map((itemPath, index) => {
-                        return <SlideItemComplex key={index} srcImage={window.location.origin + itemPath}/>
-                    })}
-                </Slider>
-               
+                        {complex.images && complex.images.map((itemPath, index) => {
+                            return <SlideItemComplex key={index} srcImage={window.location.origin + itemPath}/>
+                        })}
+                    </Slider>
                 <div className="catalog-complex__slider-counter">{currentSlide}/{complex.images.length}</div>
-                <div
-                    className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
-                    <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
-                    <button type='button' className="catalog-complex__btn-show-map pink__btn"><img src={iconPlaceholderRed} alt=""/>На карте</button>
+                <div className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
+                 <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
+                 <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt=""/>На карте</button>
                 </div>
 
                 <div className="complex-advantages__features-list">
@@ -155,7 +183,7 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                     <div className="square-metr">{complex.minCostSquare && complex.minCostSquare}
                         тыс. - {complex.maxCostSquare && complex.maxCostSquare}
                         тыс. руб/м2</div>
-                    <ButtonPhone>{complex.tel}</ButtonPhone>
+                    {mini ? null : <ButtonPhone>{complex.tel}</ButtonPhone>}
                 </div>
                 <div className="address">{complex.address}. {complex.area}</div>
                 <div className="metro">
@@ -177,8 +205,17 @@ const ComplexCart: React.FC<ComplexeType> = ({ ...complex }) => {
                     <p className="description">{complex.description}</p>
                 </div>
                 <div className="catalog-complex__buttons-wrap">
+                    {mini ?
+                        <>
+                        <ButtonPhone>{complex.tel}</ButtonPhone>
+                        <button type='button' className="btn-details pink__btn">Подробнее</button>
+                        </>
+                    : <>
                     <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
-                    <button type='button' className="catalog-complex__btn-show-map pink__btn"><img src={iconPlaceholderRed} alt=""/>На карте</button>
+                    <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt="" />На карте</button>
+                    </>
+                    }
+                    
                 </div>
             </div>
         </div>

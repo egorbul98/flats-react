@@ -1,7 +1,7 @@
 import React from 'react';
 import DropDown from '../DropDown';
-import FieldsFromToWrap from '../FilterBox/FieldsFromToWrap';
-import SelectList from './SelectList';
+import FieldsFromToWrap from '../miniComponents/FieldsFromToWrap';
+import SelectList from '../miniComponents/SelectList';
 import classNames from 'classnames';
 
 import resetIcon from '../../assets/img/modal-close-red.svg';

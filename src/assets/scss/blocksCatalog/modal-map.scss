@@ -40,12 +40,9 @@
 }
 
 .complex-info {
-  display: none;
   z-index: 1;
-  width: 392px;
+  width: 100%;
   flex-shrink: 0;
-  padding: 0 18px 58px 38px;
-  box-shadow: 15px 0px 8px -15px rgba(0, 0, 0, .25);
   background-color: #fff;
 
   &__close {
@@ -70,6 +67,15 @@
     }
   }
   
+
+  .catalog-complex__buttons-wrap{
+    position: static;
+    transform: none;
+    width: 100%;
+    padding-top: 8px;
+    flex-wrap: wrap;
+  }
+
   .filter-field.complex-field-deadlines .checkboxes__inner {
     max-height: 86px;
   }
@@ -135,18 +141,14 @@
   }
 }
 
-.map-modal--active-complex-info {
+
   .map__complex-info {
-    display: block;
     margin-top: 22px;
 
   }
 
-  .map-filter {
-    display: none;
-  }
 
-}
+
 
 .map-modal {
   z-index: 10;
@@ -158,7 +160,7 @@
   z-index: 100;
   position: fixed;
   height: 100vh;
-  padding-bottom: 203px;
+  padding-bottom: 170px;
   top: 200px;
   background: #fff;
 
@@ -320,7 +322,7 @@
     transition: all 0.3s;
     display: block;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 16px;
   }
 
@@ -355,6 +357,10 @@
   align-items: center;
   position: relative;
 
+
+  @media(max-width: 1024px){
+    flex-wrap: wrap;
+  }
   &:last-child {
     margin-bottom: 0;
   }
@@ -368,6 +374,9 @@
     flex-shrink: 0;
     font-weight: 700;
     font-size: 14px;
+    margin-right: 6px;
+
+    
   }
 
   &__select-arrow {
@@ -399,14 +408,13 @@
   .select-input {
     width: 100%;
     position: relative;
-    padding-left: 6px;
   }
 
   
 }
 
 .map-filter-field-cost__wrap {
-  margin-left: 6px;
+  // margin-left: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -425,9 +433,9 @@
   }
 
   .map-filter {
-    width: 300px;
+    width: 380px;
     padding-left: 18px;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
 
     &__btn-show,
     &__btn-reset {
@@ -440,14 +448,14 @@
     }
 
     &__form-inner {
-      margin-top: 6px;
+      margin-top: 14px;
     }
   }
 
   .map-wrapper {
 
     .hr {
-      margin: 0;
+      margin: 20px 0;
     }
   }
 
@@ -455,7 +463,14 @@
     margin-bottom: 14px;
 
     &__name {
-      font-size: 13px;
+      display: none;
+
+
+      &--display{
+        margin-bottom: 4px;
+        display: block;
+      }
+     
     }
 
    
@@ -464,20 +479,20 @@
 
 @media (max-width: $tablet-width) {
 
-  .map-modal--active-complex-info {
-    .map__complex-info {
-      margin-top: 0;
-      overflow-y: auto;
-    }
+
+  .map__complex-info {
+    margin-top: 0;
+    overflow-y: auto;
   }
+
 
   .map-filter-field-cost__wrap {
     width: 100%;
   }
 
   .map-modal {
-    top: 79px;
-
+    top: 80px;
+    overflow: hidden;
     .map-margin {
       display: none;
     }
@@ -527,7 +542,6 @@
     }
 
     &--active {
-      // padding-top: 80px;
       display: block;
       width: 100%;
       position: absolute;
@@ -536,6 +550,7 @@
       z-index: 10;
       overflow: auto;
       height: 100%;
+      padding-bottom: 146px;
     }
 
     .map-filter__btn-reset,
@@ -546,6 +561,7 @@
   }
 
   .map-footer {
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -555,7 +571,7 @@
     // position: absolute;
     // bottom: 0;
     background-color: #fff;
-    position: absolute;
+    position: fixed;
     bottom: 78px;
 
     .map-footer__btn-open-filter,
@@ -606,9 +622,10 @@
   .complex-info {
     width: 100%;
     padding-left: 18px;
+    padding-right: 18px;
 
     &__close {
-      margin-top: 22px;
+      margin-top: 0;
 
       .go-to-filter {
         display: none;
@@ -647,7 +664,7 @@
         margin-right: auto;
         max-width: 294px;
         width: 100%;
-
+        margin-top: 10px;
       }
 
       .btn-details.pink__btn {
@@ -696,6 +713,9 @@
 
 
     .catalog-complex__item-content {
+    
+        padding-bottom: 17px;
+    
       .complex {
         font-size: 13px;
       }
@@ -713,19 +733,19 @@
   }
 
   .complex-info {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0;
+    padding-right: 0;
 
     .catalog-complex-info-wrap .flat-type {
       font-size: 10px;
     }
 
-
-
     .catalog-complex__item-content {
       padding-left: 12px;
       padding-right: 12px;
     }
+
+    
 
     .filter-field.complex-field-deadlines {
       .filter__input {

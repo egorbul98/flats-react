@@ -98,7 +98,10 @@
     height: 302px;
     position: relative;
 
-    
+    @media (max-width: 425px) {
+      height: 230px;
+    }
+
     img{
       object-fit: cover;
       height: 100%;
@@ -181,6 +184,7 @@
     .address {
       margin-top: 18px;
       font-weight: 700;
+      line-height: 18px;
     }
 
     .square-metr {
