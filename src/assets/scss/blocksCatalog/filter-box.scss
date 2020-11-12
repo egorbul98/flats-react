@@ -51,7 +51,10 @@
   }
 
   .slideDown--overflow-visible > .react-slidedown.transitioning{
-    overflow: visible;
+    // overflow: visible;
+  }
+  .slideDown--overflow-visible > .react-slidedown.closed{
+    overflow: hidden;
   }
 
   .filter__form-inner--collapse {
@@ -434,7 +437,7 @@
     }
 
     .filter-buttons {
-      max-width: 87%;
+      max-width: 748px;
       width: 100%;
       margin: auto;
       position: relative;

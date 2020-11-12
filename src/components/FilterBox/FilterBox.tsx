@@ -6,9 +6,11 @@ import FormFilterBox from './FormFilterBox';
 import upArrow from '../../assets/img/up-arrow.svg';
 import downArrowGray from '../../assets/img/arrow__down-input-grey.svg';
 
-type PropsTypes = {}
+type PropsTypes = {
+    onOpenMap: () => void
+}
 
-const FilterBox : React.FC < PropsTypes > = ({}) => {
+const FilterBox : React.FC < PropsTypes > = ({onOpenMap}) => {
     const [slideDown, setSlideDown] = useState(true);
     const [formSlideDown, setFormSlideDown] = useState(true);
     
@@ -34,12 +36,13 @@ const FilterBox : React.FC < PropsTypes > = ({}) => {
                     <div className="filter__collapse-wrap">
                         <FormFilterBox
                             openInnerFields={formSlideDown}
+                            onOpenMap={onOpenMap }
                         />
                     </div>
                 </DropDown>
             </div>
           <div className={classnames("filter__less-options",  {"filter__less-options--active": !formSlideDown}, {"hide": !slideDown})} onClick={onTogglerFormDropDown}>
-                <span className="text">Меньше параметров</span><img src={upArrow} alt=""/>
+                <span className="text">{formSlideDown ? "Меньше" : "Больше"} параметров</span><img src={upArrow} alt=""/>
           </div>
       </section>
      

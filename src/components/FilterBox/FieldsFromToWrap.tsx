@@ -1,14 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
 import { FilterItemDiapasonType } from '../../redux/actions/filterActions';
 
 type PropsTypesFieldsFromToWrap = {
   name: string,
   placeholder: string,
   values?: {from: number, to: number},
-  onChangeFilterItem?: ({ }: FilterItemDiapasonType) => void
+  onChangeFilterItem?: ({ }: FilterItemDiapasonType) => void,
+  classNamesForItem?:string,
+  classNamesForItemName?:string,
+  classNamesForWrapInputs?:string,
 }
 
-const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placeholder, onChangeFilterItem, values }) => {
+const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placeholder, onChangeFilterItem, values, classNamesForItem, classNamesForItemName, classNamesForWrapInputs }) => {
   const [fromValue, setFromValue] = React.useState(values?.from ? values.from : '');
   const [toValue, setToValue] = React.useState(values?.to ? values.to : '');
 
@@ -30,9 +34,9 @@ const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placehol
   }, [fromValue, toValue]);
 
   return (
-      <div className="filter-field filter-field-cost">
-          <span className="filter-field__name filter-field__name-cost">{placeholder}</span>
-          <div className="filter-field-cost__wrap filter-field__wrap-from-to">
+      <div className={classNames({"filter-field  filter-field-cost": classNamesForItem === undefined}, classNamesForItem)}>
+          <span className={ classNames({"filter-field__name filter-field__name-cost": classNamesForItemName === undefined}, classNamesForItemName)}>{placeholder}</span>
+          <div className={classNames({"filter-field__wrap-from-to": classNamesForWrapInputs === undefined}, classNamesForWrapInputs)}>
               <input
                 type="text"
                 className='filter__cost-from filter__input'

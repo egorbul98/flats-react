@@ -91,6 +91,7 @@ const Header : React.FC < PropsTypes > = ({}) => {
                 </div>
                
             </div>
+            <hr className="hr"/>
         </header>
     )
 }

@@ -31,18 +31,19 @@ const dataSelectBottom:Array<SelectsDataType> = [
 ]
 
 type PropsTypesForm = {
-  openInnerFields: boolean
+  openInnerFields: boolean,
+  onOpenMap: () => void
 }
 
-const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields}) => {
+const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, onOpenMap}) => {
     
   const dispatch = useDispatch();
   const {filterItems, filterItemsDiapason, region} = useSelector(({ filter}:AppStateType) => {
     return {
-      filterItems: filter.filterItems,
-      filterItemsDiapason: filter.filterItemsDiapason,
-      region: filter.region
-    }
+        filterItems: filter.filterItems,
+        filterItemsDiapason: filter.filterItemsDiapason,
+        region: filter.region
+      }
   })
 
   React.useEffect(() => {
@@ -121,7 +122,7 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields}) => {
                   <button type="reset" className="filter__btn-reset pink__btn" onClick={onClearFilter}>Сбросить все фильтры
                     <img src={resetIcon} alt=""/></button>
                 <button type='button' className='filter__btn-show pink__btn' onClick={onApplyFilter}>Показать объекты</button>
-                <button type='button' className='filter__btn-show-map pink__btn'><img src={placeholderRed} alt=""/>Показать на карте</button>
+                <button type='button' className='filter__btn-show-map pink__btn' onClick={onOpenMap}><img src={placeholderRed} alt=""/>Показать на карте</button>
             </div>
         </form>
 
