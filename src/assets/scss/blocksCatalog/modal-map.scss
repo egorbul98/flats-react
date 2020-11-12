@@ -152,35 +152,19 @@
   z-index: 10;
   transition: all 0.3s;
   transform: translate(100%, 0);
-  position: absolute;
-  top: 0;
   width: 100%;
   overflow: auto;
   visibility: hidden;
   z-index: 100;
-  height: 100%;
-  // overflow: scroll;
-
-  .map-margin {
-    height: 200px;
-    width: 100%;
-    background-color: transparent;
-  }
-
-  .map-wrapper {
-    // margin-top: 200px;
-    background: #fff;
-    // height: 100%;
-  }
+  position: fixed;
+  height: 100vh;
+  padding-bottom: 203px;
+  top: 200px;
+  background: #fff;
 
   &--open {
     transform: translate(0, 0);
     visibility: visible;
-
-    position: fixed;
-    height: 100vh;
-    padding-bottom: 203px;
-    top: 200px;
   }
 
   &__title {
@@ -208,14 +192,23 @@
       }
     }
   }
+
+  .map-margin {
+    height: 200px;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .map-wrapper {
+    // margin-top: 200px;
+    background: #fff;
+    // height: 100%;
+  }
 }
 
 
 .map-flat {
-
   display: flex;
-  /* justify-content: space-between; */
-  // padding: 5px;
   width: 264px;
   font-family: "Open Sans", sans-serif;
 
@@ -409,77 +402,7 @@
     padding-left: 6px;
   }
 
-  .checkboxes {
-    padding: 20px;
-    // display: none;
-    transition: all 0.3s;
-    opacity: 0;
-    visibility: hidden;
-    transform: translate();
-    font-size: 12px;
-    color: #333333;
-    font-weight: 700;
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 8px 16px 0px rgba(134, 134, 134, 0.35);
-
-    &--active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      cursor: pointer;
-      align-items: center;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    input[type='checkbox'] {
-      display: none;
-    }
-
-    input:checked+.check::after {
-      opacity: 1;
-    }
-
-    .text {
-      order: 1;
-    }
-
-    .check {
-      order: 2;
-      position: relative;
-      content: '';
-      display: block;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 1px solid grey;
-      background-color: #fff;
-
-      &::after {
-        position: absolute;
-        content: '';
-        display: block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: red;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-      }
-    }
-  }
+  
 }
 
 .map-filter-field-cost__wrap {
@@ -535,22 +458,7 @@
       font-size: 13px;
     }
 
-    .checkboxes {
-      .check {
-        width: 11px;
-        height: 11px;
-        flex-shrink: 0;
-
-        &::after {
-          display: none;
-        }
-      }
-
-      input:checked+.check {
-        opacity: 1;
-        background-color: $primary-pink;
-      }
-    }
+   
   }
 }
 

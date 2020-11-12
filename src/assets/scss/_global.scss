@@ -179,7 +179,14 @@ body {
 
 
 // loading block
-
+.wrap-loading{
+  width: 100%;
+}
+.wrap-loading.verical-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .lds-ring {
   display: block;
   position: relative;

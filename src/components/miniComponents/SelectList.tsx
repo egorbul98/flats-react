@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { SelectsDataType } from '../../mainTypes';
 import { FilterItemType } from '../../redux/actions/filterActions';
-import Select from '../miniComponents/Select';
+import Select from './Select';
 
 type PropsTypesSelectList = {
   arrSelects: Array<SelectsDataType>,

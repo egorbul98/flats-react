@@ -62,5 +62,5 @@ export const useFilter = () => {
     dispatch(fetchComplexes())
   }, [dispatch]);
 
-  return [filterItems, filterItemsDiapason, region, onChangeFilterItem, onChangeFilterItemDiapason, onClearFilter, onApplyFilter]
+  return [filterItems, filterItemsDiapason, dataSelectTop, dataSelectMiddle, dataSelectBottom, onChangeFilterItem, onChangeFilterItemDiapason, onClearFilter, onApplyFilter, region] as const
 }

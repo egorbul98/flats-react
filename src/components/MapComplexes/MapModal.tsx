@@ -1,73 +1,24 @@
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 
-import {area, bank, deadline,developer,finish, metroMOS, metroSP,name,payment,propertiesTypes,rooms} from './../assets/data';
-import { SelectsDataType } from '../mainTypes';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppStateType } from '../redux/reducers/rootReducer';
-import SelectList from './FilterBox/SelectList';
-import FieldsFromToWrap from './FilterBox/FieldsFromToWrap';
-import { fetchComplexes } from '../redux/actions/complexesActions';
-import { FilterItemDiapasonType, FilterItemType, setChangeFilterItem, setChangeFilterItemDiapason, setClearFilter } from '../redux/actions/filterActions';
+import SelectList from '../miniComponents/SelectList';
+import FieldsFromToWrap from '../FilterBox/FieldsFromToWrap';
+import { useFilter } from '../../handlers/hooks/useFilter';
 
-let dataSelectTop:Array<SelectsDataType> = [
-  {name: "area", placeholder:"Район:", items: area},
-  {name: "metro", placeholder:"Метро:", items: metroSP},
-  {name: "deadline", placeholder:"Срок сдачи:", items: deadline},
-]
-const dataSelectMiddle:Array<SelectsDataType> = [
-  {name: "name", placeholder:"Комплекс:", items: name},
-  {name: "developer", placeholder:"Застройщик:", items: developer},
-  {name: "rooms", placeholder:"Тип квартиры:", items: rooms},
-  { name: "propertiesTypes", placeholder: "Тип собственности:", items: propertiesTypes },
-  {name: "finish", placeholder:"Отделка:", items: finish},
-]
-const dataSelectBottom:Array<SelectsDataType> = [
-  {name: "bank", placeholder:"Банк:", items: bank},
-  {name: "payment", placeholder:"Оплата:", items: payment}
-]
+import iconFilter from './../../assets/img/icon-filter.svg';
+import iconFilterList from './../../assets/img/filter-list.svg';
+import iconArrowLeft from './../../assets/img/arrow-left-grey.svg';
+import MainMap from './MainMap';
 
 type PropsTypes = {
   open: boolean,
   onCloseMap: () => void
 }
 
+
 const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
 
-  const dispatch = useDispatch();
-  const {filterItems, filterItemsDiapason, region} = useSelector(({ filter}:AppStateType) => {
-    return {
-        filterItems: filter.filterItems,
-        filterItemsDiapason: filter.filterItemsDiapason,
-        region: filter.region
-      }
-  })
-
-  React.useEffect(() => {
-    dataSelectTop = dataSelectTop.map((item) => {
-        if (item.name === "metro") {
-            region === "MOS" ? item.items = metroMOS : item.items = metroSP
-        }
-        return item;
-    });
-  }, [region]);
-
-  const onChangeFilterItem = useCallback(({ type, values }: FilterItemType) => {//Добавляет фильтры в redux
-    dispatch(setChangeFilterItem({ type, values }))
-}, [dispatch]);
-
-const onChangeFilterItemDiapason = useCallback(({ type, from, to }: FilterItemDiapasonType) => {//Добавляет фильтры в redux. Фильтры с диапазоном знаечний, например "Стоимость"
-    dispatch(setChangeFilterItemDiapason({ type, from, to }))
-}, [dispatch]);
-
-const onClearFilter = useCallback(() => {//очищаем фильтры
-    dispatch(setClearFilter())
-    dispatch(fetchComplexes())
-}, [dispatch]);
-
-const onApplyFilter = useCallback(() => {//применяем фильтры
-  dispatch(fetchComplexes())
-}, [dispatch]);
+  const [filterItems, filterItemsDiapason, dataSelectTop, dataSelectMiddle, dataSelectBottom, onChangeFilterItem, onChangeFilterItemDiapason, onClearFilter, onApplyFilter, region] = useFilter();
   
   return (
     <section className={classNames("map-modal", {"map-modal--open": open}) }>
@@ -75,7 +26,7 @@ const onApplyFilter = useCallback(() => {//применяем фильтры
         <div className="map-wrapper">
 
           <div className="map-filter">
-            <div className="map-modal__close" onClick={onCloseMap}><span className="close"><img src="img/arrow-left-grey.svg" alt="img"/>Показать списком</span></div>
+            <div className="map-modal__close" onClick={onCloseMap}><span className="close"><img src={iconArrowLeft} alt="img"/>Показать списком</span></div>
             <h3 className="map-modal__title">Новостройки на карте <span className="city">{region === "SP" ? "Санкт-Петербурга" : "Москвы и МО"}</span></h3>
             <hr className="hr"/>
 
@@ -124,17 +75,16 @@ const onApplyFilter = useCallback(() => {//применяем фильтры
             </div>
         
 
-              <button type='button' className='map-filter__btn-show pink__btn'>Показать объекты</button>
-              <button type="reset" className="map-filter__btn-reset pink__btn">Сбросить все фильтры <img
-                  src="img/modal-close-red.svg" alt=""/></button>
+              <button type='button' className='map-filter__btn-show pink__btn' onClick={onApplyFilter}>Показать объекты</button>
+              <button type="reset" className="map-filter__btn-reset pink__btn" onClick={onClearFilter}>Сбросить все фильтры <img src="img/modal-close-red.svg" alt=""/></button>
 
             </form>
-          </div>
+        </div>
+        
           <div className="map__complex-info complex-info">
-            <div className="complex-info__close"><span className="close"><img src="img/arrow-left-grey.svg" alt="img"/><span
-                  className="go-to-filter">Назад к
-                  фильтру</span><span className="go-to-map">Назад к
-                  карте</span></span></div>
+          <div className="complex-info__close">
+            <span className="close"><img src={iconArrowLeft} alt="img" /><span className="go-to-filter">Назад к фильтру</span><span className="go-to-map">Назад к карте</span></span>
+          </div>
             <div className="map__complex-info-inner">
               <div className="catalog-complex__item">
                 <div className="catalog-complex__item-header">
@@ -297,12 +247,12 @@ const onApplyFilter = useCallback(() => {//применяем фильтры
               </div>
             </div>
           </div>
-          <div id="map"></div>
-          <div className="map-footer">
-            <button type='button' className="map-footer__btn-open-filter"><img src="img/icon-filter.svg" alt=""/><span
-                className="close">&#10006;</span>Фильтр
-              </button>
-              <button type='button' className="map-footer__btn-open-list"><img src="img/filter-list.svg" alt=""/>Списком</button>
+          
+        <MainMap center={ region==="MOS" ? [55.75420858806455,37.62571648313102] : [59.93627718312728,30.326687545673263] }/>
+        
+        <div className="map-footer">
+            <button type='button' className="map-footer__btn-open-filter"><img src={iconFilter} alt=""/><span className="close">&#10006;</span>Фильтр </button>
+            <button type='button' className="map-footer__btn-open-list"><img src={iconFilterList} alt=""/>Списком</button>
           </div>
         </div>
       </section>

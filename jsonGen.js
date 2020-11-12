@@ -33,7 +33,15 @@
     
     "metroDistance": '{{integer(5, 32)}}',
     "area": "Район {{integer(1, 4)}}",
-    "coords": ['{{floating(59.96366228831886, 59.96366228831899)}}', '{{floating(30.33065350936121, 30.33065350936150)}}'],
+    "coords": function (tags) {
+      
+      if(this.region == "SP"){
+        return [tags.floating(59.78366228831886, 59.98366228831899), tags.floating(30.13065350936121, 30.53065350936150)];
+      }
+     return [tags.floating(55.36420858806455, 55.98420858806455), tags.floating(37.32571648313102, 37.90571648313102)];
+   
+  },
+    
     "address": function (tags) {
       var value = "Землянной вал";
       if(this.region == "SP"){
