@@ -19,8 +19,10 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, onOpenMap}) 
     
   const [filterItems, filterItemsDiapason, dataSelectTop, dataSelectMiddle, dataSelectBottom, onChangeFilterItem, onChangeFilterItemDiapason, onClearFilter, onApplyFilter] = useFilter();
 
+  const dataInputsCost = React.useMemo(() => filterItemsDiapason.filter((item) => item.type === "cost")[0], [filterItemsDiapason]);
+  const dataInputsSquare = React.useMemo(()=> filterItemsDiapason.filter((item) => item.type === "square")[0], [filterItemsDiapason]);
+  
   return (
-      
       <>
         <form action="" className="filter__form">
           <div className="filter__form-inner">
@@ -32,8 +34,8 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, onOpenMap}) 
                 filterItemsActive={filterItems}
               />}
                       
-            <FieldsFromToWrap name="cost" placeholder="Стоимость:"
-              values={filterItemsDiapason.filter((item) => item.type === "cost")[0]}
+            <FieldsFromToWrap  name="cost" placeholder="Стоимость:"
+              from={dataInputsCost ? dataInputsCost.from : 0} to={dataInputsCost ? dataInputsCost.to : 0}
             onChangeFilterItem={onChangeFilterItemDiapason}/>
             </div>
 
@@ -48,7 +50,7 @@ const FormFilterBox: React.FC<PropsTypesForm> = ({ openInnerFields, onOpenMap}) 
                         filterItemsActive={filterItems}
                       />}
                     <FieldsFromToWrap name="square" placeholder="Площадь:"
-                      values={filterItemsDiapason.filter((item) => item.type === "square")[0]}
+                      to={dataInputsSquare ? dataInputsSquare.to : 0} from={dataInputsSquare ? dataInputsSquare.from : 0}
                     onChangeFilterItem={onChangeFilterItemDiapason}/>
                     </div>
                 

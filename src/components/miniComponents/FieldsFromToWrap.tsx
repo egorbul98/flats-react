@@ -5,33 +5,26 @@ import { FilterItemDiapasonType } from '../../redux/actions/filterActions';
 type PropsTypesFieldsFromToWrap = {
   name: string,
   placeholder: string,
-  values?: {from: number, to: number},
+  from:number,
+  to:number,
   onChangeFilterItem?: ({ }: FilterItemDiapasonType) => void,
   classNamesForItem?:string,
   classNamesForItemName?:string,
   classNamesForWrapInputs?:string,
 }
 
-const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placeholder, onChangeFilterItem, values, classNamesForItem, classNamesForItemName, classNamesForWrapInputs }) => {
-  const [fromValue, setFromValue] = React.useState(values?.from ? values.from : '');
-  const [toValue, setToValue] = React.useState(values?.to ? values.to : '');
-
-  const onChange = (e: any) => {//ввод только цифр
-    if (/\d+/.test(String(+e.target.value))) {
+const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placeholder, onChangeFilterItem, from, to, classNamesForItem, classNamesForItemName, classNamesForWrapInputs}) => {
+  const onChange = (e: any) => {
+    if (/\d+/.test(String(+e.target.value))) {//ввод только цифр
       const type = e.target.getAttribute("data-type");
-      type === "from" ? setFromValue(e.target.value) : setToValue(e.target.value);
+        if (type === "from") {
+          onChangeFilterItem && onChangeFilterItem({ type: name, from: +e.target.value, to: to ? +to : 0 });
+        } else {
+          onChangeFilterItem && onChangeFilterItem({ type: name, from: from ? +from : 0, to: +e.target.value })
+        }
     }
   }
-  React.useEffect(() => {
-    if (values === undefined) {
-      setFromValue('');
-      setToValue('');
-    }
-  }, [values]);
-
-  React.useEffect(() => {
-    onChangeFilterItem && onChangeFilterItem({type:name, from:+fromValue, to:+toValue})
-  }, [fromValue, toValue]);
+  
 
   return (
       <div className={classNames({"filter-field  filter-field-cost": classNamesForItem === undefined}, classNamesForItem)}>
@@ -43,7 +36,7 @@ const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placehol
                 name={`${name}From`}
                 placeholder="от"
                 data-type="from"
-                value={fromValue}
+                value={from!==0? from : ""}
                 onChange={onChange}
               />
               <input
@@ -52,7 +45,7 @@ const FieldsFromToWrap: React.FC<PropsTypesFieldsFromToWrap> = ({ name, placehol
                   name={`${name}To`}
                   placeholder="до"
                   data-type="to"
-                  value={toValue}
+                  value={to!==0 ? to : ""}
                   onChange={onChange}
               />
           </div>

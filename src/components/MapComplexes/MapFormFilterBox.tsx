@@ -16,6 +16,10 @@ const MapFormFilterBox : React.FC < PropsTypes > = ({onCloseFilter}) => {
     onApplyFilter();
     onCloseFilter();
   }
+
+  const dataInputsCost = React.useMemo(() => filterItemsDiapason.filter((item) => item.type === "cost")[0], [filterItemsDiapason]);
+  const dataInputsSquare = React.useMemo(() => filterItemsDiapason.filter((item) => item.type === "square")[0], [filterItemsDiapason]);
+  
   return (
     <form action="" className="map-filter__form">
       <div className="map-filter__form-inner">
@@ -29,7 +33,7 @@ const MapFormFilterBox : React.FC < PropsTypes > = ({onCloseFilter}) => {
         />}
                 
         <FieldsFromToWrap name="cost" placeholder="Стоимость:"
-          values={filterItemsDiapason.filter((item) => item.type === "cost")[0]}
+          from={dataInputsCost ? dataInputsCost.from : 0} to={dataInputsCost ? dataInputsCost.to : 0}
           onChangeFilterItem={onChangeFilterItemDiapason}
           classNamesForItem={"map-filter-field"}
           classNamesForItemName={"map-filter-field__name map-filter-field__name--display"}
@@ -44,7 +48,7 @@ const MapFormFilterBox : React.FC < PropsTypes > = ({onCloseFilter}) => {
           classNamesForItemName={"map-filter-field__name"}
         />}
       <FieldsFromToWrap name="square" placeholder="Площадь:"
-        values={filterItemsDiapason.filter((item) => item.type === "square")[0]}
+        to={dataInputsSquare ? dataInputsSquare.to : 0} from={dataInputsSquare ? dataInputsSquare.from : 0}
       onChangeFilterItem={onChangeFilterItemDiapason}
       classNamesForItem={"map-filter-field"}
           classNamesForItemName={"map-filter-field__name map-filter-field__name--display"}

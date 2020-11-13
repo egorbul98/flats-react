@@ -1,28 +1,17 @@
 
-import React, { useCallback } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
 
 import logo from './../assets/img/logo.svg';
 import btnOpen from './../assets/img/btn-open-nav.svg';
 import {ReactComponent as HeartIcon} from './../assets/img/icons/heart.svg';
-import { setRegion } from '../redux/actions/filterActions';
-import { AppStateType } from '../redux/reducers/rootReducer';
+import { useSwitchRegion } from '../handlers/hooks/useSwitchRegion';
 
 type PropsTypes = {}
 
 const Header : React.FC < PropsTypes > = ({}) => {
     
-    const dispatch = useDispatch();
-
-    const { region } = useSelector(({filter}:AppStateType ) => {
-        return {
-            region: filter.region
-        }
-    })
-    const onHandleClick = useCallback((newRegion: string) => {
-        region !== newRegion && dispatch(setRegion(newRegion));
-    }, [dispatch, region]);
+    const [region, onHandleClick] = useSwitchRegion();
 
     return (
         <header className="header-catalog">

@@ -1,28 +1,49 @@
 import React from 'react';
-
+import iconVK from '../assets/img/logo_vk.png';
+import iconYT from '../assets/img/logo_youtube.png';
+import iconInst from '../assets/img/logo_instagram.png';
+import { useSwitchRegion } from '../handlers/hooks/useSwitchRegion';
+import { useDispatch } from 'react-redux';
+import { FilterItemDiapasonType, setChangeFilterItemDiapason } from '../redux/actions/filterActions';
+import { fetchComplexes } from '../redux/actions/complexesActions';
 type PropsTypes = {}
 
 const Footer : React.FC < PropsTypes > = ({}) => {
+  const [region, onHandleClick] = useSwitchRegion();
+  const dispatch = useDispatch();
 
-    return (
-        <footer className="catalog-footer">
+  const onChangeFilterItemDiapason = ({ type, from, to }: FilterItemDiapasonType) => {//Добавляет фильтры в redux. Фильтры с диапазоном знаечний, например "Стоимость"
+    dispatch(setChangeFilterItemDiapason({ type, from, to }));
+    dispatch(fetchComplexes());
+  };
+  
+  return (
+  <footer className="catalog-footer">
     <div className="catalog-wrapper">
       <div className="catalog-footer__wrap">
         <div className="catalog-footer__item buildings">
           <h4 className="catalog-footer__item-title">Новостройки</h4>
-          <div className="buildings__item catalog-footer__text"><a href="#">В Санкт-Петербурге</a></div>
-          <div className="buildings__item catalog-footer__text"><a href="#">В Ленинградской области</a></div>
-          <div className="buildings__item catalog-footer__text"><a href="#">В Москве</a></div>
-          <div className="buildings__item catalog-footer__text"><a href="#">В Московской области</a></div>
+          <div className="buildings__item catalog-footer__text" ><a href="#catalog-complex-box" onClick={()=>onHandleClick("SP")}>В Санкт-Петербурге и ЛО</a></div>
+          <div className="buildings__item catalog-footer__text" ><a href="#catalog-complex-box" onClick={()=>onHandleClick("MOS")}>В Москве и МО</a></div>
           <div className="buildings__show-map catalog-footer__text"><a href="">Новостройки на карте</a></div>
         </div>
         <div className="catalog-footer__item popular">
           <h4 className="catalog-footer__item-title">Популярное</h4>
-          <div className="popular__item catalog-footer__text"><a href="#">До 3 миллионов</a></div>
-          <div className="popular__item catalog-footer__text"><a href="#">До 4 миллионов</a></div>
-          <div className="popular__item catalog-footer__text"><a href="#">До 5 миллионов</a></div>
+          <div className="popular__item catalog-footer__text"><a href="#" onClick={(e)=>{
+              e.preventDefault();
+              onChangeFilterItemDiapason({type:"cost", from:0, to:4000000})
+            }}>До 4 миллионов</a></div>
+          <div className="popular__item catalog-footer__text"><a href="#" onClick={(e)=>{
+              e.preventDefault();
+              onChangeFilterItemDiapason({type:"cost", from:0, to:5000000})
+            }}>До 5 миллионов</a></div>
+          <div className="popular__item catalog-footer__text"><a href="#" onClick={(e)=>{
+              e.preventDefault();
+              onChangeFilterItemDiapason({type:"cost", from:0, to:6000000})
+            }}>До 6 миллионов</a></div>
+            
         </div>
-        <div className="catalog-footer__item different">
+        {/* <div className="catalog-footer__item different">
           <div className="different__sales catalog-footer__text"><a href="">Старты продаж новостроек</a></div>
           <div className="different__other other">
             <div className="other__item catalog-footer__text other__video"><a href="#">Видеобзоры ЖК</a></div>
@@ -30,7 +51,7 @@ const Footer : React.FC < PropsTypes > = ({}) => {
             <div className="other__item catalog-footer__text other__item--width"><a href="#">Статьи</a></div>
           </div>
 
-        </div>
+        </div> */}
         <div className="catalog-footer__item social">
           <form action="" className="form-search">
             <div className="form-search__field">
@@ -39,15 +60,12 @@ const Footer : React.FC < PropsTypes > = ({}) => {
             </div>
           </form>
 
-          <div className="social__site">PRONovostroyki.com</div>
+          <div className="social__site"><a href="#">PRONovostroyki.com</a></div>
 
           <div className="social__list">
-            <div className="social__item"><a href="#"><img className='lazy' data-src="img/logo_vk.png"
-                  src="img/content-item-img.png" alt=""/></a></div>
-            <div className="social__item"><a href="#"><img className='lazy' data-src="img/logo_youtube.png"
-                  src="img/content-item-img.png" alt=""/></a></div>
-            <div className="social__item"><a href="#"><img className='lazy' data-src="img/logo_instagram.png"
-                  src="img/content-item-img.png" alt=""/></a></div>
+            <div className="social__item"><a href="#"><img className='lazy' src={iconVK} alt=""/></a></div>
+            <div className="social__item"><a href="#"><img className='lazy' src={iconYT} alt=""/></a></div>
+            <div className="social__item"><a href="#"><img className='lazy' src={iconInst} alt=""/></a></div>
           </div>
 
         </div>

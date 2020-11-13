@@ -43,7 +43,7 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
   
   return (
       
-      <section className="catalog-complex-box catalog-complex">
+      <section id="catalog-complex-box" className="catalog-complex-box catalog-complex">
       <div className="catalog-wrapper">
           <div className={ classNames("catalog-complex__list",{"catalog-complex__list--display-list":displayItems==="Списком"})}>
             {isLoadingComplexes
