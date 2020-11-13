@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import AdviceBox from '../components/AdviceBox';
 import CatalogComplexes from '../components/CatalogComplexes/CatalogComplexes';
 import Chart from '../components/Chart';
@@ -14,21 +14,22 @@ type PropsTypes = {
 const Catalog: React.FC<PropsTypes> = ({ }) => {
   const [openMap, setOpenMap] = React.useState(false);
 
-  const onOpenMap = () => {
+  const onOpenMap = useCallback(() => {
     setOpenMap(true);
     document.body.classList.add("body--fixed");
-  }
-  const onCloseMap = () => {
+  }, [setOpenMap])
+
+  const onCloseMap = useCallback(() => {
     document.body.classList.remove("body--fixed");
     setOpenMap(false);
-  }
+  }, [setOpenMap])
 
 
   return (
     <div className="body-catalog">
       <FilterBox onOpenMap={onOpenMap}/>
       <MapModal open={openMap} onCloseMap={ onCloseMap }/>
-      <CatalogComplexes />
+      <CatalogComplexes onOpenMap={ onOpenMap }/>
       
 
       {/* <Chart/>

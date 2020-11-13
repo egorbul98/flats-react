@@ -68,12 +68,15 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({ srcImage }) => {
 }
 
 type propTypes = {
-    mini?: boolean, //true - некоторые элементы в разметке будут отсутсовать
+    mini?: boolean, //true - некоторые элементы в разметке будут отсутсовать,
+    display?: string
 }
-const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, ...complex }) => {
+const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...complex }) => {
     const [currentSlide, setCurrentSlide] = React.useState(1);
     const [openMap, setOpenMap] = React.useState(false);
-
+    
+    React.useEffect(() => { setOpenMap(false); }, [display]); //закрываем карту, если отображение элементов изменилось
+    
     const settingsSlider = { //настройки слайдера
         arrows: true,
         prevArrow: <SlickArrowLeft className="catalog-complex__slider-prev-btn"/>,
@@ -84,8 +87,6 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, ...complex }) =
     }
 
     const onToggleOpenComplexMap = () => {
-        console.log(openMap);
-        
         setOpenMap(!openMap);
     }
 
@@ -116,33 +117,32 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, ...complex }) =
         <div className="catalog-complex__item">
             <div className="catalog-complex__item-header">
                 
-                {openMap && <div className="catalog-complex__item-map">
-                    <YMaps preload={true}>
-                        <Map width={"100%"} height={"302px"} defaultState={{ center: complex.coords, zoom: 10 }} >
-                            <Placemark
-                                key={complex.id}
-                                geometry={[complex.coords[0], complex.coords[1]]} 
-                                options={{
-                                iconLayout: 'default#image',
-                                placemarkClick: false,
-                                center: [complex.coords[0], complex.coords[1]],
-                                clusterCaption: 'Geo object №2',
-                                balloonContent: () => <span>item.name</span>
-                            }}/>
-                        </Map>
-                    </YMaps> 
-                    </div>}
-                
-                <Slider className="catalog-complex__slider" {...settingsSlider}>
-                        {complex.images && complex.images.map((itemPath, index) => {
-                            return <SlideItemComplex key={index} srcImage={window.location.origin + itemPath}/>
-                        })}
-                    </Slider>
+               <div className="inner-wrap">
+                    {openMap && <div className="catalog-complex__item-map">
+                        <YMaps preload={true} width={"100%"} height={"100%"}>
+                            <Map width={"100%"} height={"100%"} defaultState={{ center: complex.coords, zoom: 10 }} >
+                                <Placemark
+                                    key={complex.id}
+                                    geometry={[complex.coords[0], complex.coords[1]]} 
+                                    options={{
+                                    iconLayout: 'default#image',
+                                    placemarkClick: false,
+                                    center: [complex.coords[0], complex.coords[1]],
+                                    clusterCaption: 'Geo object №2',
+                                    balloonContent: () => <span>item.name</span>
+                                }}/>
+                            </Map>
+                        </YMaps> 
+                        </div>}
+                    
+                        <Slider className="catalog-complex__slider" {...settingsSlider}>
+                                {complex.images && complex.images.map((itemPath, index) => {
+                                    return <SlideItemComplex key={index} srcImage={window.location.origin + itemPath}/>
+                                })}
+                        </Slider>
+               </div>
                 <div className="catalog-complex__slider-counter">{currentSlide}/{complex.images.length}</div>
-                <div className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
-                 <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
-                 <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt=""/>На карте</button>
-                </div>
+               
 
                 <div className="complex-advantages__features-list">
                     <IconAdvantage tooltipText="Скидка партнерам" className="complex-advantages__features-item complex-advantages__features-item--sale" classNameTooltip="complex-advantages__features-hint--sale">
@@ -167,6 +167,10 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, ...complex }) =
 
                 </div>
             
+                <div className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
+                 <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
+                 <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt=""/>На карте</button>
+                </div>
             </div>
             <div className="catalog-complex__item-content">
                 <div className="inner">

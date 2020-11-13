@@ -13,10 +13,11 @@ import { AppStateType } from '../../redux/reducers/rootReducer';
 import { fetchComplexes, sortComplexes } from '../../redux/actions/complexesActions';
 
 type PropsTypes = {
-  onClickDisplayButton?: (titleBtn: string) => void;
+  onClickDisplayButton?: (titleBtn: string) => void,
+  onOpenMap?: () => void
 }
 
-const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton}) => {
+const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton, onOpenMap}) => {
 
     const dispatch = useDispatch();
     const {filterItems, filterItemsDiapason, sortBy, region} = useSelector(({ filter, complexes }:AppStateType) => {
@@ -45,7 +46,7 @@ const SortByCharacterList : React.FC < PropsTypes > = ({onClickDisplayButton}) =
         onClick={onClickBtn}/>
                
         <div className={"list-character__btn-map-wrap"}>
-          <ButtonSortBy name="recomend" className={"list-character__btn-map"} title="На карте" icon={placeholderRedImg} active={false}/>
+          <ButtonSortBy name="recomend" className={"list-character__btn-map"} onClick={onOpenMap} title="На карте" icon={placeholderRedImg} active={false}/>
         </div>
       </div>
   

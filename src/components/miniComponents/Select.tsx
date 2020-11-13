@@ -45,10 +45,7 @@ const Select: React.FC<PropsType> = ({ readonly = true, multi = false, active = 
   const onCloseSelect = React.useCallback((e: any) => {
     const parent = e.target.closest(".select-component");
     if ((parent === null) || (name && parent.getAttribute("data-name") !== name)) {
-      
       setShow(false);
-    } else {
-      console.log("noклос");
     }
   }, [name, setShow])
 

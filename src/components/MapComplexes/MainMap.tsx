@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { useSelector } from 'react-redux';
 import { Placemark, Map, YMaps, Clusterer} from 'react-yandex-maps';
-import mapPin from '../../assets/img/map_pin.png';
 import iconPlacemark from '../../assets/img/placemark.svg';
 // import mapPin from '../../assets/img/map_pin.png';
 import { AppStateType } from '../../redux/reducers/rootReducer';
@@ -29,19 +28,17 @@ const MainMap:React.FC<PropsTypes> = ({center, onClickPlacemark}) => {
     
     <div className="main-map" style={style}>
       {isLoading ? <Loading styleWrap={{marginTop:"40%"} }/> :
-        <YMaps preload={true}>
-          <Map width={"100%"} height={"900px"} defaultState={{ center: center, zoom: 10 }} >
+        <YMaps preload={true} width={"100%"} height={"100%"}>
+          {/* <Map width={"100%"} height={"900px"} defaultState={{ center: center, zoom: 10 }} > */}
+          <Map width={"100%"} height={"100%"} defaultState={{ center: center, zoom: 10 }} >
             <Clusterer
-              
               options={{
                 groupByCoordinates: false,
                 preset: 'islands#invertedRedClusterIcons',
                 clusterHideIconOnBalloonOpen: false,
                 geoObjectHideIconOnBalloonOpen: false,
                 hasBalloon: true,
-              }}
-
-            >
+              }}>
            
             {complexesItems.map((complex) => {
                 return (

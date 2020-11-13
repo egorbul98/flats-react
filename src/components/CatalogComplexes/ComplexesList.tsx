@@ -50,7 +50,7 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
               ? <Loading/>
               : complexesItems.length ?
                 complexesItems.map((item) => {
-              return <ComplexCart key={item.id} {...item} />
+                  return <ComplexCart key={item.id} {...item} display={displayItems}/>
             }) : <div className="nothing">Страница пуста</div>}
         </div>
   

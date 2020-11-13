@@ -190,3 +190,7 @@
 [1112/213504.610:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
 [1112/213504.672:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: Канал был закрыт. (0x6D)
 [1112/213504.672:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
+[1113/110537.667:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
+[1113/110537.674:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[1113/110537.700:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: Канал был закрыт. (0x6D)
+[1113/110537.704:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\settings.dat: Отказано в доступе. (0x5)
