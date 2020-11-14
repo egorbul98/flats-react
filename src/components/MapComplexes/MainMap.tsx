@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import { useSelector } from 'react-redux';
 import { Placemark, Map, YMaps, Clusterer} from 'react-yandex-maps';
 import iconPlacemark from '../../assets/img/placemark.svg';
-// import mapPin from '../../assets/img/map_pin.png';
+
 import { AppStateType } from '../../redux/reducers/rootReducer';
 import Loading from '../miniComponents/Loading';
 

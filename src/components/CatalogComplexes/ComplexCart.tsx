@@ -1,19 +1,17 @@
 import React from 'react';
 import Slider from 'react-slick';
 import classnames from 'classnames';
-import { Placemark, Map, YMaps} from 'react-yandex-maps';
+import {Link} from 'react-router-dom';
+import { Placemark, Map, YMaps } from 'react-yandex-maps';
 
-
-import { ComplexeType, FlatType } from '../../mainTypes';
+import { ComplexeType } from '../../mainTypes';
 import Select from '../miniComponents/Select';
 
-import iconPlacemark from '../../assets/img/placemark.svg';
 import iconHeart from '../../assets/img/slide-heart.svg';
 import iconBuild from '../../assets/img/slide-build.svg';
 import iconDevLogo from '../../assets/img/developer_logo.svg';
 import iconMetro from '../../assets/img/metro-el.svg';
 import iconPlaceholderRed from '../../assets/img/placeholder-red.svg';
-import imgContentComplex from '../../assets/img/content-item-img.png';
 import imgSliderPrev from '../../assets/img/catalog-slider-prev.svg';
 import imgSliderNext from '../../assets/img/catalog-slider-next.svg';
 import {ReactComponent as SvgFeatureSale} from '../../assets/img/icon-feature_sale.svg';
@@ -21,11 +19,11 @@ import {ReactComponent as SvgFeatureDeal} from '../../assets/img/icon-feature_de
 import {ReactComponent as SvgFeatureGift} from '../../assets/img/icon-feature_gift.svg';
 import {ReactComponent as SvgFeatureDecor} from '../../assets/img/icon-feature_decor.svg';
 import {ReactComponent as SvgFeatureBus} from '../../assets/img/icon-bus.svg';
-import {ReactComponent as SvgArrow} from '../../assets/img/icons/up-arrow.svg';
 
 import ButtonPhone from '../miniComponents/ButtonPhone';
 import IconAdvantage from '../miniComponents/IconAdvantage';
 import { getFlatsGroupByRooms, getMinMaxValuesFlats } from '../../handlers/complexesHandlers';
+import ComplexMap from '../Complex/ComplexMap';
 
 const SlickArrowLeft:React.FC<any> = ({ currentSlide, slideCount, ...props }) => (
     <button 
@@ -90,9 +88,9 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
         setOpenMap(!openMap);
     }
 
-    const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), complex.deadline); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
-
-    const flatsGroupByRooms = React.useMemo(()=>getFlatsGroupByRooms(complex.flats), complex.flats); //возвращаем массив сгруппированных по кол-ву комнат квартир
+    const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), [complex.deadline]); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
+    
+    const flatsGroupByRooms = React.useMemo(()=>getFlatsGroupByRooms(complex.flats), [complex.flats]); //возвращаем массив сгруппированных по кол-ву комнат квартир
    
     const flatsTypesBlocks = flatsGroupByRooms.map((item, index) => {
         return (
@@ -117,22 +115,10 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
         <div className="catalog-complex__item">
             <div className="catalog-complex__item-header">
                 
-               <div className="inner-wrap">
+                <div className="inner-wrap">
+                    
                     {openMap && <div className="catalog-complex__item-map">
-                        <YMaps preload={true} width={"100%"} height={"100%"}>
-                            <Map width={"100%"} height={"100%"} defaultState={{ center: complex.coords, zoom: 10 }} >
-                                <Placemark
-                                    key={complex.id}
-                                    geometry={[complex.coords[0], complex.coords[1]]} 
-                                    options={{
-                                    iconLayout: 'default#image',
-                                    placemarkClick: false,
-                                    center: [complex.coords[0], complex.coords[1]],
-                                    clusterCaption: 'Geo object №2',
-                                    balloonContent: () => <span>item.name</span>
-                                }}/>
-                            </Map>
-                        </YMaps> 
+                    <ComplexMap coords={complex.coords}/>
                         </div>}
                     
                         <Slider className="catalog-complex__slider" {...settingsSlider}>
@@ -168,7 +154,7 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
                 </div>
             
                 <div className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
-                 <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
+                 <Link to={"complex/"+complex.id} className="catalog-complex__btn-more pink__btn">Подробнее</Link>
                  <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt=""/>На карте</button>
                 </div>
             </div>
@@ -212,10 +198,10 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
                     {mini ?
                         <>
                         <ButtonPhone>{complex.tel}</ButtonPhone>
-                        <button type='button' className="btn-details pink__btn">Подробнее</button>
+                        <Link to={"complex/"+complex.id} className="btn-details pink__btn">Подробнее</Link>
                         </>
-                    : <>
-                    <button type='button' className="catalog-complex__btn-more pink__btn">Подробнее</button>
+                        : <>
+                    <Link to={"complex/"+complex.id} className="catalog-complex__btn-more pink__btn">Подробнее</Link>
                     <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt="" />На карте</button>
                     </>
                     }

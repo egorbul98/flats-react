@@ -30,6 +30,7 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
   })
   
   const activeComplex: ComplexeType = React.useMemo(() => complexesItems.filter((item)=>item.id === idActiveComplex)[0], [idActiveComplex]);
+  // const activeComplex: ComplexeType = complexesItems.filter((item)=>item.id === idActiveComplex)[0]
 
   const toggleFilter = () => {
     
@@ -58,6 +59,7 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
   }, [idActiveComplex, setIdActiveComplex, setOpenFilter]);
 
   const coordsCenter:[number, number] = React.useMemo(() => region === "MOS" ? [55.75420858806455, 37.62571648313102] : [59.93627718312728, 30.326687545673263], [region]);
+  // const coordsCenter:[number, number] = region === "MOS" ? [55.75420858806455, 37.62571648313102] : [59.93627718312728, 30.326687545673263]
 
   return (
     <section className={classNames("map-modal", {"map-modal--open": open}) }>

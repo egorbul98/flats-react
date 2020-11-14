@@ -1,15 +1,17 @@
 import React, { CSSProperties } from 'react';
-import Header from './components/Header';
+import {Route} from 'react-router-dom';
+
 import Catalog from './pages/Catalog';
 import './assets/scss/style.scss';
 import './App.css';
+import DetailsComplex from './pages/DetailsComplex';
 function App() {
   
   return (
     <div className="App">
-      <Header />
       
-      <Catalog/>
+      <Route exact path={"/"} component={Catalog}/>
+      <Route exact path={"/complex/:id"} component={DetailsComplex}/>
       
     </div>
   );

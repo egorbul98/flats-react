@@ -9,6 +9,19 @@ export const SET_LOADING = "SET_LOADING";
 export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SORT_COMPLEXES = "SORT_COMPLEXES";
+export const SET_ERROR_COMPLEXES = "SET_ERROR_COMPLEXES";
+
+export type ErrorComplexesType = {
+  type: typeof SET_ERROR_COMPLEXES,
+  payload: string
+}
+
+export const setErrorText = (text: string): ErrorComplexesType => {
+  return {
+    type: SET_ERROR_COMPLEXES, 
+    payload: text
+  }
+}
 
 export type SortComplexesType = {
   type: typeof SORT_COMPLEXES,
@@ -172,7 +185,10 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
       }
       dispatch(setLoading(false));
     })
-    .catch((e)=>console.error(e))
+    .catch((e) => {
+      console.error(e);
+      dispatch(setErrorText("Произошла ошибка при загрузке жилых комплексов :("));
+    })
 }
 
 function checkInArray(arrayIncludes:Array<string | number>, arr:any, nameProp:string) {//Проверяет есть ли в массиве arrayIncludes какие-либо элементы из массива arr. Проверка по свойству nameProp элементов массива arr

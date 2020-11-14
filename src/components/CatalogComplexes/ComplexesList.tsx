@@ -14,9 +14,10 @@ type PropsTypes = {
 const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
-  const {complexes, region, isLoadingComplexes, countComplexes, currentPage, perPage} = useSelector(({complexes, filter}: AppStateType) => {
+  const {complexes, region, isLoadingComplexes, countComplexes, currentPage, perPage, error} = useSelector(({complexes, filter}: AppStateType) => {
     return {
       complexes: complexes.items,
+      error: complexes.errorText,
       region: filter.region,
       countComplexes: complexes.totalCount,
       perPage: complexes.perPage,
@@ -45,7 +46,8 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
       
       <section id="catalog-complex-box" className="catalog-complex-box catalog-complex">
       <div className="catalog-wrapper">
-          <div className={ classNames("catalog-complex__list",{"catalog-complex__list--display-list":displayItems==="Списком"})}>
+        <div className={classNames("catalog-complex__list", { "catalog-complex__list--display-list": displayItems === "Списком" })}>
+          {error && <div className="nothing">{error}</div>}
             {isLoadingComplexes
               ? <Loading/>
               : complexesItems.length ?

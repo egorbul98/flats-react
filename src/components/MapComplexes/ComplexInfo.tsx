@@ -16,7 +16,7 @@ const ComplexInfo : React.FC < PropsTypes > = ({complex, onClickBack}) => {
       <span className="close"><img src={iconArrowLeft} alt="img" /><span className="go-to-filter">Назад к фильтру</span><span className="go-to-map">Назад к карте</span></span> </div>
       <div className="map__complex-info-inner">
 
-        <ComplexCart {...complex} mini={true}/>
+        <ComplexCart {...complex} mini={true} />
       
       </div>
 

@@ -1,16 +1,17 @@
 import { ComplexeType } from "../../mainTypes";
-import { SET_COMPLEXES, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType } from "../actions/complexesActions";
+import { SET_COMPLEXES, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType } from "../actions/complexesActions";
 
 const initialState = {
   items: [] as Array<ComplexeType>,
   currentPage: 1 as number,
   perPage: 4 as number,
   totalCount: 0 as number,
-  isLoading: false as boolean
+  isLoading: false as boolean,
+  errorText: '' as string
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType ;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {
@@ -54,7 +55,10 @@ export const ComplexesReducer = (state = initialState, action:ActionsTypes):Stat
       return { ...state, currentPage: action.payload };
     
     case SET_LOADING:
-      return {...state, isLoading: action.payload};
+      return { ...state, isLoading: action.payload };
+    
+    case SET_ERROR_COMPLEXES:
+      return {...state, errorText: action.payload};
   
     default:
       return state;
