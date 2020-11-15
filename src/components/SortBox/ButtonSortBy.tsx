@@ -1,13 +1,6 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-import ButtonsDisplayList from './ButtonsDisplayList';
-import TypeRoomsList from './FilterTypeRoomsList';
-
-import starImg from '../../assets/img/bookmark-star.svg';
-import coinStackImg from '../../assets/img/coin-stack.svg';
-import clockImg from '../../assets/img/clock.svg';
-import placeholderRedImg from '../../assets/img/placeholder-red.svg';
 
 type PropsTypes = {
   className?: string,

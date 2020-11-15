@@ -21,23 +21,46 @@ export type ComplexeType = {
   metro: string,
   metroDistance: number,
   area: string,
-  // img: string,
   coords: [number, number],
   minCost?: number,
   maxCost?: number,
   maxDeadline?: number,
-  // minSquare: number,
-  // maxSquare: number,
   minCostSquare?: number,
   maxCostSquare?: number,
   address: string,
-  images: Array < string > ,
+  images: Array <string>,
   totalFloor: 10,
   bank: string,
   finish: string,
   deadline: Array<DeadlineItemType>,
   flats ? : Array < FlatType >,
   recomend: number,
+};
+export type ComplexeExtendedDetailType = {
+  complexDetail?:ComplexeCharacteristicType
+};
+
+export type ComplexeRatingType = {
+  child:number,
+  infr:number,
+  area:number,
+  safe:number,
+  transport:number,
+  house:number
+}
+export type ComplexeCharacteristicType = {
+  complexId: number,
+  rating: ComplexeRatingType,
+  authorDesc: {
+    author: string,
+    smallDesc: string,
+    desc: Array<{ tag: string, value: string }>,
+  },
+  reviews: {
+    aboutComplex: Array<{ name: string, text: string, date: string}>
+    aboutDeveloper: Array<{ name: string, text: string, date: string }>
+  },
+  complexLike:Array<{ id: number, name: string, address: string, imgSrc:string }>
 };
 
 type DeadlineItemType = {

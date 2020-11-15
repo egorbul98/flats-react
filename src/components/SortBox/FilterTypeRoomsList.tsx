@@ -1,5 +1,4 @@
-import React, { Dispatch, useCallback } from 'react';
-import classNames from 'classnames';
+import React, { useCallback } from 'react';
 import ButtonTypeRoom from './ButtonTypeRoom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppStateType } from '../../redux/reducers/rootReducer';

@@ -8,7 +8,8 @@ const ComplexFlatsInfo : React.FC < PropsTypes > = ({}) => {
 
   return (
     <section className="flats" id="flats">
-    <div className="flats__wrapper">
+      <div className="flats__wrapper">
+    
       <ul className="flats__list">
         <li className="flats__item">
           <div className="flats__item-box">
@@ -51,19 +52,7 @@ const ComplexFlatsInfo : React.FC < PropsTypes > = ({}) => {
           </div>
         </li>
       </ul>
-      <div className="flats__deadline-box">
-        <h2 className="flats__title">Сроки сдачи корпусов</h2>
-        <ul className="flats__deadline-list flats__deadline-list--closed">
-          <li className="flats__deadline-item">1 корпус - декабрь 2019</li>
-          <li className="flats__deadline-item">2 корпус - март 2020</li>
-          <li className="flats__deadline-item">1 корпус - декабрь 2019</li>
-          <li className="flats__deadline-item">2 корпус - март 2020</li>
-          <li className="flats__deadline-item">1 корпус - декабрь 2019</li>
-          <li className="flats__deadline-item">2 корпус - март 2020</li>
-          <li className="flats__deadline-item">1 корпус - декабрь 2019</li>
-          <li className="flats__deadline-item">2 корпус - март 2020</li>
-        </ul>
-      </div>
+      
     </div>
   </section>
 

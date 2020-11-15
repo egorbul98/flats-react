@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Chart from '../components/Chart';
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
 import ComplexDocuments from '../components/Complex/ComplexDocuments';
@@ -13,29 +12,50 @@ import HeaderDeatailPage from '../components/HeaderDeatailPage';
 import VideoSlider from '../components/VideoSlider';
 import ComplexMap from '../components/Complex/ComplexMap';
 import Reviews from '../components/Reviews';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDetailComplex } from '../redux/actions/complexesActions';
+import { AppStateType } from '../redux/reducers/rootReducer';
+import ComplexSliderDetail from '../components/Complex/ComplexSliderDetail';
 
 type PropsTypes = {
 
 }
 
 const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
-  const param:any = useParams();
+  const { id }: any = useParams();
+
+  React.useEffect(() => {
+    dispatch(fetchDetailComplex(id));
+  }, [id]);
+
+  const dispatch = useDispatch();
+  
+  const { complex } = useSelector(({complexes }:AppStateType) => {
+    return {
+      complex: complexes.detailComplex
+    }
+  })
+  if (!complex) {
+    return null
+  }
   
   return (
   
-      <div className="detail-page">
-        <HeaderDeatailPage/>
+    <div className="detail-page">
+      
+        <HeaderDeatailPage />
+        <ComplexSliderDetail {...complex}/>
+        
         <ComplexFlatsInfo/>
-        <VideoSlider />
+        {/* <VideoSlider /> */}
         
         <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на
           экскурсию</button>
     
-        <ComplexCharacteristics />
-        <ComplexRating />
+        {/* <ComplexCharacteristics /> */}
+      <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
         
         <ComplexAuthorDescription/>
-        <Chart />
         
         <ComplexDocuments/>
         <CreditCalculator />

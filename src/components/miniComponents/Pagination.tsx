@@ -1,4 +1,4 @@
-import React, {Children} from 'react';
+import React from 'react';
 import classNames from 'classnames';
 type PropsType = {
     onClickItem: (currentPage:number) => void,

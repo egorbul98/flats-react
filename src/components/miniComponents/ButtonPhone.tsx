@@ -1,4 +1,4 @@
-import React, {Children} from 'react';
+import React from 'react';
 
 type PropsType = {
     children?: React.ReactChild | React.ReactChildren

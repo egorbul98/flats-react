@@ -1,8 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import classnames from 'classnames';
 import {Link} from 'react-router-dom';
-import { Placemark, Map, YMaps } from 'react-yandex-maps';
 
 import { ComplexeType } from '../../mainTypes';
 import Select from '../miniComponents/Select';
@@ -12,8 +10,6 @@ import iconBuild from '../../assets/img/slide-build.svg';
 import iconDevLogo from '../../assets/img/developer_logo.svg';
 import iconMetro from '../../assets/img/metro-el.svg';
 import iconPlaceholderRed from '../../assets/img/placeholder-red.svg';
-import imgSliderPrev from '../../assets/img/catalog-slider-prev.svg';
-import imgSliderNext from '../../assets/img/catalog-slider-next.svg';
 import {ReactComponent as SvgFeatureSale} from '../../assets/img/icon-feature_sale.svg';
 import {ReactComponent as SvgFeatureDeal} from '../../assets/img/icon-feature_deal.svg';
 import {ReactComponent as SvgFeatureGift} from '../../assets/img/icon-feature_gift.svg';
@@ -22,33 +18,12 @@ import {ReactComponent as SvgFeatureBus} from '../../assets/img/icon-bus.svg';
 
 import ButtonPhone from '../miniComponents/ButtonPhone';
 import IconAdvantage from '../miniComponents/IconAdvantage';
-import { getFlatsGroupByRooms, getMinMaxValuesFlats } from '../../handlers/complexesHandlers';
+import { getFlatsGroupByRooms } from '../../handlers/complexesHandlers';
 import ComplexMap from '../Complex/ComplexMap';
+import SlickArrowLeft from '../Slider/SlickArrowLeft';
+import SlickArrowRight from '../Slider/SlickArrowRight';
 
-const SlickArrowLeft:React.FC<any> = ({ currentSlide, slideCount, ...props }) => (
-    <button 
-        {...props} 
-        id="prev" 
-        type="button" 
-        className={classnames("catalog-complex__slider-prev-btn", {"disabled" : currentSlide === 0})}
-        aria-disabled={currentSlide === 0 ? true : false}
-    >
-        <img src={imgSliderPrev} alt="img"/>
-    </button>
-  );
-const SlickArrowRight:React.FC<any> = ({ currentSlide, slideCount, ...props }) => (
-      <button 
-        {...props}
-        id="next"   
-        type="button" 
-        className={classnames("catalog-complex__slider-next-btn", {"disabled" : currentSlide === slideCount - 1 })}
-        aria-disabled={currentSlide === slideCount - 1 ? true : false}
-        
-      >
-        <img src={imgSliderNext} alt="img" />
-      </button>
-);
-  
+
 type PropsTypeSlide = {
     srcImage: string
 }

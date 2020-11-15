@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import iconArrowLeft from './../../assets/img/arrow-left-grey.svg';
 import { ComplexeType } from '../../mainTypes';
 import ComplexCart from '../CatalogComplexes/ComplexCart';

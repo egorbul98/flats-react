@@ -1,5 +1,5 @@
-import { ComplexeType } from "../../mainTypes";
-import { SET_COMPLEXES, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType } from "../actions/complexesActions";
+import { ComplexeExtendedDetailType, ComplexeType } from "../../mainTypes";
+import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType} from "../actions/complexesActions";
 
 const initialState = {
   items: [] as Array<ComplexeType>,
@@ -7,16 +7,20 @@ const initialState = {
   perPage: 4 as number,
   totalCount: 0 as number,
   isLoading: false as boolean,
-  errorText: '' as string
+  errorText: '' as string,
+  detailComplex: null as ComplexeType & ComplexeExtendedDetailType | null //данные для страницы detailPage
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {
     case SET_COMPLEXES:
       return { ...state, items: action.payload };
+    
+    case SET_DETAIL_COMPLEX:
+      return { ...state, detailComplex: action.payload };
     
     case SORT_COMPLEXES:
       let newState = { ...state, items:[...state.items]};

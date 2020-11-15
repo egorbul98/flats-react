@@ -1,8 +1,8 @@
 import Axios from "axios";
 import { getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
-import { ComplexeType, ItemSelectType } from "../../mainTypes";
+import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType } from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
-import { FilterItemDiapasonType, FilterItemType, setSortBy } from "./filterActions";
+import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 
 export const SET_COMPLEXES = "SET_COMPLEXES";
 export const SET_LOADING = "SET_LOADING";
@@ -10,6 +10,19 @@ export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SORT_COMPLEXES = "SORT_COMPLEXES";
 export const SET_ERROR_COMPLEXES = "SET_ERROR_COMPLEXES";
+export const SET_DETAIL_COMPLEX = "SET_DETAIL_COMPLEX";
+
+export type SetDetailComplexType = {
+  type: typeof SET_DETAIL_COMPLEX,
+  payload: ComplexeType & ComplexeExtendedDetailType
+}
+
+export const setDetailComplex = (complex: ComplexeType & ComplexeExtendedDetailType): SetDetailComplexType => {
+  return {
+    type: SET_DETAIL_COMPLEX, 
+    payload: complex
+  }
+}
 
 export type ErrorComplexesType = {
   type: typeof SET_ERROR_COMPLEXES,
@@ -189,6 +202,25 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
       console.error(e);
       dispatch(setErrorText("Произошла ошибка при загрузке жилых комплексов :("));
     })
+}
+
+export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
+  
+  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=flats&id=${id}`)
+    .then(({data})=> {
+      if (!data[0]) {
+        console.log("НЕТ ТАКОГО");
+      } else {
+        data[0].complexDetail = data[0].complexDetail[0];
+        
+      dispatch(setDetailComplex(data[0]));
+      }
+      
+    }).catch((e) => {
+      console.error(e);
+      
+    })
+  
 }
 
 function checkInArray(arrayIncludes:Array<string | number>, arr:any, nameProp:string) {//Проверяет есть ли в массиве arrayIncludes какие-либо элементы из массива arr. Проверка по свойству nameProp элементов массива arr
