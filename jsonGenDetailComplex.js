@@ -13,28 +13,26 @@
     authorDesc: {
       author: '{{firstName()}} {{surname()}}',
       smallDesc: '{{lorem(1, "paragraphs")}}',
-      desc: [
-        '{{repeat(3,5)}}',
-        {
-          tag: function (tags) {
-            var values = ["img", "header", "p"];
-            return values[tags.integer(0, values.length - 1)];
-          },
-
-          value: function (tags) {
-            var value;
-            if (this.tag == "img") {
-              value = "/img/complexesImages/img-" + tags.integer(1, 8) + ".jpg"
-            } else if (this.tag == "header") {
-              value = "sad";
-            } else {
-              value = tags.lorem(tags.integer(1, 3), "paragraphs");
-            }
-
-            return value;
-          }
+      desc: [{
+          tag: "header",
+        value: '{{lorem(6, "words")}}'
+        },{
+          tag: "p",
+          value: '{{lorem(3, "paragraphs")}}'
+        },{
+          tag: "header",
+          value: '{{lorem(6, "words")}}'
+        },{
+          tag: "img",
+          value: "/img/complexesImages/img-" + '{{integer(1, 8)}}' + ".jpg"
+        },{
+          tag: "header",
+          value: '{{lorem(6, "words")}}'
+        },{
+          tag: "p",
+          value: '{{lorem(2, "paragraphs")}}'
         }
-      ]
+      ],
     },
     reviews: {
       aboutComplex: [

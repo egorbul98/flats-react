@@ -10,6 +10,44 @@
   visibility: visible;
   opacity: 1;
   transition: opacity 0.3s ;
+
+  input, textarea{
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 13px;
+    outline: 0;
+    border: 1px solid #929292;
+  }
+
+  
+  
+  &__wrapper {
+    position: absolute;
+    max-width: 802px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 18px 0 rgba(0,0,0,.45);
+    transition: top 0.25s, opacity 0.25s;
+    opacity: 0;
+  }
+
+  &.active{
+    opacity: 1;
+    visibility: visible;
+
+    .modal__wrapper{
+      top: 42%;
+      opacity: 1;
+    }
+  }
+
+ 
 }
 
 .modal-close-btn, .modal__header-btn-close{
@@ -47,12 +85,7 @@
   }
 }
 
-.modal__wrapper {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+
 
 .modal__close-btn, .modal__header-btn-close {
   border: none;

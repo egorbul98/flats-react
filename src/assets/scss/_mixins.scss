@@ -1,18 +1,19 @@
 @mixin container() {
-  width: 360px;
+  max-width: 360px; width:100%;
   margin: 0 auto;
 
   @media(min-width: $tablet-width) {
-    width: $tablet-width;
+    max-width: $tablet-width;
   }
 
   @media(min-width: $desktop-width) {
-    width: $desktop-width;
+    max-width: $desktop-width;
   }
 }
 
 .pink__btn {
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   min-height: 50px;
   border-radius: 25px;
   font-size: 15px;
@@ -40,7 +41,7 @@
   }
 
   @media(min-width: $desktop-width) {
-    width: 360px;
+    max-width: 360px; width:100%;
     min-height: 70px;
     border-radius: 35px;
     font-size: 18px;
@@ -72,7 +73,7 @@
   }
 
   @media(min-width: $desktop-width) {
-    width: 360px;
+    max-width: 360px; width:100%;
     min-height: 70px;
     border-radius: 35px;
     font-size: 18px;

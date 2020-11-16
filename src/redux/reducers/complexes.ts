@@ -1,5 +1,6 @@
-import { ComplexeExtendedDetailType, ComplexeType } from "../../mainTypes";
-import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType} from "../actions/complexesActions";
+import { ComplexeExtendedDetailType, ComplexeType, ReviewType } from "../../mainTypes";
+import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ADD_REVIEW, SET_REVIEWS} from "../actions/complexesActions";
+import { ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType, AddReviewType, SetReviewsType} from "../actions/complexesActions";
 
 const initialState = {
   items: [] as Array<ComplexeType>,
@@ -8,11 +9,12 @@ const initialState = {
   totalCount: 0 as number,
   isLoading: false as boolean,
   errorText: '' as string,
-  detailComplex: null as ComplexeType & ComplexeExtendedDetailType | null //данные для страницы detailPage
+  reviewsComplex: [] as Array<ReviewType>,
+  detailComplex: null as ComplexeType & ComplexeExtendedDetailType | null, //данные для страницы detailPage,
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType | AddReviewType | SetReviewsType;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {
@@ -63,6 +65,11 @@ export const ComplexesReducer = (state = initialState, action:ActionsTypes):Stat
     
     case SET_ERROR_COMPLEXES:
       return {...state, errorText: action.payload};
+    
+    case SET_REVIEWS:
+      return {...state, reviewsComplex: action.payload};
+    case ADD_REVIEW:
+      return { ...state, reviewsComplex: [...state.reviewsComplex, action.payload]};
   
     default:
       return state;

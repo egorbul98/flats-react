@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
@@ -11,11 +11,14 @@ import Footer from '../components/Footer';
 import HeaderDeatailPage from '../components/HeaderDeatailPage';
 import VideoSlider from '../components/VideoSlider';
 import ComplexMap from '../components/Complex/ComplexMap';
-import Reviews from '../components/Reviews';
+import Reviews from '../components/Reviews/Reviews';
+
+
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailComplex } from '../redux/actions/complexesActions';
 import { AppStateType } from '../redux/reducers/rootReducer';
 import ComplexSliderDetail from '../components/Complex/ComplexSliderDetail';
+import Modal from '../components/Modal';
 
 type PropsTypes = {
 
@@ -23,54 +26,57 @@ type PropsTypes = {
 
 const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
   const { id }: any = useParams();
-
+  const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchDetailComplex(id));
-  }, [id]);
+  }, [id, dispatch]);
 
-  const dispatch = useDispatch();
-  
-  const { complex } = useSelector(({complexes }:AppStateType) => {
+  const { complex } = useSelector(({complexes}:AppStateType) => {
     return {
       complex: complexes.detailComplex
     }
   })
+  
   if (!complex) {
     return null
   }
-  
+
+ console.log("render");
+ 
+
   return (
   
     <div className="detail-page">
       
-        <HeaderDeatailPage />
+        {/* <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
-        <ComplexFlatsInfo/>
+        <ComplexFlatsInfo/> */}
         {/* <VideoSlider /> */}
         
         <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на
           экскурсию</button>
     
         {/* <ComplexCharacteristics /> */}
-      <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
-        
-        <ComplexAuthorDescription/>
+      {/* <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
+       
+      <ComplexAuthorDescription descriptionObj={ complex.complexDetail?.authorDesc}/>
         
         <ComplexDocuments/>
-        <CreditCalculator />
+        <CreditCalculator /> */}
         
       <section className="route">
           <div className="route__wrapper">
-            <h2 className="route__title">Карта проезда к ЖК «Северные высоты»</h2>
+          <h2 className="route__title">Карта проезда к { complex.name }</h2>
           </div>
           <div className="route__map" id="map">
-                <ComplexMap coords={ [57.87214, 30.45]}/>
+                <ComplexMap coords={complex.coords}/>
           </div>
       </section>
         
+      
 
-    <Reviews/>
+      <Reviews complexId={complex.id}  />
         
     <section className="analog">
       <div className="analog__wrapper">
@@ -83,7 +89,8 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     </section>
 
   
-
+        
+      
   <section className="mortgage mortgage__modal modal modal--closed">
     <div className="mortgage__wrapper modal__wrapper">
       <header className="modal__header">

@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
-import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType } from "../../mainTypes";
+import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType, ReviewType } from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
 import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 
@@ -11,7 +11,32 @@ export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SORT_COMPLEXES = "SORT_COMPLEXES";
 export const SET_ERROR_COMPLEXES = "SET_ERROR_COMPLEXES";
 export const SET_DETAIL_COMPLEX = "SET_DETAIL_COMPLEX";
+export const ADD_REVIEW = "ADD_REVIEW";
+export const SET_REVIEWS = "SET_REVIEWS";
 
+export type SetReviewsType = {
+  type: typeof SET_REVIEWS,
+  payload: Array<ReviewType>
+}
+
+export const setReviews = (reviews:Array<ReviewType>): SetReviewsType => {
+  return {
+    type: SET_REVIEWS, 
+    payload: reviews
+  }
+}
+
+export type AddReviewType = {
+  type: typeof ADD_REVIEW,
+  payload: ReviewType
+}
+
+export const addReview = (review:ReviewType): AddReviewType => {
+  return {
+    type: ADD_REVIEW, 
+    payload: review
+  }
+}
 export type SetDetailComplexType = {
   type: typeof SET_DETAIL_COMPLEX,
   payload: ComplexeType & ComplexeExtendedDetailType
@@ -206,7 +231,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
 
 export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
   
-  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=flats&id=${id}`)
+  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=reviews&_embed=flats&id=${id}`)
     .then(({data})=> {
       if (!data[0]) {
         console.log("НЕТ ТАКОГО");
@@ -214,6 +239,7 @@ export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
         data[0].complexDetail = data[0].complexDetail[0];
         
       dispatch(setDetailComplex(data[0]));
+      dispatch(setReviews(data[0].reviews));
       }
       
     }).catch((e) => {
@@ -222,6 +248,18 @@ export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
     })
   
 }
+
+export const addComplexReview = (review:{complexId:number, date:string, name:string, text:string, about:string}) => (dispatch: any): void => {
+  
+  Axios.post(`http://localhost:3004/reviews/`, review).then(({data}) => {
+    dispatch(addReview(data));
+  })
+  
+}
+
+
+
+
 
 function checkInArray(arrayIncludes:Array<string | number>, arr:any, nameProp:string) {//Проверяет есть ли в массиве arrayIncludes какие-либо элементы из массива arr. Проверка по свойству nameProp элементов массива arr
  

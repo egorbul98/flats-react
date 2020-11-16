@@ -96,7 +96,7 @@
 }
 @media(max-width: $tablet-width) {
   .credit__wrapper {
-    max-width: 360px;
+    max-width: 360px; width:100%;
   }
   .pink__btn{
     max-width: 320px;

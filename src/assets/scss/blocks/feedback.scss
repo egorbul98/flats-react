@@ -67,10 +67,7 @@
   margin-bottom: 20px;
   transition: all 0.3s;
   margin-top: 10px;
-  &::after {
-    transition: all 0.3s;
-  }
-
+  text-decoration: none;
   &:hover{
     text-decoration: none;
   }

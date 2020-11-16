@@ -216,7 +216,93 @@
     margin-right: 29px;
   }
 }
+.rating__list-figure {
 
+  &--kids {
+
+    svg {
+      width: 64px;
+      height: 46px;
+    }
+
+    .rating__value{
+      background-color: #e94646;
+    }
+    .rating__list-border{
+      border-color: #e94646;
+    }
+  }
+
+  &--infrastructure {
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+
+    .rating__value{
+      background-color: #ff833d;
+    }
+    .rating__list-border{
+      border-color:#ff833d;
+    }
+  }
+
+  &--district {
+    svg {
+      width: 57px;
+      height: 57px;
+    }
+
+    .rating__value{
+      background-color: #86d3ff;
+    }
+    .rating__list-border{
+      border-color:#86d3ff;
+    }
+  }
+
+  &--safety {
+    svg {
+      width: 39px;
+      height: 51px;
+    }
+
+    .rating__value{
+      background-color: #66cf6a;
+    }
+    .rating__list-border{
+      border-color:#66cf6a;
+    }
+  }
+
+  &--transport {
+    svg {
+      width: 62px;
+      height: 41px;
+    }
+
+    .rating__value{
+      background-color: #6677cf;
+    }
+    .rating__list-border{
+      border-color:#6677cf;
+    }
+  }
+  
+  &--house {
+    svg {
+      width: 55px;
+      height: 54px;
+    }
+
+    .rating__value{
+      background-color: #c368da;
+    }
+    .rating__list-border{
+      border-color:#c368da;
+    }
+  }
+}
 @media (min-width: $desktop-width) {
   .rating__wrapper {
     padding: 0 75px;
@@ -263,93 +349,7 @@
     }
   }
 
-  .rating__list-figure {
-
-    &--kids {
-
-      svg {
-        width: 64px;
-        height: 46px;
-      }
-
-      .rating__value{
-        background-color: #e94646;
-      }
-      .rating__list-border{
-        border-color: #e94646;
-      }
-    }
-
-    &--infrastructure {
-      svg {
-        width: 56px;
-        height: 56px;
-      }
-
-      .rating__value{
-        background-color: #ff833d;
-      }
-      .rating__list-border{
-        border-color:#ff833d;
-      }
-    }
-
-    &--district {
-      svg {
-        width: 57px;
-        height: 57px;
-      }
-
-      .rating__value{
-        background-color: #86d3ff;
-      }
-      .rating__list-border{
-        border-color:#86d3ff;
-      }
-    }
-
-    &--safety {
-      svg {
-        width: 39px;
-        height: 51px;
-      }
-
-      .rating__value{
-        background-color: #66cf6a;
-      }
-      .rating__list-border{
-        border-color:#66cf6a;
-      }
-    }
-
-    &--transport {
-      svg {
-        width: 62px;
-        height: 41px;
-      }
-
-      .rating__value{
-        background-color: #6677cf;
-      }
-      .rating__list-border{
-        border-color:#6677cf;
-      }
-    }
-    
-    &--house {
-      svg {
-        width: 55px;
-        height: 54px;
-      }
-
-      .rating__value{
-        background-color: #c368da;
-      }
-      .rating__list-border{
-        border-color:#c368da;
-      }
-    }
-  }
+  
 
   .rating__value {
     width: 75px;
