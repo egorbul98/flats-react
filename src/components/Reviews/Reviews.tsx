@@ -31,8 +31,8 @@ const Reviews: React.FC<PropsTypes> = ({ complexId }) => {
     setOpenModalReview(false)
   }
 
-  const reviewsAboutComplex = React.useMemo(() => complexReviews?.filter((item) => item.about === "complex").sort((a, b)=>a.date>b.date ? -1 : 1), [complexReviews], [complexReviews]);
-  const reviewsAboutDev = React.useMemo(() => complexReviews?.filter((item) => item.about === "developer").sort((a, b)=>a.date>b.date ? -1 : 1), [complexReviews]);
+  const reviewsAboutComplex = React.useMemo(() => complexReviews?.filter((item) => item.about === "complex").sort((a, b)=>a.id>b.id ? -1 : 1), [complexReviews]);
+  const reviewsAboutDev = React.useMemo(() => complexReviews?.filter((item) => item.about === "developer").sort((a, b)=>a.id>b.id ? -1 : 1), [complexReviews]);
 
   React.useEffect(() => {
     activeReviewsType === "complex"

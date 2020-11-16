@@ -10,6 +10,9 @@ const limit = 140;//лимит 140 символов
 const Reviews : React.FC < PropsTypes > = ({name, date, text}) => {
   const [readMore, setReadMore] = React.useState(text.length > 140 ? false: true);
 
+  React.useEffect(() => {
+    setReadMore(text.length > 140 ? false : true);
+  }, [text]);
   const onReadMore = (e:any) => {
     setReadMore(true);
   }
