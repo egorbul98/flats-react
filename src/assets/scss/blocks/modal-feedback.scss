@@ -1,19 +1,5 @@
 .modal-feedback {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s;
-  padding: 0 15px;
 
-  &--active {
-    opacity: 1;
-    visibility: visible;
-  }
 
   &__wrapper {
     position: absolute;

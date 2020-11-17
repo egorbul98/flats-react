@@ -6,9 +6,10 @@ type PropsType = {
   open?: boolean,
   children?: React.ReactChildren | React.ReactChild,
   className?: string,
+  classNameInnerWrapper?: string,
   title?: string,
 }
-const Modal: React.FC<PropsType> = ({ onClose, children, open, className, title }) => {
+const Modal: React.FC<PropsType> = ({ onClose, children, open, className, title, classNameInnerWrapper }) => {
   React.useEffect(() => {
     document.body.addEventListener("click", onHandleClick, true);
     return document.body.removeEventListener("click",onHandleClick);
@@ -22,7 +23,7 @@ const Modal: React.FC<PropsType> = ({ onClose, children, open, className, title 
 
   return (
     <section className={classNames("modal", className, {"active":open}) } >
-      <div className="modal__wrapper">
+      <div className={classNames("modal__wrapper", classNameInnerWrapper)}>
         
       <div className="modal__title-box">
           <h3 className="modal__title">{title}</h3>

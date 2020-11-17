@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
 import AdviceBoxSlider from '../components/AdviceBoxSlider';
 import CatalogComplexes from '../components/CatalogComplexes/CatalogComplexes';
-import Chart from '../components/Chart';
-import CreditCalculator from '../components/CreditCalculator';
 import FilterBox from '../components/FilterBox/FilterBox';
 import Footer from '../components/Footer';
 import Header from '../components/Header';

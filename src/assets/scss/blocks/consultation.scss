@@ -26,8 +26,22 @@
 }
 
 .modal__closeBtn {
-  display: none;
   cursor: pointer;
+
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    content: "";
+    background-image: url("../../img/close__btn.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+
 }
 
 .modal__btn--consultation {
@@ -60,29 +74,13 @@
     margin-top: 20px;
   }
 
-  .modal__title-box {
-    position: relative;
-  }
+  
 
   .consultation .modal__title {
     color: $primary-white;
   }
 
-  .modal__closeBtn {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    width: 20px;
-    height: 20px;
-    border: none;
-    background-color: transparent;
-    content: "";
-    background-image: url("../../img/close__btn.png");
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    transform: translateY(-50%);
-  }
+ 
 }
 
 @media(min-width: $desktop-width) {

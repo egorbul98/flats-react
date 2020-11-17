@@ -8,9 +8,13 @@
   // width: 100%;
 }
 
-.mortgage__wrapper {
+.modal.active .mortgage__wrapper {
   padding-bottom: 36px;
-
+  transform: translate(-50%, 0);
+  top: 5%;
+  @media(max-width: 768px){
+    
+  }
   .modal__info-phone {
     font-size: 11px;
   }
@@ -21,21 +25,17 @@
 
   .modal__btn {
     display: block;
-    margin: 0 auto;
+    margin: 30px auto 0;
   }
 
-  .modal__title-box {
-    background-color: transparent;
-    height: 60px;
-    display: block;
-    padding: 0;
-
-    .modal__title {
-      color: black;
-    }
-  }
+  
 }
 
+.mortgage__form{
+  @media(max-width: 1359px){
+    margin-top: 20px;
+  }
+}
 .mortgage__title-img {
   position: relative;
 
@@ -155,9 +155,9 @@
   }
 }
 
-.mortgage__payment-input,
-.mortgage__work-input,
-.mortgage__income-input {
+input.mortgage__payment-input,
+input.mortgage__work-input,
+input.mortgage__income-input {
   width: 100%;
   height: 30px;
   padding: 0 10px;
@@ -174,7 +174,8 @@
 
 }
 
-.mortgage__range {
+input.mortgage__range {
+  padding: 0;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -245,9 +246,9 @@
 
 }
 
-.mortgage__payment-input::placeholder,
-.mortgage__work-input::placeholder,
-.mortgage__income-input::placeholder,
+input.mortgage__payment-input::placeholder,
+input.mortgage__work-input::placeholder,
+input.mortgage__income-input::placeholder,
 .mortgage-field__val {
   font-size: 13px;
   font-weight: 600;
@@ -257,6 +258,9 @@
 
 .mortgage-field__val {
   margin-left: 6px;
+  width: 50px;
+  flex-shrink: 0;
+  text-align: right;
 }
 
 .mortgage-chance-wrapper {
@@ -472,35 +476,31 @@
   // }
 
 }
+.modal__title-box {
+  height: 60px;
+  background-color: $primary-pink;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 22px 20px;
 
+  .modal__title {
+    color: #fff;
+  }
+}
 @media (min-width: $desktop-width) {
   .mortgage__wrapper.modal__wrapper {
-    width: 1074px;
-    height: 784px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+    max-width: 1074px;
+    height: auto;
     padding: 12px;
+    padding-bottom: 30px;
     border-radius: 4px;
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.45);
 
     .modal__header {
       display: none;
     }
 
-    .modal__title-box {
-      height: 60px;
-      background-color: $primary-pink;
-      justify-content: space-between;
-      display: flex;
-      align-items: center;
-      padding: 22px 20px;
-
-      .modal__title {
-        color: #fff;
-      }
-    }
+    
   }
 
   .mortgage__modal.modal {
@@ -619,9 +619,9 @@
     margin-bottom: 10px;
   }
 
-  .mortgage__income-input,
-  .mortgage__payment-input,
-  .mortgage__work-input {
+  input.mortgage__income-input,
+  input.mortgage__payment-input,
+  input.mortgage__work-input {
     font-size: 18px;
     height: 40px;
   }
@@ -640,7 +640,7 @@
     bottom: -20px;
   }
 
-  .mortgage__range {
+  input.mortgage__range {
     &::-webkit-slider-thumb {
       height: 44px;
       margin-top: -42px;
@@ -667,8 +667,5 @@
   }
 }
 @media (max-height: 714px){
-  .mortgage__wrapper.modal__wrapper{
-    transform: translate(-50%, 0);
-    top: 0;
-  }
+  
 }
