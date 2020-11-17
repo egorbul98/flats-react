@@ -52,8 +52,8 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
     
     const settingsSlider = { //настройки слайдера
         arrows: true,
-        prevArrow: <SlickArrowLeft className="catalog-complex__slider-prev-btn"/>,
-        nextArrow: <SlickArrowRight />,
+        prevArrow: <SlickArrowLeft classNamesBtn="catalog-complex__slider-prev-btn"/>,
+        nextArrow: <SlickArrowRight classNamesBtn="catalog-complex__slider-next-btn"/>,
         afterChange: (currentSlide:number) => {
             setCurrentSlide(currentSlide+1);
         }

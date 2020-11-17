@@ -1,5 +1,10 @@
 .catalog-complex-box {
   margin-top: 30px;
+  margin-bottom: 70px;
+
+  @media(max-width: 768px){
+    margin-bottom: 30px;
+  }
 }
 
 .catalog-container-wrap {

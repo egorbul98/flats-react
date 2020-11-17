@@ -4,12 +4,16 @@ import classNames from 'classnames';
 
 
 import imgSliderPrev from '../../assets/img/catalog-slider-prev.svg';
-const SlickArrowLeft:React.FC<CustomArrowProps> = ({ currentSlide, slideCount, ...props }) => (
+type PropExtendType = {
+  classNamesBtn?:string
+}
+
+const SlickArrowLeft:React.FC<CustomArrowProps & PropExtendType> = ({ currentSlide, slideCount, classNamesBtn, ...props }) => (
   <button 
       {...props} 
       id="prev" 
       type="button" 
-      className={classNames("catalog-complex__slider-prev-btn", {"disabled" : currentSlide === 0})}
+      className={classNames(classNamesBtn, {"disabled" : currentSlide === 0})}
       aria-disabled={currentSlide === 0 ? true : false}
   >
       <img src={imgSliderPrev} alt="img"/>

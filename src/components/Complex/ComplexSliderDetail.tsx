@@ -20,8 +20,8 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({srcImage}) => {
 const ComplexSliderDetail : React.FC < ComplexeType | ComplexeType & ComplexeExtendedDetailType> = ({...complex}) => {
   const settingsSlider = { //настройки слайдера
     arrows: true,
-    prevArrow: <SlickArrowLeft className="estate__slider-prevBtn slick-arrow"/>,
-    nextArrow: <SlickArrowRight className="estate__slider-nextBtn slick-arrow"/>,
+    prevArrow: <SlickArrowLeft classNamesBtn="catalog-complex__slider-prev-btn"/>,
+    nextArrow: <SlickArrowRight classNamesBtn="catalog-complex__slider-next-btn"/>,
   }
   return (
     <section className="estate">

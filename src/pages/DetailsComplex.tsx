@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
@@ -19,11 +19,15 @@ import { fetchDetailComplex } from '../redux/actions/complexesActions';
 import { AppStateType } from '../redux/reducers/rootReducer';
 import ComplexSliderDetail from '../components/Complex/ComplexSliderDetail';
 import Modal from '../components/Modal';
+import AdviceBoxSlider from '../components/AdviceBoxSlider';
+import { ComplexLikeType } from '../mainTypes';
 
 type PropsTypes = {
 
 }
-
+const onScrollTop = () => {
+  window.scrollTo(0, 0);
+}
 const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
   const { id }: any = useParams();
   const dispatch = useDispatch();
@@ -31,6 +35,11 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     dispatch(fetchDetailComplex(id));
   }, [id, dispatch]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  
   const { complex } = useSelector(({complexes}:AppStateType) => {
     return {
       complex: complexes.detailComplex
@@ -48,22 +57,22 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
   
     <div className="detail-page">
       
-        {/* <HeaderDeatailPage />
+        <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
-        <ComplexFlatsInfo/> */}
+        <ComplexFlatsInfo/> 
         {/* <VideoSlider /> */}
         
         <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на
           экскурсию</button>
     
-        {/* <ComplexCharacteristics /> */}
-      {/* <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
+        {/* <ComplexCharacteristics />  */}
+      <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
        
       <ComplexAuthorDescription descriptionObj={ complex.complexDetail?.authorDesc}/>
         
         <ComplexDocuments/>
-        <CreditCalculator /> */}
+        <CreditCalculator />
         
       <section className="route">
           <div className="route__wrapper">
@@ -78,18 +87,17 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
 
       <Reviews complexId={complex.id}  />
         
-    <section className="analog">
       <div className="analog__wrapper">
         <h2 className="analog__title">Подобные ЖК</h2>
-        <ul className="analog__list" id="analogList">
-         
-        </ul>
-        <a href="catalog.html" className="analog__btn light__btn">Смотреть все предложения</a>
       </div>
-    </section>
-
-  
-        
+      <AdviceBoxSlider className="analog">
+          {complex.complexDetail && complex.complexDetail?.complexLike.map((item, index) => {
+            return <SlideItem key={ index + "_analog"} item={ item } />
+          })}
+        </AdviceBoxSlider>
+      <Link to="/" className="analog__btn light__btn" onClick={onScrollTop}>Смотреть все предложения</Link>
+      
+      
       
   <section className="mortgage mortgage__modal modal modal--closed">
     <div className="mortgage__wrapper modal__wrapper">
@@ -435,5 +443,29 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
    
   )
 }
+
+type PropsTypeSlide = {
+  item: ComplexLikeType
+}
+
+const SlideItem: React.FC<PropsTypeSlide> = React.memo(({ item }) => {
+  
+  return (
+    <Link to={`/complex/${item.id}`} onClick={onScrollTop}>
+      <div className="analog__item">
+        <div className="analog__item-image-wrap">
+          <img className="analog__item-image" src={item.imgSrc} alt="подобный ЖК" width="110" height="80" />
+          <h3 className="analog__item-title">{ item.name }</h3>
+        </div>
+        <div className="analog__item-box">
+          <address className="analog__item-address">
+            <p className="analog__item-metro">{item.metro}, {item.metroDistance} мин. пешком</p>
+            <p className="analog__item-street">{item.address}</p>
+          </address>
+        </div>
+      </div>
+    </Link>
+  )
+})
 
 export default DetailsComplex;

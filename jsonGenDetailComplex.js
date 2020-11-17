@@ -58,7 +58,12 @@
         id: "{{integer(1, 25)}}",
         name: '{{firstName()}}',
         address: 'Приморский район, Мебельная улица, 19к2',
-        imgSrc: "/img/complexesImages/img-{{integer(1, 8)}}.jpg"
+        imgSrc: "/img/complexesImages/img-{{integer(1, 8)}}.jpg",
+        "metro": function (tags) {
+          var values = ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники', 'Автово', 'Комендантский пр.', 'Василеостровская', 'Беговая', 'Озерки', 'Звенигородская'];
+          return values[tags.integer(0, values.length - 1)];
+        },
+        "metroDistance": '{{integer(5, 32)}}',
       }
     ]
 

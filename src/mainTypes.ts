@@ -62,6 +62,7 @@ export type ReviewType = {
   text: string,
   date: string
 }
+export type ComplexLikeType = { id: number, name: string, address: string, imgSrc: string, metro: string, metroDistance: number }
 
 export type ComplexeCharacteristicType = {
   complexId: number,
@@ -71,7 +72,7 @@ export type ComplexeCharacteristicType = {
     aboutComplex: Array < ReviewType >,
     aboutDeveloper: Array < ReviewType >
   },
-  complexLike: Array < { id: number, name: string, address: string, imgSrc: string } >
+  complexLike: Array < ComplexLikeType >
 };
 
 type DeadlineItemType = {

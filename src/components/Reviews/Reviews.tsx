@@ -13,9 +13,9 @@ type PropsTypes = {
 }
 
 const Reviews: React.FC<PropsTypes> = ({ complexId }) => {
-  const { complexReviews } = useSelector(({complexes }:AppStateType) => {
+  const { complexReviews } = useSelector(({reviews }:AppStateType) => {
     return {
-      complexReviews: complexes.reviewsComplex
+      complexReviews: reviews.reviewsComplex
     }
   })
 
@@ -79,7 +79,7 @@ const Reviews: React.FC<PropsTypes> = ({ complexId }) => {
       </section>
   
       <Modal onClose={onCloseModal} open={openModalReview} title="Добавить отзыв" className={"modal-feedback feedback__modal"}>
-        <ReviewAdd complexId={complexId} about={ activeReviewsType }/>
+        <ReviewAdd complexId={complexId} about={activeReviewsType} onCloseModal={onCloseModal}/>
       </Modal>
     </>
     )

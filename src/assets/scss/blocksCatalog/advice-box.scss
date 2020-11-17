@@ -1,6 +1,4 @@
 .advice-box {
-  margin-top: 78px;
-
   &__title {
     font-size: 22px;
     font-weight: 700;
@@ -11,10 +9,9 @@
 .advice-slider {
   margin: 0 -16px;
 
-  &__item {
+  .slick-slide {
     width: 384px;
-    // height: 216px;
-    margin: 0 16px;
+    padding: 0 16px;
   }
 
   &__item-video {
@@ -73,7 +70,6 @@
 @media (max-width:$laptop-width) {
   .advice-slider {
     padding: 0 10px;
-   
   
     &__item-desc{
       width: 240px;
@@ -96,25 +92,17 @@
 @media (max-width:$tablet-width) {
   .advice-slider {
     padding: 0;
+    margin: 0;
     &__item-desc{
       width: 210px;
       font-size: 12px;
       line-height: 16px;
     }
 
-    &__item {
-      max-width: 480px;
+    .slick-slide {
       width: 100%;
-      margin: auto;
+      padding: 0;
     }
   }
 
-  
-}
-@media (max-width:$mobile-large-width) {
-  .advice-box{
-    margin-top: 30px;
-  }
-
-  
 }

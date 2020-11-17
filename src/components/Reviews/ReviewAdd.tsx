@@ -3,22 +3,27 @@ import React, { useState } from 'react';
 import iconAvatar from '../../assets/img/icons/avatar.svg';
 import iconArrow from '../../assets/img/arrow__down-input-grey.svg';
 import { ReviewType } from '../../mainTypes';
-import { addComplexReview } from '../../redux/actions/complexesActions';
+
 import { useDispatch } from 'react-redux';
+import { addComplexReview } from '../../redux/actions/reviewsActions';
 
 type PropsTypes = {
   complexId:number,
-  about:string,
+  about: string,
+  onCloseModal: ()=>void
 }
-const ReviewAdd: React.FC<PropsTypes> = ({ complexId, about }) => {
+const ReviewAdd: React.FC<PropsTypes> = ({ complexId, about, onCloseModal }) => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const dispatch = useDispatch();
   const onAddReview = () => {
     const date = new Date();
-    const dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getHours() + ":" + date.getMinutes();
+    const dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + ", " + date.getHours() + ":" + date.getMinutes();
     if (name && text) {
-      dispatch(addComplexReview({complexId:+complexId, date:dateStr, name:name, text:text, about: about}))
+      dispatch(addComplexReview({ complexId: +complexId, date: dateStr, name: name, text: text, about: about }));
+      setText('');
+      setName('');
+      onCloseModal();
     }
   }
 
