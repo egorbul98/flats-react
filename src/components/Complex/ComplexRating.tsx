@@ -61,9 +61,9 @@ const ComplexRating : React.FC < PropsTypes > = ({complexName, rating}) => {
             <>
             <RatingItem title={"Для детей"} rating={rating.child} icon={<SvgIconChild />} className={"rating__list-figure--kids"} />
               <RatingItem title={"Инфраструктура"} rating={rating.infr} icon={ <SvgIconInfrastructure/>} className={"rating__list-figure--infrastructure"} dataAosDelay={200}/>
-              <RatingItem title={"district"} rating={rating.area} icon={ <SvgIconArea/> } className={"rating__list-figure--kids"} dataAosDelay={300}/>
+              <RatingItem title={"Район"} rating={rating.area} icon={ <SvgIconArea/> } className={"rating__list-figure--district"} dataAosDelay={300}/>
               <RatingItem title={"Безопасность"} rating={rating.safe} icon={ <SvgIconSafe/> } className={"rating__list-figure--safety"} dataAosDelay={400}/>
-              <RatingItem title={"transport"} rating={rating.transport} icon={ <SvgIconTransport/> } className={"rating__list-figure--kids"} dataAosDelay={500}/>
+              <RatingItem title={"Транспорт"} rating={rating.transport} icon={ <SvgIconTransport/> } className={"rating__list-figure--transport"} dataAosDelay={500}/>
               <RatingItem title={"Квартира/дом"} rating={rating.house} icon={ <SvgIconHouse/> } className={"rating__list-figure--house"} dataAosDelay={600}/>
             </>
           }
