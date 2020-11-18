@@ -34,24 +34,14 @@
         }
       ],
     },
-    reviews: {
-      aboutComplex: [
-        '{{repeat(3,5)}}',
-        {
-          name: '{{firstName()}} {{surname()}}',
-          text: '{{lorem(1, "paragraphs")}}',
-          date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
-        }
-      ],
-      aboutDeveloper: [
-        '{{repeat(3,5)}}',
-        {
-          name: '{{firstName()}} {{surname()}}',
-          text: '{{lorem(1, "paragraphs")}}',
-          date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
-        }
-      ]
-    },
+    documents:[
+      '{{repeat(3,5)}}',
+      {
+        name:"Документ #" + '{{index()}}',
+        weight: '{{integer(80, 132)}}' + "Кб",
+        src: "/documents/doc.pdf"
+      }
+    ],
     complexLike: [
       '{{repeat(3,5)}}',
       {

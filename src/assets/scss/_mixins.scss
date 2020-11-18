@@ -10,7 +10,39 @@
     max-width: $desktop-width;
   }
 }
+@mixin scrollbar(){
+  &::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+    height: 4px;
+    border-radius: 40px;
+    margin-right: 10px;
+  }
 
+  &::-webkit-scrollbar-track {
+    display: block;
+    background-color: $secondary-grey;
+    border-radius: 40px;
+    margin-right: 10px;
+    height: 16px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: block;
+    background-color: $primary-grey;
+    border-radius: 40px;
+    margin-right: 10px;
+    height: 16px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+}
 .pink__btn {
   max-width: 320px;
   width: 100%;

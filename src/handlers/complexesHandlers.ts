@@ -45,13 +45,14 @@ export function getFlatsGroupByRooms(flats: Array<FlatType> | null = null) { //
                 item.minCost = flat.cost < item.minCost ? flat.cost : item.minCost;
                 item.maxCost = flat.cost > item.maxCost ? flat.cost : item.maxCost;
                 item.minSquare = flat.square > item.minSquare ? flat.square : item.minSquare;
+                item.count++;
                 return true
             } else {
                 return false
             }
         })
         if (!found) {
-            flatsGroupByRooms.push({room: flat.room, minCost: flat.cost, maxCost: flat.cost, minSquare: flat.square});
+            flatsGroupByRooms.push({room: flat.room, minCost: flat.cost, maxCost: flat.cost, minSquare: flat.square, count: 1});
         }
     }
   }
@@ -63,3 +64,9 @@ export function getFlatsGroupByRooms(flats: Array<FlatType> | null = null) { //
   return flatsGroupByRooms;
 }
 
+
+export function transformBigNum(num:number) {
+  var n = num.toString();
+  var separator = " ";
+  return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + separator);
+}

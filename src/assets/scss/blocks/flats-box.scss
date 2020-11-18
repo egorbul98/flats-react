@@ -1,0 +1,160 @@
+.flats-box {
+  width: 100%;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, .35);
+  border-radius: 2px;
+  z-index: 10;
+  overflow: hidden;
+  display: none;
+
+  
+  
+  &.active{
+    display: flex;
+
+    @media(max-width: 768px){
+      display: block;
+    }
+  }
+}
+
+.flats-box-left {
+  width: 61%;
+  @media(max-width: 768px){
+    width: 100%;
+  }
+  .icon {
+    width: 60px;
+    @media(max-width: 768px){
+      display: none;
+    }
+    @media(max-width: 768px){
+      font-size: 12px;
+    }
+  }
+
+  .square {
+    width: 200px;
+    @media(max-width: 1359px){
+      padding-left: 5px;
+      font-size: 14px;
+    }
+    @media(max-width: 768px){
+      font-size: 12px;
+    }
+  }
+
+  .floor {
+    width: 100px;
+    @media(max-width: 1359px){
+      font-size: 14px;
+    }
+    @media(max-width: 768px){
+      font-size: 12px;
+    }
+  }
+
+  .type {
+    width: 200px;
+    @media(max-width: 1359px){
+      font-size: 14px;
+    }
+    @media(max-width: 768px){
+      font-size: 12px;
+    }
+  }
+
+  .cost {
+    width: 200px;
+    @media(max-width: 1359px){
+      padding-left: 5px;
+      font-size: 14px;
+    }
+    @media(max-width: 768px){
+      font-size: 12px;
+    }
+  }
+}
+.flats-box-img{
+  padding-top: 30px;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  max-height: 518px;
+  img{
+    width: 100%;
+    height: 100%;
+  }
+
+  @media(max-width: 1359px){
+    padding: 5px;
+    height: 185px;
+
+    img{
+      object-fit: contain;
+    }
+  }
+}
+
+.flats-box-right {
+  width: 39%;
+  @media(max-width: 768px){
+    width: 100%;
+
+    .plan{
+      padding-left: 10px;
+    }
+  }
+}
+
+.flats-box-list {
+  height: 550px;
+  overflow: auto;
+  @include scrollbar();
+
+  @media(max-width: 1359px){
+    height: 190px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 95px;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: background-color 0.2s;
+
+    &:hover,
+    &.active {
+      background-color: rgba(146, 146, 146, .1);
+    }
+
+    @media(max-width: 1359px){
+      font-size: 14px;
+      height: 90px;
+    }
+    @media(max-width: 768px){
+      height: 71px;
+    }
+  }
+  
+}
+
+.flats-box-head {
+  display: flex;
+  background-color: rgba(146, 146, 146, .1);
+  align-items: center;
+  height: 60px;
+@media(max-width: 768px){
+  height: 44px;
+}
+  &__item {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #000;
+    text-align: left;
+    @media(max-width: 1359px){
+      font-size: 14px;
+    }
+  }
+}

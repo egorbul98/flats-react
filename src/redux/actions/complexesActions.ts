@@ -216,10 +216,24 @@ export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
         console.log("НЕТ ТАКОГО");
       } else {
         data[0].complexDetail = data[0].complexDetail[0];
-        
-      dispatch(setDetailComplex(data[0]));
-      dispatch(setReviews(data[0].reviews));
+        data[0].flatsGroupByRooms = getFlatsGroupByRooms(data[0].flats); //
+        dispatch(setDetailComplex(data[0]));
+        dispatch(setReviews(data[0].reviews));
       }
+      
+    }).catch((e) => {
+      console.error(e);
+      
+    })
+}
+
+export const fetchComplexesByIds = (arrIds:Array<number>) => (dispatch: any): void => {
+  
+  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=flats&id=`)
+    .then(({data})=> {
+      if (!data[0]) {
+        console.log("НЕТ ТАКОГО");
+      } 
       
     }).catch((e) => {
       console.error(e);

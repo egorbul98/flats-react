@@ -5,7 +5,7 @@ import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescrip
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
 import DocumentsBlock from '../components/DocumentsBlock/DocumentsBlock';
 import ComplexRating from '../components/Complex/ComplexRating';
-import ComplexFlatsInfo from '../components/Complex/ComplexFlatsInfo';
+import ComplexFlatsInfo from '../components/Complex/ComplexFlatsInfo/ComplexFlatsInfo';
 import CreditCalculator from '../components/CreditCalculator/CreditCalculator';
 import Footer from '../components/Footer';
 import HeaderDeatailPage from '../components/HeaderDeatailPage';
@@ -50,9 +50,6 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     return null
   }
 
- console.log("render");
- 
-
   return (
     
     <div className="detail-page">
@@ -60,7 +57,8 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
         <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
-        <ComplexFlatsInfo/> 
+      {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> }
+      
         {/* <VideoSlider /> */}
         
         <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на экскурсию</button>

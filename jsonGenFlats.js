@@ -15,9 +15,8 @@
         var values = ["1-комнатная кв.", "2-комнатная кв.", "3-комнатная кв.", "Студия"];
         return values[tags.integer(0, values.length - 1)];
       },
-      "img": "img/analog_1.jpg",
-      "corpus": "{{integer(1, 4)}}"
-
+      "img": "/img/flatsFinish/{{integer(1, 6)}}.jpg",
+      "corpus": "{{integer(1, 4)}}",
   }
 ]
     

@@ -3,10 +3,10 @@ export type FlatType = {
   square: number,
   complexId: number,
   cost: number,
-  type: string,
+  finish: string,
   floor: number,
   num: number,
-  room: number,
+  room: string,
   img: string,
   corpus: number
 };
@@ -38,10 +38,11 @@ export type ComplexeType = {
   recomend: number,
 };
 export type FlatsGroupByRoomsType = {
-  room: number,
+  room: string,
   minCost: number,
   maxCost: number,
-  minSquare: number
+  minSquare: number,
+  count: number
 }
 export type ComplexeExtendedDetailType = {
   complexDetail ? : ComplexeCharacteristicType,

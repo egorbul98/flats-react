@@ -61,41 +61,7 @@ const ComplexSliderDetail : React.FC < ComplexeType | ComplexeType & ComplexeExt
         </a>
       </div>
       <div className="estate__advantages advantages">
-  
-        <ul className="advantages__list">
-  
-          <li className="advantages__list-item advantages__list-item--sale">
-            <svg width="13" height="14">
-              <use xlinkHref="#icon-feature_sale"></use>
-            </svg>
-          </li>
-  
-          <li className="advantages__list-item advantages__list-item--deal">
-            <svg width="14" height="14">
-              <use xlinkHref="#icon-feature_deal"></use>
-            </svg>
-          </li>
-  
-          <li className="advantages__list-item advantages__list-item--gift">
-            <svg width="13" height="10">
-              <use xlinkHref="#icon-feature_gift"></use>
-            </svg>
-          </li>
-  
-          <li className="advantages__list-item advantages__list-item--decor">
-            <svg width="12" height="17">
-              <use xlinkHref="#icon-feature_decor"></use>
-            </svg>
-          </li>
-  
-          <li className="advantages__list-item advantages__list-item--conditions">
-            <svg width="18" height="13">
-              <use xlinkHref="#icon-bus"></use>
-            </svg>
-          </li>
-  
-        </ul>
-        <div className="advantages__features">
+         <div className="advantages__features">
           <ul className="advantages__features-list">
             <li className="advantages__features-item advantages__features-item--sale">
               <div className="advantages__features-item-box">
