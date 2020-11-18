@@ -18,7 +18,6 @@ import {ReactComponent as SvgFeatureBus} from '../../assets/img/icon-bus.svg';
 
 import ButtonPhone from '../miniComponents/ButtonPhone';
 import IconAdvantage from '../miniComponents/IconAdvantage';
-import { getFlatsGroupByRooms } from '../../handlers/complexesHandlers';
 import ComplexMap from '../Complex/ComplexMap';
 import SlickArrowLeft from '../Slider/SlickArrowLeft';
 import SlickArrowRight from '../Slider/SlickArrowRight';
@@ -65,9 +64,7 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
 
     const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), [complex.deadline]); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
     
-    const flatsGroupByRooms = React.useMemo(()=>getFlatsGroupByRooms(complex.flats), [complex.flats]); //возвращаем массив сгруппированных по кол-ву комнат квартир
-   
-    const flatsTypesBlocks = flatsGroupByRooms.map((item, index) => {
+    const flatsTypesBlocks = complex.flatsGroupByRooms?.map((item, index) => {
         return (
             <div className="flat-type room" key={index + "_" + item.room}>
                 <div className="flat-type__left-box">

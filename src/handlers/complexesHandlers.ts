@@ -1,15 +1,10 @@
-import { ComplexeType, FlatType } from "../mainTypes";
+import { ComplexeType, FlatsGroupByRoomsType, FlatType } from "../mainTypes";
 
 export function calcCostSquare(cost : number, square : number) : number { //Считаем стоимость за квадратный метр
   return + (cost / square / 1000).toFixed(1);
 }
 
-export type FlatsGroupByRoomsType = {
-  room: number,
-  minCost: number,
-  maxCost: number,
-  minSquare: number
-}
+
 
 export function getMinMaxValuesFlats(flats: Array<FlatType> | null = null): [number, number, number, number] {
   let minCostSquare : number = 0; //максимальная стоимость за кв/м среди всех квартир комплекса

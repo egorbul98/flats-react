@@ -70,3 +70,13 @@
     "recomend": '{{integer(1, 10)}}'
   }
 ]
+
+
+// documents:[
+//   '{{repeat(3,5)}}',
+//   {
+//     name:"Документ #" + '{{index()}}',
+//     weight: '{{integer(80, 132)}}' + "Кб",
+//     src: "/documents/doc.pdf"
+//   }
+// ]

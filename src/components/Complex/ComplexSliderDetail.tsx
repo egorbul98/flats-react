@@ -23,6 +23,7 @@ const ComplexSliderDetail : React.FC < ComplexeType | ComplexeType & ComplexeExt
     prevArrow: <SlickArrowLeft classNamesBtn="catalog-complex__slider-prev-btn"/>,
     nextArrow: <SlickArrowRight classNamesBtn="catalog-complex__slider-next-btn"/>,
   }
+  
   return (
     <section className="estate">
     <div className="estate__wrapper">

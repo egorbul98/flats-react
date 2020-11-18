@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
+import { getFlatsGroupByRooms, getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
 import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType} from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
 import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
@@ -106,6 +106,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
   if (!region) { region = filterState.region; }
   if (!filterItems || filterItems.length == 0) { filterItems = filterState.filterItems; }
   if (!filterItemsDiapason || filterItemsDiapason.length == 0) { filterItemsDiapason = filterState.filterItemsDiapason; }
+  if (!sortBy) { sortBy = filterState.sortBy; }
 
   let args = `&region=${region}&`;
   // переменные, определяющие участвуют ли в фильтрации конкретные параметры. Если такие параметры есть, то будет происходить доп. фильтрация
@@ -146,6 +147,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
         complex.minCost = minCost;
         complex.maxCostSquare = maxCostSquare;
         complex.minCostSquare = minCostSquare;
+        complex.flatsGroupByRooms = getFlatsGroupByRooms(complex.flats) //возвращаем массив сгруппированных по кол-ву комнат квартир
         let inArray:boolean | undefined = true;
         if (deadlinesValues) {
           inArray = checkInArray(deadlinesValues, complex.deadline, "year");

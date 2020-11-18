@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
-import ComplexDocuments from '../components/Complex/ComplexDocuments';
+import DocumentsBlock from '../components/DocumentsBlock/DocumentsBlock';
 import ComplexRating from '../components/Complex/ComplexRating';
 import ComplexFlatsInfo from '../components/Complex/ComplexFlatsInfo';
 import CreditCalculator from '../components/CreditCalculator/CreditCalculator';
@@ -54,7 +54,7 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
  
 
   return (
-  
+    
     <div className="detail-page">
       
         <HeaderDeatailPage />
@@ -63,15 +63,13 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
         <ComplexFlatsInfo/> 
         {/* <VideoSlider /> */}
         
-        <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на
-          экскурсию</button>
+        <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn">Записаться на экскурсию</button>
     
         {/* <ComplexCharacteristics />  */}
       <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
        
       <ComplexAuthorDescription descriptionObj={ complex.complexDetail?.authorDesc}/>
-        
-      <ComplexDocuments />
+      <DocumentsBlock documents={complex.complexDetail?.documents}/>
       
         <CreditCalculator />
         

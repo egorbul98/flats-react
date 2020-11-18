@@ -34,13 +34,24 @@ export type ComplexeType = {
   finish: string,
   deadline: Array < DeadlineItemType > ,
   flats ? : Array < FlatType > ,
+  flatsGroupByRooms?: Array<FlatsGroupByRoomsType>,
   recomend: number,
 };
+export type FlatsGroupByRoomsType = {
+  room: number,
+  minCost: number,
+  maxCost: number,
+  minSquare: number
+}
 export type ComplexeExtendedDetailType = {
   complexDetail ? : ComplexeCharacteristicType,
   reviews: Array < ReviewType >,
 };
-
+export type DocumentType = {
+  name: string,
+  weight: string,
+  src: string,
+}
 export type ComplexeRatingType = {
   child: number,
   infr: number,
@@ -72,7 +83,8 @@ export type ComplexeCharacteristicType = {
     aboutComplex: Array < ReviewType >,
     aboutDeveloper: Array < ReviewType >
   },
-  complexLike: Array < ComplexLikeType >
+  complexLike: Array<ComplexLikeType>,
+  documents: Array < DocumentType >,
 };
 
 type DeadlineItemType = {
