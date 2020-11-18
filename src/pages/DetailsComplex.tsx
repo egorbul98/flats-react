@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
@@ -37,6 +39,11 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    Aos.init({
+      once: true,
+      duration: 700,
+      offset: 60
+    })
   }, []);
 
   

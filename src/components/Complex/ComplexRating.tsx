@@ -13,12 +13,13 @@ type RatingItemPropsTypes = {
   title: string,
   rating: number,
   icon?: React.ReactChild | React.ReactChildren ,
-  className?:string
+  className?: string,
+  dataAosDelay?: string | number
 }
 
-const RatingItem:React.FC<RatingItemPropsTypes> = ({title, rating, icon, className}) => {
+const RatingItem:React.FC<RatingItemPropsTypes> = ({title, rating, icon, className, dataAosDelay}) => {
   return (
-    <li className="rating__list-item" data-aos="zoom-in">
+    <li className="rating__list-item" data-aos="zoom-in" data-aos-delay={dataAosDelay}>
       <div className={"rating__list-figure rating__list-figure--kids "+ className}>
         {icon}
         <span className="rating__value rating__value--kids">{rating}</span>
@@ -58,12 +59,12 @@ const ComplexRating : React.FC < PropsTypes > = ({complexName, rating}) => {
         
           {rating && 
             <>
-              <RatingItem title={"Для детей"} rating={rating.child} icon={ <SvgIconChild/> } className={"rating__list-figure--kids"}/>
-              <RatingItem title={"Инфраструктура"} rating={rating.infr} icon={ <SvgIconInfrastructure/>} className={"rating__list-figure--infrastructure"}/>
-              <RatingItem title={"district"} rating={rating.area} icon={ <SvgIconArea/> } className={"rating__list-figure--kids"}/>
-              <RatingItem title={"Безопасность"} rating={rating.safe} icon={ <SvgIconSafe/> } className={"rating__list-figure--safety"}/>
-              <RatingItem title={"transport"} rating={rating.transport} icon={ <SvgIconTransport/> } className={"rating__list-figure--kids"}/>
-              <RatingItem title={"Квартира/дом"} rating={rating.house} icon={ <SvgIconHouse/> } className={"rating__list-figure--house"}/>
+            <RatingItem title={"Для детей"} rating={rating.child} icon={<SvgIconChild />} className={"rating__list-figure--kids"} />
+              <RatingItem title={"Инфраструктура"} rating={rating.infr} icon={ <SvgIconInfrastructure/>} className={"rating__list-figure--infrastructure"} dataAosDelay={200}/>
+              <RatingItem title={"district"} rating={rating.area} icon={ <SvgIconArea/> } className={"rating__list-figure--kids"} dataAosDelay={300}/>
+              <RatingItem title={"Безопасность"} rating={rating.safe} icon={ <SvgIconSafe/> } className={"rating__list-figure--safety"} dataAosDelay={400}/>
+              <RatingItem title={"transport"} rating={rating.transport} icon={ <SvgIconTransport/> } className={"rating__list-figure--kids"} dataAosDelay={500}/>
+              <RatingItem title={"Квартира/дом"} rating={rating.house} icon={ <SvgIconHouse/> } className={"rating__list-figure--house"} dataAosDelay={600}/>
             </>
           }
           
