@@ -61,10 +61,10 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     
     <div className="detail-page">
       
-        {/* <HeaderDeatailPage />
+        <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
-      {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> } */}
+      {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> }
       
       {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />}
         

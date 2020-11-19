@@ -14,7 +14,6 @@ const VideoSlider: React.FC<PropsTypes> = ({items }) => {
     slidesToShow: 1,
     arrows: false,
     dots: false,
-    adaptiveHeight:true,
     responsive: [{
         breakpoint: 768,
         settings: {

@@ -87,7 +87,8 @@
 }
 
 .light__btn {
-  width: 300px;
+  max-width: 300px;
+  width: 100%;
   min-height: 38px;
   border-radius: 25px;
   font-size: 15px;
