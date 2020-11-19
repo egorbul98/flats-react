@@ -140,10 +140,14 @@
 }
 
 .analog__btn {
+  margin-top: 40px;
   text-decoration: none;
   padding: 15px;
   display: flex;
   justify-content: center;
+  @media(max-width: 768px){
+    margin-top: 20px;
+  }
 }
 
 @media(min-width: $tablet-width) {

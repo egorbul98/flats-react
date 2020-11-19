@@ -10,6 +10,7 @@
     max-width: $desktop-width;
   }
 }
+
 @mixin scrollbar(){
   &::-webkit-scrollbar {
     display: block;
@@ -46,7 +47,7 @@
 .pink__btn {
   max-width: 320px;
   width: 100%;
-  min-height: 50px;
+  min-height: 38px;
   border-radius: 25px;
   font-size: 15px;
   font-weight: 600;
@@ -70,6 +71,7 @@
   
   @media(min-width: $tablet-width) {
     font-size: 16px;
+    min-height: 50px;
   }
 
   @media(min-width: $desktop-width) {
@@ -86,7 +88,7 @@
 
 .light__btn {
   width: 300px;
-  min-height: 50px;
+  min-height: 38px;
   border-radius: 25px;
   font-size: 15px;
   font-weight: 600;
@@ -102,6 +104,7 @@
   @media(min-width: $tablet-width) {
     font-size: 16px;
     line-height: 19px;
+    min-height: 50px;
   }
 
   @media(min-width: $desktop-width) {

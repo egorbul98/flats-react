@@ -54,12 +54,14 @@ const Reviews: React.FC<PropsTypes> = ({ complexId }) => {
         <div className="feedback__wrapper">
           <h2 className="feedback__title">Отзывы</h2>
           <div className="feedback__toggler">
-            <a href="javascript: void(0)"
-              className={classNames("feedback__toogle-link feedback__toogle-link--estate", { "feedback__toogle-link--active": activeReviewsType === "complex" })} onClick={() => {
+            <a href="#"
+              className={classNames("feedback__toogle-link feedback__toogle-link--estate", { "feedback__toogle-link--active": activeReviewsType === "complex" })} onClick={(e) => {
+                e.preventDefault();
                 setActiveReviewsType("complex");
                 setShowAll(false);
               }}>О комплексе</a>
-            <a href="javascript: void(0)" className={classNames("feedback__toogle-link feedback__toogle-link--developer", { "feedback__toogle-link--active": activeReviewsType === "developer" })} onClick={() => {
+            <a href="#" className={classNames("feedback__toogle-link feedback__toogle-link--developer", { "feedback__toogle-link--active": activeReviewsType === "developer" })} onClick={(e) => {
+              e.preventDefault();
               setActiveReviewsType("developer");
               setShowAll(false);
             }}>О застройщике</a>

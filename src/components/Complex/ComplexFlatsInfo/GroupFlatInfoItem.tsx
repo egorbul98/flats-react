@@ -17,10 +17,10 @@ const GroupFlatInfoItem : React.FC < PropsTypes > = ({item, active, onClick}) =>
   return (
     <li className={classNames("flats__item",{"active":active})} onClick={onHandlerClick}>
           <div className="flats__item-box">
-            <p className="flats__text">{item.room}
+            <div className="flats__text">{item.room}
               <span className="flats__text--area"> от&nbsp;<span className="flat-area">{item.minSquare}</span>&nbsp;м2</span>
               <div className="flats__text--price">от&nbsp;<span className="flat-price">{transformBigNum(item.minCost)}</span>&nbsp;руб.</div>
-            </p>
+            </div>
             <span className="flats__link flats__modalBtn" data-flats="4"><span className="flat-count">{item.count}</span>&nbsp;в&nbsp;продаже</span>
           </div>
     </li>
