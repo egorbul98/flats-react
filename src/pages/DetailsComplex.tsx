@@ -11,7 +11,7 @@ import ComplexFlatsInfo from '../components/Complex/ComplexFlatsInfo/ComplexFlat
 import CreditCalculator from '../components/CreditCalculator/CreditCalculator';
 import Footer from '../components/Footer';
 import HeaderDeatailPage from '../components/HeaderDeatailPage';
-import VideoSlider from '../components/VideoSlider';
+import VideoSlider from '../components/VideoSlider/VideoSlider';
 import ComplexMap from '../components/Complex/ComplexMap';
 import Reviews from '../components/Reviews/Reviews';
 
@@ -61,12 +61,12 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     
     <div className="detail-page">
       
-        <HeaderDeatailPage />
+        {/* <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
-      {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> }
+      {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> } */}
       
-        {/* <VideoSlider /> */}
+      {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />}
         
         <div className="container-details sign-up-btn"><button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn center-block">Записаться на экскурсию</button></div>
     

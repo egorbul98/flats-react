@@ -76,16 +76,18 @@ export type ReviewType = {
 }
 export type ComplexLikeType = { id: number, name: string, address: string, imgSrc: string, metro: string, metroDistance: number }
 
+export type ComplexeVideoType = {
+  videoSrc:string,
+  imgSrc:string
+}
+
 export type ComplexeCharacteristicType = {
   complexId: number,
   rating: ComplexeRatingType,
   authorDesc: ComplexeAuthorDescType,
-  reviews: {
-    aboutComplex: Array < ReviewType >,
-    aboutDeveloper: Array < ReviewType >
-  },
   complexLike: Array<ComplexLikeType>,
-  documents: Array < DocumentType >,
+  documents: Array<DocumentType>,
+  videos: Array<ComplexeVideoType>
 };
 
 type DeadlineItemType = {

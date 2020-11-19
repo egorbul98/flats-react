@@ -42,6 +42,16 @@
         src: "/documents/doc.pdf"
       }
     ],
+    videos:[
+      '{{repeat(3,5)}}',
+      {
+        videoSrc:function (tags) {
+          var values = ["2g811Eo7K8U", "evSn0cGIxfs", "l6pDOwNeTrg", "WVMI0q331Uc"];
+          return values[tags.integer(0, values.length - 1)];
+        },
+        imgSrc: "/img/complexesImages/img-{{integer(1, 8)}}.jpg"
+      }
+    ],
     complexLike: [
       '{{repeat(3,5)}}',
       {
