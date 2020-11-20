@@ -23,6 +23,7 @@ import ComplexSliderDetail from '../components/Complex/ComplexSliderDetail';
 import Modal from '../components/Modal';
 import AdviceBoxSlider from '../components/AdviceBoxSlider';
 import { ComplexLikeType } from '../mainTypes';
+import FormSignUpExcursion from '../components/FormSignUpExcursion';
 
 type PropsTypes = {
 
@@ -31,6 +32,7 @@ const onScrollTop = () => {
   window.scrollTo(0, 0);
 }
 const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
+  const [openModal, setOpenModal] = useState(false);
   const { id }: any = useParams();
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -46,6 +48,7 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     })
   }, []);
 
+ 
   
   const { complex } = useSelector(({complexes}:AppStateType) => {
     return {
@@ -57,26 +60,40 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
     return null
   }
 
+  const onCloseModal = () => {
+    setOpenModal(false);
+  }
+  const onOpenModal = () => {
+    setOpenModal(true);
+  }
+
   return (
     
     <div className="detail-page">
       
-        <HeaderDeatailPage />
+        {/* <HeaderDeatailPage />
         <ComplexSliderDetail {...complex}/>
         
       {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> }
       
-      {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />}
+      {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />} */}
         
-        <div className="container-details sign-up-btn"><button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn center-block">Записаться на экскурсию</button></div>
-    
+      <div className="container-details sign-up-btn">
+        <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn center-block" onClick={onOpenModal}>Записаться на экскурсию</button>
+      </div>
+      {/* className={"excursion"} */}
+      <Modal onClose={onCloseModal} open={openModal} title={"Записаться на экскурсию"} className="excursion"> 
+        <FormSignUpExcursion onClose={onCloseModal}/>
+      </Modal>
+      
+      
         {/* <ComplexCharacteristics />  */}
-      <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
+      {/* <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
        
       <ComplexAuthorDescription descriptionObj={ complex.complexDetail?.authorDesc}/>
       
       {complex.complexDetail?.documents && <DocumentsBlock documents={complex.complexDetail.documents} />}
-      
+       */}
         <CreditCalculator />
         
       <section className="route">

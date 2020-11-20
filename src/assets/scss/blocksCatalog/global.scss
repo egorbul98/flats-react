@@ -72,3 +72,8 @@ body.body--fixed {
     font-size: 12px;
   }
 }
+button:disabled, button:disabled:hover{
+  background:#cbcbcb  !important;
+  color: #fff !important;
+  cursor: default;
+}

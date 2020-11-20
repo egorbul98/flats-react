@@ -49,6 +49,11 @@
     .modal__wrapper{
       top: 42%;
       opacity: 1;
+
+      @media(max-width: 768px){
+        top: 0;
+        transform: translate(-50%, 0);
+      }
     }
   }
 
