@@ -270,6 +270,8 @@
 .map-filter {
   width: 392px;
   overflow: auto;
+
+  @include scrollbar();
   flex-shrink: 0;
   padding: 24px 18px 58px 38px;
   box-shadow: 15px 0px 8px -15px rgba(0, 0, 0, .25);

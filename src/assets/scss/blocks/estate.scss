@@ -1,6 +1,10 @@
 .estate__wrapper {
   @include container();
   padding-bottom: 30px;
+
+  @media(max-width: 768px){
+    padding-bottom: 12px;
+  }
 }
 
 .estate__slider-box {

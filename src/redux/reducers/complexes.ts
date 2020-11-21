@@ -1,9 +1,10 @@
 import { ComplexeExtendedDetailType, ComplexeType} from "../../mainTypes";
-import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES} from "../actions/complexesActions";
-import { ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType} from "../actions/complexesActions";
+import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ADD_FAVORITE_ID_COMPLEX, REMOVE_FAVORITE_ID_COMPLEX} from "../actions/complexesActions";
+import { ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType, AddFavoriteIdComplexType, RemoveFavoriteIdComplexType} from "../actions/complexesActions";
 
 const initialState = {
   items: [] as Array<ComplexeType>,
+  favoriteItemsIds: [] as Array<number>,
   currentPage: 1 as number,
   perPage: 4 as number,
   totalCount: 0 as number,
@@ -13,7 +14,7 @@ const initialState = {
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType | AddFavoriteIdComplexType| RemoveFavoriteIdComplexType;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {
@@ -61,6 +62,12 @@ export const ComplexesReducer = (state = initialState, action:ActionsTypes):Stat
     
     case SET_LOADING:
       return { ...state, isLoading: action.payload };
+    
+    case ADD_FAVORITE_ID_COMPLEX:
+      return { ...state, favoriteItemsIds: [...state.favoriteItemsIds, action.payload]};
+    
+    case REMOVE_FAVORITE_ID_COMPLEX:
+      return { ...state, favoriteItemsIds: [...state.favoriteItemsIds.filter((id)=>id!==action.payload)] };
     
     case SET_ERROR_COMPLEXES:
       return {...state, errorText: action.payload};

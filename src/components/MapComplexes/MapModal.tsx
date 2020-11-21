@@ -29,6 +29,9 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
     }
   })
   
+  React.useEffect(() => {
+    setIdActiveComplex(null)
+  }, [region]);
   const activeComplex: ComplexeType = React.useMemo(() => complexesItems.filter((item)=>item.id === idActiveComplex)[0], [idActiveComplex]);
   // const activeComplex: ComplexeType = complexesItems.filter((item)=>item.id === idActiveComplex)[0]
 

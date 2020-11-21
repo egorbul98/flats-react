@@ -156,6 +156,9 @@
     display: flex;
     flex-wrap: wrap;
     margin-right: 0;
+    @media(max-width: 768px){
+      margin-top: 0;
+    }
   }
 
   .flats__item {

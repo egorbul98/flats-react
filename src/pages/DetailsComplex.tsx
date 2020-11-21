@@ -4,7 +4,7 @@ import Aos from 'aos';
 import "aos/dist/aos.css";
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
-import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics';
+import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics/ComplexCharacteristics';
 import DocumentsBlock from '../components/DocumentsBlock/DocumentsBlock';
 import ComplexRating from '../components/Complex/ComplexRating';
 import ComplexFlatsInfo from '../components/Complex/ComplexFlatsInfo/ComplexFlatsInfo';
@@ -69,32 +69,32 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
 
   return (
     
-    <div className="detail-page">
+  <div className="detail-page">
       
-        {/* <HeaderDeatailPage />
-        <ComplexSliderDetail {...complex}/>
+      <HeaderDeatailPage />
+      <ComplexSliderDetail {...complex}/>
         
       {complex.flatsGroupByRooms && complex.flats && <ComplexFlatsInfo groupedFlats={complex.flatsGroupByRooms} flats={ complex.flats }/> }
       
-      {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />} */}
+      {complex.complexDetail && <VideoSlider items={complex.complexDetail.videos} />}
         
       <div className="container-details sign-up-btn">
         <button type="button" id='btnOpenExcursionModal' className="expectation__btn pink__btn center-block" onClick={onOpenModal}>Записаться на экскурсию</button>
       </div>
-      {/* className={"excursion"} */}
+      
       <Modal onClose={onCloseModal} open={openModal} title={"Записаться на экскурсию"} className="excursion"> 
         <FormSignUpExcursion onClose={onCloseModal}/>
       </Modal>
       
       
-        {/* <ComplexCharacteristics />  */}
-      {/* <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
+      {complex.complexDetail && <ComplexCharacteristics items={ complex.complexDetail?.characteristics}/>}
+      <ComplexRating complexName={complex.name} rating={ complex.complexDetail?.rating}/>
        
       <ComplexAuthorDescription descriptionObj={ complex.complexDetail?.authorDesc}/>
       
       {complex.complexDetail?.documents && <DocumentsBlock documents={complex.complexDetail.documents} />}
-       */}
-        <CreditCalculator />
+      
+      <CreditCalculator />
         
       <section className="route">
           <div className="route__wrapper">
@@ -111,9 +111,7 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
         
       <div className="analog__wrapper"><h2 className="analog__title">Подобные ЖК</h2></div>
       <AdviceBoxSlider className="analog">
-          {complex.complexDetail && complex.complexDetail?.complexLike.map((item, index) => {
-            return <SlideItem key={ index + "_analog"} item={ item } />
-          })}
+          {complex.complexDetail && complex.complexDetail?.complexLike.map((item, index) => <SlideItem key={ index + "_analog"} item={ item } />)}
       </AdviceBoxSlider>
       <div className="container-details"><Link to="/" className="analog__btn light__btn center-block" onClick={onScrollTop}>Смотреть все предложения</Link></div>
       

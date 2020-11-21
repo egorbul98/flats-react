@@ -65,6 +65,175 @@
         },
         "metroDistance": '{{integer(5, 32)}}',
       }
+    ],
+    "characteristics":[
+      {
+        title:"Дом",
+        items:[
+          {
+            title:"Класс Жилья",
+            value: function (tags) {
+              var values = ["Эконом", "Евро"];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+              title:"Этажность",
+              value: function (tags) {
+              var values = ["1-21", "1-17", "1-13"];
+              return values[tags.integer(0, values.length - 1)];
+            } 
+          },
+          {
+              title:"Технология строительства",
+              value: "Кирпично-монолитный"
+          },
+          {
+              title:"Облицовка фасада",
+              value: "Фасад оштукатурен"
+          },
+          {
+              title:"Кладовые",
+              value: "Есть"
+          },
+          {
+              title:"Лифты",
+              value: "Есть"
+          },
+          {
+              title:"Тип договора",
+              value: "ДКП"
+          }
+        ]
+      },
+      {
+        title:"Квартиры",
+        items:[
+          {
+            title:"Отделка",
+            value: function (tags) {
+              var values = ['Чистовая', 'Готовая', 'Без отделки'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Количество квартир",
+            value: '{{integer(150, 210)}}'
+          },
+          {
+            title:"Планируемое число жителей",
+            value: '{{integer(200, 310)}}'
+          },
+          {
+            title:"Высота потолков, м",
+            value: 3
+          }
+        ]
+      },
+      {
+        title:"На территории ЖК",
+        items:[
+          {
+            title:"Детский сад во дворе",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Школа во дворе",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Детская площадка",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Торговля и сервис",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Медицинские учреждения",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Благоустроенное место для прогулок",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          }
+        ]
+      },
+      {
+        title:"Для автовладельцев",
+        items:[
+          {
+            title:"Количество машиномест",
+            value: '{{integer(90, 138)}}'
+          },
+          {
+            title:"В том числе платных",
+            value: '{{integer(50, 138)}}'
+          },
+          {
+            title:"Тип платной парковки",
+            value: function (tags) {
+              var values = ['Подземный', 'Наземный', 'Наземно-подземный'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Продумано движение во дворе",
+            value: "Да"
+          }
+        ]
+      },
+      {
+        title:"Безопасность",
+        items:[
+          {
+            title:"Закрытый двор",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Охрана территории",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Видеонаблюдение",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          },
+          {
+            title:"Помещение для консьержа/диспетчерской",
+            value: function (tags) {
+              var values = ['Есть', 'Нет'];
+              return values[tags.integer(0, values.length - 1)];
+            }
+          }
+        ]
+      }
     ]
 
     //'{{lorem(1, "paragraphs")}}',

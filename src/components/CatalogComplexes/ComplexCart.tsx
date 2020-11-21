@@ -5,22 +5,21 @@ import {Link} from 'react-router-dom';
 import { ComplexeType } from '../../mainTypes';
 import Select from '../miniComponents/Select';
 
-import iconHeart from '../../assets/img/slide-heart.svg';
-import iconBuild from '../../assets/img/slide-build.svg';
+import iconHeartFill from '../../assets/img/slide-heart.svg';
+import iconHeart from '../../assets/img/heart.svg';
 import iconDevLogo from '../../assets/img/developer_logo.svg';
 import iconMetro from '../../assets/img/metro-el.svg';
 import iconPlaceholderRed from '../../assets/img/placeholder-red.svg';
-import {ReactComponent as SvgFeatureSale} from '../../assets/img/icon-feature_sale.svg';
-import {ReactComponent as SvgFeatureDeal} from '../../assets/img/icon-feature_deal.svg';
-import {ReactComponent as SvgFeatureGift} from '../../assets/img/icon-feature_gift.svg';
-import {ReactComponent as SvgFeatureDecor} from '../../assets/img/icon-feature_decor.svg';
-import {ReactComponent as SvgFeatureBus} from '../../assets/img/icon-bus.svg';
 
 import ButtonPhone from '../miniComponents/ButtonPhone';
-import IconAdvantage from '../miniComponents/IconAdvantage';
 import ComplexMap from '../Complex/ComplexMap';
 import SlickArrowLeft from '../Slider/SlickArrowLeft';
 import SlickArrowRight from '../Slider/SlickArrowRight';
+import AdvantageList from '../Advantages/AdvantageList';
+import { addFavoriteIdComplex, removeFavoriteIdComplex } from '../../redux/actions/complexesActions';
+import { useDispatch } from 'react-redux';
+
+
 
 
 type PropsTypeSlide = {
@@ -31,10 +30,7 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({ srcImage }) => {
     return (
         <div className="catalog-complex__slide">
             <img className='lazy' src={srcImage} alt="img"/>
-            <div className="catalog-complex__slide-icons">
-                <img src={iconHeart} alt="img"/>
-                <img src={iconBuild} alt="img"/>
-            </div>
+            
         </div>
     )
 }
@@ -46,7 +42,8 @@ type propTypes = {
 const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...complex }) => {
     const [currentSlide, setCurrentSlide] = React.useState(1);
     const [openMap, setOpenMap] = React.useState(false);
-    
+    const [favorite, setFavorite] = React.useState(false);
+    const dispatch = useDispatch();
     React.useEffect(() => { setOpenMap(false); }, [display]); //закрываем карту, если отображение элементов изменилось
     
     const settingsSlider = { //настройки слайдера
@@ -60,6 +57,15 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
 
     const onToggleOpenComplexMap = () => {
         setOpenMap(!openMap);
+    }
+
+    const onToggleFavoirite = () => {
+        if (favorite) {
+            dispatch(removeFavoriteIdComplex(complex.id))
+        } else {
+            dispatch(addFavoriteIdComplex(complex.id))
+        }
+        setFavorite(!favorite);
     }
 
     const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), [complex.deadline]); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
@@ -93,38 +99,23 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
                     <ComplexMap coords={complex.coords}/>
                         </div>}
                     
+                    <div>
                         <Slider className="catalog-complex__slider" {...settingsSlider}>
                                 {complex.images && complex.images.map((itemPath, index) => {
                                     return <SlideItemComplex key={index} srcImage={window.location.origin + itemPath}/>
                                 })}
+                            
                         </Slider>
+                        <div className="catalog-complex__slide-icons">
+                            <img src={favorite ? iconHeartFill : iconHeart} alt="img" onClick={onToggleFavoirite} width="30px" height="29px"/>
+                        </div>
+                    </div>
                </div>
                 <div className="catalog-complex__slider-counter">{currentSlide}/{complex.images.length}</div>
                
-
-                <div className="complex-advantages__features-list">
-                    <IconAdvantage tooltipText="Скидка партнерам" className="complex-advantages__features-item complex-advantages__features-item--sale" classNameTooltip="complex-advantages__features-hint--sale">
-                        <SvgFeatureSale />
-                    </IconAdvantage>
-
-                    <IconAdvantage tooltipText="Безопасная сделка" className="complex-advantages__features-item complex-advantages__features-item--deal" classNameTooltip="complex-advantages__features-hint--deal">
-                        <SvgFeatureDeal />
-                    </IconAdvantage>
-
-                    <IconAdvantage tooltipText="Приемка в подарок" className="complex-advantages__features-item complex-advantages__features-item--gift" classNameTooltip="complex-advantages__features-hint--gift">
-                        <SvgFeatureGift />
-                    </IconAdvantage>
-
-                    <IconAdvantage tooltipText="Сертификат на отделку" className="complex-advantages__features-item complex-advantages__features-item--decor" classNameTooltip="complex-advantages__features-hint--decor">
-                        <SvgFeatureDecor />
-                    </IconAdvantage>
-
-                    <IconAdvantage tooltipText="Специальные условия для иногородних" className="complex-advantages__features-item complex-advantages__features-item--conditions" classNameTooltip="complex-advantages__features-hint--conditions">
-                        <SvgFeatureBus />
-                    </IconAdvantage>
-
-                </div>
-            
+                <AdvantageList itemNames={complex.advantages} classNameItem={"complex-advantages__features-item"} classNameItemTooltip={"complex-advantages__features-hint"} classNameWrap="complex-advantages__features-list"
+                classNameIconWrap="complex-advantages__features-item-box"/>
+                
                 <div className="catalog-complex__buttons-wrap catalog-complex__item-header-buttons">
                  <Link to={"complex/"+complex.id} className="catalog-complex__btn-more pink__btn">Подробнее</Link>
                  <button type='button' className="catalog-complex__btn-show-map pink__btn" onClick={onToggleOpenComplexMap}><img src={iconPlaceholderRed} alt=""/>На карте</button>

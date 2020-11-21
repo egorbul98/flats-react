@@ -17,6 +17,7 @@ export type ComplexeType = {
   tel: number,
   name: string,
   developer: string,
+  advantages: Array<string>,
   description: string,
   metro: string,
   metroDistance: number,
@@ -87,8 +88,18 @@ export type ComplexeCharacteristicType = {
   authorDesc: ComplexeAuthorDescType,
   complexLike: Array<ComplexLikeType>,
   documents: Array<DocumentType>,
-  videos: Array<ComplexeVideoType>
+  videos: Array<ComplexeVideoType>,
+  characteristics: Array<CharacteristicType>
 };
+
+export type CharacteristicType =  {
+  title: string,
+  items: Array<CharacteristicInnerItemType>
+}
+export type CharacteristicInnerItemType =  {
+  title: string,
+  value: string | number
+}
 
 type DeadlineItemType = {
   corpus: number,

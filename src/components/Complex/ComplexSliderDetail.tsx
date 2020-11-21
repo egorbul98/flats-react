@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 
 import { ComplexeExtendedDetailType, ComplexeType } from '../../mainTypes';
+import AdvantageList from '../Advantages/AdvantageList';
 import SlickArrowLeft from '../Slider/SlickArrowLeft';
 import SlickArrowRight from '../Slider/SlickArrowRight';
 
@@ -59,80 +60,13 @@ const ComplexSliderDetail : React.FC < ComplexeType | ComplexeType & ComplexeExt
           </span>
           Видеообзор
         </a>
-      </div>
-      <div className="estate__advantages advantages">
-         <div className="advantages__features">
-          <ul className="advantages__features-list">
-            <li className="advantages__features-item advantages__features-item--sale">
-              <div className="advantages__features-item-box">
-                <svg width="13" height="14">
-                  <use xlinkHref="#icon-feature_sale"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--sale">Скидка партнерам</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--sale">
-              <div className="advantages__features-item-box">
-                <svg width="13" height="14">
-                  <use xlinkHref="#icon-feature_sale"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--sale">Скидка&nbsp;иногородним
-                покупателям&nbsp;200&nbsp;000&nbsp;руб</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--sale">
-              <div className="advantages__features-item-box">
-                <svg width="13" height="14">
-                  <use xlinkHref="#icon-feature_sale"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--sale">Скидка за повторную
-                покупку</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--sale">
-              <div className="advantages__features-item-box">
-                <svg width="13" height="14">
-                  <use xlinkHref="#icon-feature_sale"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--sale">Скидка по рекомендации</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--deal">
-              <div className="advantages__features-item-box">
-                <svg width="14" height="14">
-                  <use xlinkHref="#icon-feature_deal"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--deal">Безопасная&nbsp;сделка</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--gift">
-              <div className="advantages__features-item-box">
-                <svg width="13" height="10">
-                  <use xlinkHref="#icon-feature_gift"></use>
-                </svg>
-              </div>
-              <span
-                className="advantages__features-hint advantages__features-hint--gift">Приемка&nbsp;в&nbsp;подарок</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--decor">
-              <div className="advantages__features-item-box">
-                <svg width="12" height="17">
-                  <use xlinkHref="#icon-feature_decor"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--decor">Сертификат&nbsp;на&nbsp;отделку</span>
-            </li>
-            <li className="advantages__features-item advantages__features-item--conditions">
-              <div className="advantages__features-item-box">
-                <svg width="18" height="13">
-                  <use xlinkHref="#icon-bus"></use>
-                </svg>
-              </div>
-              <span className="advantages__features-hint advantages__features-hint--gift">Специальные&nbsp;условия
-                для&nbsp;иногородних</span>
-            </li>
-          </ul>
         </div>
+        
+      <div className="estate__advantages advantages">
+          <div className="advantages__features">
+            <AdvantageList itemNames={complex.advantages} classNameItem="advantages__features-item" classNameItemTooltip="advantages__features-hint" classNameWrap="advantages__features-list"
+            classNameIconWrap="advantages__features-item-box"/>
+          </div>
       </div>
     </div>
   </section>

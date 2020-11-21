@@ -7,6 +7,7 @@ import { useSwitchRegion } from '../handlers/hooks/useSwitchRegion';
 import { useDispatch } from 'react-redux';
 import { FilterItemDiapasonType, setChangeFilterItemDiapason } from '../redux/actions/filterActions';
 import { fetchComplexes } from '../redux/actions/complexesActions';
+import { Link } from 'react-router-dom';
 type PropsTypes = {
   onOpenMap?: () => void;
 }
@@ -28,7 +29,7 @@ const Footer : React.FC < PropsTypes > = ({onOpenMap}) => {
           <h4 className="catalog-footer__item-title">Новостройки</h4>
           <div className="buildings__item catalog-footer__text" ><a href="#catalog-complex-box" onClick={()=>onHandleClick("SP")}>В Санкт-Петербурге и ЛО</a></div>
           <div className="buildings__item catalog-footer__text" ><a href="#catalog-complex-box" onClick={()=>onHandleClick("MOS")}>В Москве и МО</a></div>
-          <div className="buildings__show-map catalog-footer__text"><a href="#" onClick={onOpenMap}>Новостройки на карте</a></div>
+            {onOpenMap && <div className="buildings__show-map catalog-footer__text"><a href="#" onClick={onOpenMap}>Новостройки на карте</a></div>}
         </div>
         <div className="catalog-footer__item popular">
           <h4 className="catalog-footer__item-title">Популярное</h4>
@@ -46,15 +47,7 @@ const Footer : React.FC < PropsTypes > = ({onOpenMap}) => {
             }}>До 6 миллионов</a></div>
             
         </div>
-        {/* <div className="catalog-footer__item different">
-          <div className="different__sales catalog-footer__text"><a href="">Старты продаж новостроек</a></div>
-          <div className="different__other other">
-            <div className="other__item catalog-footer__text other__video"><a href="#">Видеобзоры ЖК</a></div>
-            <div className="other__item catalog-footer__text other__item--width"><a href="#">Новости</a></div>
-            <div className="other__item catalog-footer__text other__item--width"><a href="#">Статьи</a></div>
-          </div>
-
-        </div> */}
+       
         <div className="catalog-footer__item social">
           <form action="" className="form-search">
             <div className="form-search__field">
@@ -63,12 +56,12 @@ const Footer : React.FC < PropsTypes > = ({onOpenMap}) => {
             </div>
           </form>
 
-          <div className="social__site"><a href="#">PRONovostroyki.com</a></div>
+          <div className="social__site"><Link to="/">PRONovostroyki.com</Link></div>
 
           <div className="social__list">
-            <div className="social__item"><a href="#"><img className='lazy' src={iconVK} alt=""/></a></div>
-            <div className="social__item"><a href="#"><img className='lazy' src={iconYT} alt=""/></a></div>
-            <div className="social__item"><a href="#"><img className='lazy' src={iconInst} alt=""/></a></div>
+            <div className="social__item"><a href="vk.com"><img className='lazy' src={iconVK} alt=""/></a></div>
+            <div className="social__item"><a href="youtube.com"><img className='lazy' src={iconYT} alt=""/></a></div>
+            <div className="social__item"><a href="instagram.com"><img className='lazy' src={iconInst} alt=""/></a></div>
           </div>
 
         </div>

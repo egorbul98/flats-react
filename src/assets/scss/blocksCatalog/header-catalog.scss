@@ -77,7 +77,6 @@
   padding-left: 28px;
   
 
-
   &__item {
     font-weight: 700;
     cursor: pointer;
@@ -86,24 +85,13 @@
       transition: all 0.3s;
     }
 
-    &:hover svg {
-      fill: $primary-pink;
-    }
-
-    a {
-      text-decoration: none;
-      transition: color 0.3s;
-      color: black;
-
-
-      &:hover {
-        color: $primary-pink;
-      }
-    }
-
-    &--active {
-      a {
-        color: $primary-pink;
+    text-decoration: none;
+    transition: color 0.3s;
+    color: black;
+    &:hover, &.active {
+      color: $primary-pink;
+      svg{
+        fill: $primary-pink;
       }
     }
 
@@ -170,10 +158,6 @@
 
     .catalog-nav__item {
       margin-bottom: 10px;
-
-      &--active {
-        color: black;
-      }
 
       &:hover {
         background-color: $light-pink;

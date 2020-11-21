@@ -25,8 +25,6 @@ const DocumentsBlock: React.FC<PropsTypes> = ({ documents }) => {
           {documentsItems.map((item, index)=><DocumentItem key={index+"_doc"} name={item.name} weight={item.weight} src={item.src}/>)}
         </ul>
         { !showMore && <button type="button" className="documents__show-btn show__btn" onClick={onShowMore}>Показать ещё документы</button>}
-        <button type="button" id="consultationBtn" className="documents__btn light__btn">Получить консультацию
-          юриста</button>
       </div>
     </section>
      

@@ -39,7 +39,7 @@ const FormSignUpExcursion:React.FC<PropTypes> = ({onClose}) => {
         <div className="excursion__select-arrow">
           <img src={iconArrow}/>
         </div>
-          <select defaultValue="13" onChange={(e) => setTime(e.target.value)} className='excursion__select-time' name="" id="excursion__select-time" value={time}>
+          <select onChange={(e) => setTime(e.target.value)} className='excursion__select-time' name="" id="excursion__select-time" value={time}>
               {timeItems.map((itemVal)=><option value={itemVal} key={itemVal}>{itemVal}</option>)}
           </select>
       </div>

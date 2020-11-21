@@ -15,6 +15,12 @@
       var values = ['ООО «Инвест Строй»', 'ООО «Сбер Строй»', 'ООО «AnarcoBuild»', 'ООО «SenmeiBuild»', 'ООО «Lovepad»'];
       return values[tags.integer(0, values.length - 1)];
     },
+    "advantages": function (tags) {
+      
+      var values = [["sale", "safe", "gift", "decor", "conditions"],["sale", "safe", "gift", "decor"],["sale", "safe", "gift"],["sale", "safe"],["sale", "conditions"],["sale", "decor", "conditions"],["safe", "decor", "conditions"]];
+     
+      return values[tags.integer(0, values.length - 1)];
+    },
     "description": '{{lorem(1, "paragraphs")}}',
     "metro": function (tags) {
       var values = ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники'];

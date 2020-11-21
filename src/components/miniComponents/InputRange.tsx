@@ -22,7 +22,7 @@ const InputRange : React.FC < PropsType > = ({placeholder, valueName, pins, id, 
     return (
     <div className="mortgage-field-wrapper">
       <div className="mortgage-field">
-        <input className="mortgage__income-input" type="text" name="mortgage-income" id="mortgage-income" placeholder={placeholder} value={value == max ? "больше "+value : value} readOnly/>
+        <input className="mortgage__income-input" type="text" name="mortgage-income" placeholder={placeholder} value={value == max ? "больше "+value : value} readOnly/>
         <input type="range" id={id} className="mortgage__range" min={min} max={max} step={step} value={value} onChange={onHandlerChange}/>
       </div>
         <span className="mortgage-field__val mortgage-income__rub">{valueName}</span>

@@ -5,7 +5,9 @@
 }
 
 .description__title {
-  display: none;
+  @media(max-width: 768px){
+    font-size: 15px;
+  }
 }
 
 .description__text {
@@ -27,7 +29,11 @@
 
 .description__table {
   width: 100%;
-  cursor: pointer;
+
+  @media(max-width: 1359px){
+    cursor: pointer;
+  }
+  
 
   & tr {
     display: flex;

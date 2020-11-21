@@ -123,43 +123,6 @@
   .advantages__features-item {
     width: 50%;
 
-
-    &--sale:nth-child(1) {
-      order: 1;
-    }
-
-    &--sale:nth-child(2) {
-      order: 3;
-      display: none;
-    }
-
-    &--sale:nth-child(3) {
-      order: 5;
-      display: none;
-
-    }
-
-    &--sale:nth-child(4) {
-      order: 7;
-      display: none;
-
-    }
-
-    &--deal {
-      order: 2;
-    }
-
-    &--gift {
-      order: 4;
-    }
-
-    &--decor {
-      order: 6;
-    }
-
-    &--conditions {
-      order: 8;
-    }
   }
 
   .advantages__features-hint {
@@ -193,17 +156,6 @@
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    &--sale:nth-child(1),
-    &--sale:nth-child(3),
-    &--sale:nth-child(4) {
-      display: none
-    }
-
-    &--sale:nth-child(2) {
-      display: block;
-      order: 1;
     }
 
     &--sale svg {

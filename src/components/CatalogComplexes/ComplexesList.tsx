@@ -1,22 +1,24 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchComplexes, setCurrentPage } from '../../redux/actions/complexesActions';
+import { fetchComplexes, fetchComplexesByIds, setCurrentPage } from '../../redux/actions/complexesActions';
 import { AppStateType } from '../../redux/reducers/rootReducer';
 import ComplexCart from './ComplexCart';
 import Loading from '../miniComponents/Loading';
 import classNames from 'classnames';
 import Pagination from '../miniComponents/Pagination';
 import { setClearFilter } from '../../redux/actions/filterActions';
+import { useLocation, useParams } from 'react-router-dom';
 type PropsTypes = {
-  displayItems: string
+  displayItems?: string
 }
 
 const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой"}) => {
 
   const dispatch = useDispatch();
-  const {complexes, region, isLoadingComplexes, countComplexes, currentPage, perPage, error} = useSelector(({complexes, filter}: AppStateType) => {
+  const {complexes, region, isLoadingComplexes, countComplexes, currentPage, perPage, error, favoriteComplexesIds} = useSelector(({complexes, filter}: AppStateType) => {
     return {
       complexes: complexes.items,
+      favoriteComplexesIds: complexes.favoriteItemsIds,
       error: complexes.errorText,
       region: filter.region,
       countComplexes: complexes.totalCount,
@@ -25,12 +27,18 @@ const ComplexesList : React.FC < PropsTypes > = ({displayItems = "Плиткой
       isLoadingComplexes: complexes.isLoading
     }
   });
-
+  const {pathname} = useLocation()
   const countPages = React.useMemo(() =>  Math.ceil(countComplexes / perPage), [countComplexes, perPage]); //Считаем количество страниц
   
   React.useEffect(() => {
     dispatch(setClearFilter());
-    dispatch(fetchComplexes(region));
+    if (pathname === "/favorites") {
+      dispatch(fetchComplexesByIds(region, favoriteComplexesIds));
+    } else {
+      dispatch(fetchComplexes(region));
+    }
+    
+    
   }, [dispatch, region]);
 
   const lastIndexItemPage = perPage * currentPage;
