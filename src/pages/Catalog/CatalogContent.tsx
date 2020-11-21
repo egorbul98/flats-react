@@ -9,7 +9,9 @@ import MapModal from '../../components/MapComplexes/MapModal';
 
 const CatalogContent = () => {
   const [openMap, setOpenMap] = React.useState(false);
-
+  React.useEffect(() => {
+   return ()=>document.body.classList.remove("body--fixed")
+  }, []);
   const onOpenMap = useCallback(() => {
     setOpenMap(true);
     document.body.classList.add("body--fixed");
