@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import { useInput } from '../../handlers/hooks/useInput';
+import React, {useEffect, useRef, useState} from 'react';
 import InputRange from '../miniComponents/InputRange';
 
 type PropsTypes = {
@@ -8,14 +7,12 @@ type PropsTypes = {
 
 const pinsIncome = ["35 000", "50 000", "65 000", "80 000", "100 000"]
 const pinsWork = [ 1, 3, 5, 7, 9, 11, 13, 15 ]
-const initialState:{[key:string]:any} = { incom: 45000, work: 2, payment: 500000, matCapital: false };
+const initialState:{[key:string]:any} = { incom: 45000, work: 2, payment: 500000, name: '', tel: '', matCapital: false };
 
 const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
     const [values, setValues] = useState(initialState);
     const [valid, setValid] = useState(true);
     const [result, setResult] = useState(65);
-    const name = useInput('', {"isEmpty":true});
-    const tel = useInput('', {"onlyNumber":true, "isEmpty":true});
 
     useEffect(() => { //считаем процент одобрения кредита
         let sum = 65;
@@ -23,9 +20,7 @@ const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
         if (values.work > 10) { sum++; }
         if (values.work == 15) { sum++; }
         sum +=  Math.round(values.payment * 0.00001 + (values.incom - 35000) / 2950);
-        if (sum > 93) {
-          sum = 93;
-        }
+        if (sum > 93) { sum = 93; }
         setResult(sum);
     }, [values]);
 
@@ -33,14 +28,14 @@ const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
         setValues({ ...values, [name]: value })
     }
     const onHandleChangeInput = (e: any) => {
-        e.target.name === "payment"
+        e.target.name === "tel" || e.target.name === "payment"
             ? (/\d+/.test(String(+e.target.value))) && onChangeInput(e.target.name, e.target.value)
             : e.target.name === "matCapital"
                 ? onChangeInput(e.target.name, e.target.checked)
                 : onChangeInput(e.target.name, e.target.value);
         setValid(true);
     }
-    
+
     const onSubmit = () => {
         let validate = true;
         for (const key in values) {
@@ -52,18 +47,12 @@ const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
                 }
             }
         }
-       
-        if (name.valid.isEmpty || tel.valid.isEmpty) {
-            validate = false;
-            setValid(false);
-        }
-        
         if (validate) {
             // здесь данные можно отправить куданить
             onClose();
         }
     }
-    
+
     return ( <>
         <div className="modal__content mortgage">
         <form action="#" method="#" className="mortgage__form">
@@ -112,7 +101,7 @@ const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
                     <span className="mortgage-field__val mortgage-payment__rub">руб.</span>
                 </div>
             </div>
-            
+
             <div className="mortgage__capital">
                 <p className="mortgage__capital-text">Наличие материнского капитала и субсидий</p>
                 <div className="mortgage__capital-inner">
@@ -131,22 +120,22 @@ const MortgageCalculator : React.FC < PropsTypes > = ({onClose}) => {
                     </div>
 
                     <div className="mortgage__info">
-                            <input type="text" placeholder="Ваше имя" name="name" value={name.value} onChange={ name.onChange }/>
-                            <input type="text" placeholder="Ваш номер телефона" name="tel" value={ tel.value} onChange={ tel.onChange}/>
+                            <input type="text" placeholder="Ваше имя" name="name" value={values.name} onChange={ onHandleChangeInput}/>
+                            <input type="text" placeholder="Ваш номер телефона" name="tel" value={ values.tel} onChange={onHandleChangeInput}/>
                     </div>
                 </div>
 
                 <div className="mortgage__info-box">
                         <b className="mortgage__security">Мы не передаем Ваши данные третьим лицам</b>
                         { !valid && <small className="mortgage__form-invalid">Вы не заполнили все поля</small>}
-                        
+
                 </div>
             </div>
         </form>
         </div>
         < button type="button" className="modal__btn pink__btn" onClick={onSubmit}> Отправить </button>
-        
+
         </>)
 }
 
-export default React.memo(MortgageCalculator);
+export default React.memo(MortgageCalculator); 
