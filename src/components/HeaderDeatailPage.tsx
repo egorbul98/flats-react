@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import logo from './../assets/img/logo.svg';
+//@ts-ignore
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 type PropsTypes = {
   
 }
@@ -22,22 +24,22 @@ const HeaderDeatailPage : React.FC < PropsTypes > = ({}) => {
           <div className={ classNames("main-nav__wrapper", {"active":activeMenu})}>
             <ul className="main-nav__list main-nav--nojs">
               <li className="main-nav__item">
-                <a href="#flats" className="main-nav__link">Подобрать квартиру</a>
+                <AnchorLink href="#flats" className="main-nav__link">Подобрать квартиру</AnchorLink>
               </li>
               <li className="main-nav__item">
-                <a href="#description" className="main-nav__link">Характеристики комплекса</a>
+                <AnchorLink href="#description" className="main-nav__link">Характеристики комплекса</AnchorLink>
               </li>
               <li className="main-nav__item">
-                <a href="#feedback" className="main-nav__link">Отзывы</a>
+                <AnchorLink href="#blog" className="main-nav__link">Авторское описание</AnchorLink>
+                </li>
+                <li className="main-nav__item">
+                <AnchorLink href="#feedback" className="main-nav__link">Отзывы</AnchorLink>
               </li>
               <li className="main-nav__item">
-                <a href="#blog" className="main-nav__link">Авторское описание</a>
+                <AnchorLink href="#documents" className="main-nav__link">Документы</AnchorLink>
               </li>
               <li className="main-nav__item">
-                <a href="#documents" className="main-nav__link">Документы</a>
-              </li>
-              <li className="main-nav__item">
-                <a href="#credit" className="main-nav__link">Ипотека</a>
+                <AnchorLink href="#credit" className="main-nav__link">Ипотека</AnchorLink>
               </li>
             </ul>
           </div>

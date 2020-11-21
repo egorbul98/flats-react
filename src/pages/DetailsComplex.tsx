@@ -2,6 +2,10 @@ import React, { useCallback, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import { useDispatch, useSelector } from 'react-redux';
+
+
+import { ComplexLikeType } from '../mainTypes';
 
 import ComplexAuthorDescription from '../components/Complex/ComplexAuthorDescription';
 import ComplexCharacteristics from '../components/Complex/ComplexCharacteristics/ComplexCharacteristics';
@@ -14,15 +18,12 @@ import HeaderDeatailPage from '../components/HeaderDeatailPage';
 import VideoSlider from '../components/VideoSlider/VideoSlider';
 import ComplexMap from '../components/Complex/ComplexMap';
 import Reviews from '../components/Reviews/Reviews';
-
-
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetailComplex } from '../redux/actions/complexesActions';
 import { AppStateType } from '../redux/reducers/rootReducer';
 import ComplexSliderDetail from '../components/Complex/ComplexSliderDetail';
 import Modal from '../components/Modal';
 import AdviceBoxSlider from '../components/AdviceBoxSlider';
-import { ComplexLikeType } from '../mainTypes';
+
 import FormSignUpExcursion from '../components/FormSignUpExcursion';
 
 type PropsTypes = {
@@ -69,8 +70,7 @@ const DetailsComplex: React.FC<PropsTypes> = ({ }) => {
 
   return (
     
-  <div className="detail-page">
-      
+    <div className="detail-page">
       <HeaderDeatailPage />
       <ComplexSliderDetail {...complex}/>
         
