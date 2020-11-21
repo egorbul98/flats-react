@@ -37,9 +37,10 @@ const SlideItemComplex: React.FC<PropsTypeSlide> = ({ srcImage }) => {
 
 type propTypes = {
     mini?: boolean, //true - некоторые элементы в разметке будут отсутсовать,
-    display?: string
+    display?: string,
+    isFavorite?:boolean
 }
-const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...complex }) => {
+const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, isFavorite, ...complex }) => {
     const [currentSlide, setCurrentSlide] = React.useState(1);
     const [openMap, setOpenMap] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
@@ -60,12 +61,11 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
     }
 
     const onToggleFavoirite = () => {
-        if (favorite) {
+        if (isFavorite) {
             dispatch(removeFavoriteIdComplex(complex.id))
         } else {
             dispatch(addFavoriteIdComplex(complex.id))
         }
-        setFavorite(!favorite);
     }
 
     const deadlinesItems = React.useMemo(()=>complex.deadline.map((item) => { return "корпус "+ item.corpus + ", " + item.year + "г." }), [complex.deadline]); //возвращаем массив с элементами сроков сдач квартир. Обернули в useMemo, потому что просиходил ререндер select'a при простом свайпе слайдера
@@ -107,7 +107,7 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, ...com
                             
                         </Slider>
                         <div className="catalog-complex__slide-icons">
-                            <img src={favorite ? iconHeartFill : iconHeart} alt="img" onClick={onToggleFavoirite} width="30px" height="29px"/>
+                            <img src={isFavorite ? iconHeartFill : iconHeart} alt="img" onClick={onToggleFavoirite} width="30px" height="29px"/>
                         </div>
                     </div>
                </div>
