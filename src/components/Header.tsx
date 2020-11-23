@@ -13,8 +13,13 @@ const Header : React.FC < PropsTypes > = ({}) => {
     
     const [region, onHandleClick] = useSwitchRegion();
 
+    const [activeNav, setActiveNav] = React.useState(false);
+
+    const onToggleActive = () => {
+        setActiveNav(!activeNav)
+    }
     return (
-        <header className="header-catalog">
+        <header className={ classNames("header-catalog", {"header-catalog--nav-active":activeNav})}>
             <div className="header-catalog__wrap">
                 <div className="header-catalog__logo">
                     <img src={logo} alt="logo"/>
@@ -30,8 +35,8 @@ const Header : React.FC < PropsTypes > = ({}) => {
                             data-city='moscow'
                             className={classNames("header-catalog__cities-btn pink__btn",{"header-catalog__cities-btn--active":region==="MOS"})} onClick={()=>onHandleClick("MOS")}>Москва и МО</button>
                     </div>
-                    <Navigation/>
-                    <div className="btn-open-nav">
+                    <Navigation activeNav={activeNav}/>
+                    <div className="btn-open-nav" onClick={onToggleActive}>
                         <img className='img-open-nav' src={btnOpen} alt=""/>
                     </div>
                 </div>
