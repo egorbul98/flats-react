@@ -21,7 +21,7 @@ const SlickArrowRight: React.FC<CustomArrowProps & PropExtendType> = ({ currentS
           aria-disabled={currentSlide === count ? true : false}
       
       >
-          <img src={imgSliderNext} alt="img" />
+          <img src={window.location.origin+imgSliderNext} alt="img" />
       </button>
   )
 };
