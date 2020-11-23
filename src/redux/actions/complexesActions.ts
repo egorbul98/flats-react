@@ -15,6 +15,8 @@ export const SET_DETAIL_COMPLEX = "SET_DETAIL_COMPLEX";
 export const ADD_FAVORITE_ID_COMPLEX = "ADD_FAVORITE_ID_COMPLEX";
 export const REMOVE_FAVORITE_ID_COMPLEX = "REMOVE_FAVORITE_ID_COMPLEX";
 
+// const urlDataServ = "http://localhost:3004"
+const urlDataServ = "https://json-server-egor.herokuapp.com"
 
 export type RemoveFavoriteIdComplexType = {
   type: typeof REMOVE_FAVORITE_ID_COMPLEX,
@@ -162,7 +164,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
   // args += `_page=${currentPage}&_limit=${perPage}`;
   
   
-  Axios.get(`http://localhost:3004/complexes?_embed=flats&${args}`)
+  Axios.get(`${urlDataServ}/complexes?_embed=flats&${args}`)
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
@@ -242,7 +244,7 @@ export const fetchComplexesByIds = (region: string | null = null, arrFavoriteCom
   
   let args = `&region=${region}&`;
   
-  Axios.get(`http://localhost:3004/complexes?_embed=flats&${arrFavoriteComplexesIds?.map((id)=>"id="+id).join("&")}${args}`)
+  Axios.get(`${urlDataServ}/complexes?_embed=flats&${arrFavoriteComplexesIds?.map((id)=>"id="+id).join("&")}${args}`)
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
@@ -266,7 +268,7 @@ export const fetchComplexesByIds = (region: string | null = null, arrFavoriteCom
 
 export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
   
-  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=reviews&_embed=flats&id=${id}`)
+  Axios.get(`${urlDataServ}/complexes?_embed=complexDetail&_embed=reviews&_embed=flats&id=${id}`)
     .then(({data})=> {
       if (!data[0]) {
         console.log("НЕТ ТАКОГО");
