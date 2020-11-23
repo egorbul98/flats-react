@@ -6,7 +6,7 @@ import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 import { setReviews } from "./reviewsActions";
 
 // const urlDataServ = "http://localhost:3004"
-const urlDataServ = "https://json-server-egor.herokuapp.com"
+// const urlDataServ = "https://json-server-egor.herokuapp.com"
 
 export const SET_COMPLEXES = "SET_COMPLEXES";
 export const SET_LOADING = "SET_LOADING";
@@ -165,7 +165,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
   // args += `_page=${currentPage}&_limit=${perPage}`;
   
   
-  Axios.get(`${urlDataServ}/complexes?_embed=flats&${args}`)
+  Axios.get(`http://localhost:3004/complexes?_embed=flats&${args}`)
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
@@ -245,7 +245,7 @@ export const fetchComplexesByIds = (region: string | null = null, arrFavoriteCom
   
   let args = `&region=${region}&`;
   
-  Axios.get(`${urlDataServ}/complexes?_embed=flats&${arrFavoriteComplexesIds?.map((id)=>"id="+id).join("&")}${args}`)
+  Axios.get(`http://localhost:3004/complexes?_embed=flats&${arrFavoriteComplexesIds?.map((id)=>"id="+id).join("&")}${args}`)
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
@@ -269,7 +269,7 @@ export const fetchComplexesByIds = (region: string | null = null, arrFavoriteCom
 
 export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
   
-  Axios.get(`${urlDataServ}/complexes?_embed=complexDetail&_embed=reviews&_embed=flats&id=${id}`)
+  Axios.get(`http://localhost:3004/complexes?_embed=complexDetail&_embed=reviews&_embed=flats&id=${id}`)
     .then(({data})=> {
       if (!data[0]) {
         console.log("НЕТ ТАКОГО");
