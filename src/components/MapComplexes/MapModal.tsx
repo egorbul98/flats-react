@@ -69,7 +69,7 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
         <div className="map-wrapper">
         <div className={ classNames("map-filter", {"map-filter--active": openFilter})}>
         {/* <div className={ classNames("map-filter")}> */}
-            <div className="map-modal__close" onClick={onCloseMap}><span className="close"><img src={iconArrowLeft} alt="img"/>Показать списком</span></div>
+            <div className="map-modal__close" onClick={onCloseMap}><span className="close"><img src={window.location.origin+iconArrowLeft} alt="img"/>Показать списком</span></div>
             <h3 className="map-modal__title">Новостройки на карте <span className="city">{region === "SP" ? "Санкт-Петербурга" : "Москвы и МО"}</span></h3>
             <hr className="hr" />
           

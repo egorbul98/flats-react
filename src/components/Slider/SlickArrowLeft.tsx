@@ -16,7 +16,7 @@ const SlickArrowLeft:React.FC<CustomArrowProps & PropExtendType> = ({ currentSli
       className={classNames(classNamesBtn, {"disabled" : currentSlide === 0})}
       aria-disabled={currentSlide === 0 ? true : false}
   >
-      <img src={imgSliderPrev} alt="img"/>
+      <img src={window.location.origin+imgSliderPrev} alt="img"/>
   </button>
 );
 

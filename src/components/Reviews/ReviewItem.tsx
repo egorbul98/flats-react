@@ -19,7 +19,7 @@ const Reviews : React.FC < PropsTypes > = ({name, date, text}) => {
 
   return (
     <div className="feedback__box">
-      <div className="feedback__avatar-box"> <img src={iconAvatar} alt="аватарка" className="feedback__avatar" width="16" height="20" /></div>
+      <div className="feedback__avatar-box"> <img src={window.location.origin+iconAvatar} alt="аватарка" className="feedback__avatar" width="16" height="20" /></div>
       
       <div className="feedback-content">
         <div className="feedback__author-container"><b className="feedback__author">{name}</b><small className="feedback__time">{date}</small></div>
@@ -28,7 +28,7 @@ const Reviews : React.FC < PropsTypes > = ({name, date, text}) => {
         <div className="feedback__buttons">
           {!readMore && <button type="button" className="feedback__btn feedback__btn--unfurl " onClick={onReadMore}>
             <span className="text">Читать весь отзыв</span> 
-            <img src={iconArrow} alt="iconArrow" /></button>}
+            <img src={window.location.origin+iconArrow} alt="iconArrow" /></button>}
         </div>
       </div>
 

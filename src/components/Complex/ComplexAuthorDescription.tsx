@@ -27,7 +27,7 @@ const ComplexAuthorDescription : React.FC < PropsTypes > = ({descriptionObj}) =>
         <h2 className="blog__title">Авторское описание ЖК</h2>
         <div className="blog__header">
           <div className="blog__avatar-wrap">
-            <img src={iconAvatar} className="icon" alt="Аватар"/>
+            <img src={window.location.origin+iconAvatar} className="icon" alt="Аватар"/>
             {/* <img className="blog__avatar" src="img/author_photo.jpg" alt="Аватар"/> */}
           </div>
               <b className="blog__author">{descriptionObj?.author}</b>

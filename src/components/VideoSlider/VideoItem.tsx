@@ -76,10 +76,10 @@ const VideoItem : React.FC < PropsTypes > = ({srcImage, srcVideo, active}) => {
                     onEnd={onEndVideo}/>
             </div>
             <button className={classNames("btn-pause", { "hidden": !activeVideo })}
-                onClick={onPauseVideo}><img src={iconPause} alt="pause"/></button>
+                onClick={onPauseVideo}><img src={window.location.origin+iconPause} alt="pause"/></button>
             <div className={classNames("content slide__img", {"hidden": activeVideo})}>
                 <img src={srcImage}/>
-                <button className="btn-play" type="button" onClick={onPlayVideo}><img src={iconPlay} alt="play"/></button>
+                <button className="btn-play" type="button" onClick={onPlayVideo}><img src={window.location.origin+iconPlay} alt="play"/></button>
             </div>
         </div>
     )

@@ -18,7 +18,7 @@ const HeaderDeatailPage : React.FC < PropsTypes > = ({}) => {
     <div>
       <header className="header main-header" id="main-header">
         <div className="main-header__wrapper" >
-        <img className="main-header__logo logo" src={logo} width="80" height="46" alt="Логотип"/>
+        <img className="main-header__logo logo" src={window.location.origin+logo} width="80" height="46" alt="Логотип"/>
         <nav className="main-nav scrollLink">
           <button className="main-nav__toggle" type="button" onClick={onToggleMenu}><span className="visually-hidden" >Открыть меню</span></button>
           <div className={ classNames("main-nav__wrapper", {"active":activeMenu})}>

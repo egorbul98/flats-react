@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 
-import iconAvatar from '../../assets/img/icons/avatar.svg';
-import iconArrow from '../../assets/img/arrow__down-input-grey.svg';
-import { ReviewType } from '../../mainTypes';
-
 import { useDispatch } from 'react-redux';
 import { addComplexReview } from '../../redux/actions/reviewsActions';
 
