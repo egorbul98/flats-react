@@ -48,7 +48,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json-serv": "json-server --watch src/assets/db.json --port 3004"
+    "json-serv": "json-server --watch src/assets/db.json --port 3004",
+    "server": "node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
