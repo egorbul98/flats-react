@@ -16,6 +16,8 @@ const ReviewAdd: React.FC<PropsTypes> = ({ complexId, about, onCloseModal }) => 
     const date = new Date();
     const dateStr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + ", " + date.getHours() + ":" + date.getMinutes();
     if (name && text) {
+      
+      
       dispatch(addComplexReview({ complexId: +complexId, date: dateStr, name: name, text: text, about: about }));
       setText('');
       setName('');

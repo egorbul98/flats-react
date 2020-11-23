@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { urlDataServ } from "../../assets/data";
 import { ReviewType } from "../../mainTypes";
 
 export const ADD_REVIEW = "ADD_REVIEW";
@@ -30,7 +31,7 @@ export const addReview = (review:ReviewType): AddReviewType => {
 
 export const addComplexReview = (review:{complexId:number, date:string, name:string, text:string, about:string}) => (dispatch: any): void => {
   
-  Axios.post(`http://localhost:3004/reviews/`, review).then(({data}) => {
+  Axios.post(`${urlDataServ}/reviews/`, review).then(({data}) => {
     dispatch(addReview(data));
   })
   

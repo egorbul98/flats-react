@@ -4,6 +4,10 @@ import {ReactComponent as SvgFeatureGift} from '../assets/img/icon-feature_gift.
 import {ReactComponent as SvgFeatureDecor} from '../assets/img/icon-feature_decor.svg';
 import { ReactComponent as SvgFeatureBus } from '../assets/img/icon-bus.svg';
 
+// const urlDataServ = "http://localhost:3004"
+export const urlDataServ = "https://json-server-egor.herokuapp.com"
+
+
 // Данные для фильтров
 export const area = ["Район 1", "Район 2", "Район 3", "Район 4"]
 export const metroMOS = ['Лихоборы', 'Котельники', 'Рассказовка', 'Ростокино', 'Измайловская', 'Сокольники']

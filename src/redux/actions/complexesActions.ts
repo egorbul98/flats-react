@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { urlDataServ } from "../../assets/data";
 import { getFlatsGroupByRooms, getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
 import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType} from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
@@ -15,8 +16,6 @@ export const SET_DETAIL_COMPLEX = "SET_DETAIL_COMPLEX";
 export const ADD_FAVORITE_ID_COMPLEX = "ADD_FAVORITE_ID_COMPLEX";
 export const REMOVE_FAVORITE_ID_COMPLEX = "REMOVE_FAVORITE_ID_COMPLEX";
 
-// const urlDataServ = "http://localhost:3004"
-const urlDataServ = "https://json-server-egor.herokuapp.com"
 
 export type RemoveFavoriteIdComplexType = {
   type: typeof REMOVE_FAVORITE_ID_COMPLEX,
