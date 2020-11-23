@@ -51,6 +51,7 @@
     "json-serv": "json-server --watch src/assets/db.json --port 3004",
     "server": "node server.js"
   },
+  "proxy":"http://localhost:3004",
   "eslintConfig": {
     "extends": "react-app"
   },
