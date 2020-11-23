@@ -51,7 +51,7 @@
     "json-serv": "json-server --watch src/assets/db.json --port 3004",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "response-scripts test --env = jsdom ",
+    "test": "response-scripts test --env = jsdom",
     " eject ":"response- scripts eject ", "heroku-postbuild ":" npm run build "
     },
   "eslintConfig": {
