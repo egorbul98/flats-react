@@ -5,9 +5,6 @@ import { AppStateType } from "../reducers/rootReducer";
 import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 import { setReviews } from "./reviewsActions";
 
-// const urlDataServ = "http://localhost:3004"
-// const urlDataServ = "https://json-server-egor.herokuapp.com"
-
 export const SET_COMPLEXES = "SET_COMPLEXES";
 export const SET_LOADING = "SET_LOADING";
 export const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
