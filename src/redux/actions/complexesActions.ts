@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { urlDataServ } from "../../assets/data";
 import { getFlatsGroupByRooms, getMinMaxValuesFlats } from "../../handlers/complexesHandlers";
-import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType} from "../../mainTypes";
+import { ComplexeType, ItemSelectType, ComplexeExtendedDetailType, DeadlineItemType} from "../../mainTypes";
 import { AppStateType } from "../reducers/rootReducer";
 import { FilterItemDiapasonType, FilterItemType } from "./filterActions";
 import { setReviews } from "./reviewsActions";
@@ -15,7 +15,20 @@ export const SET_ERROR_COMPLEXES = "SET_ERROR_COMPLEXES";
 export const SET_DETAIL_COMPLEX = "SET_DETAIL_COMPLEX";
 export const ADD_FAVORITE_ID_COMPLEX = "ADD_FAVORITE_ID_COMPLEX";
 export const REMOVE_FAVORITE_ID_COMPLEX = "REMOVE_FAVORITE_ID_COMPLEX";
+export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";
 
+
+export type SetSearchTextType = {
+  type: typeof SET_SEARCH_TEXT,
+  payload: string
+}
+
+export const setSearchText = (text: string): SetSearchTextType => {
+  return {
+    type: SET_SEARCH_TEXT, 
+    payload: text
+  }
+}
 
 export type RemoveFavoriteIdComplexType = {
   type: typeof REMOVE_FAVORITE_ID_COMPLEX,
@@ -167,9 +180,6 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
     .then(({ data, headers }) => {
      
       const complexes = data.filter((complex: ComplexeType) => {
-        
-        complexAddProperties(complex);
-
         let inArray:boolean | undefined = true;
         if (deadlinesValues) {
           inArray = checkInArray(deadlinesValues, complex.deadline, "year");
@@ -177,13 +187,16 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
             return false;
           } 
         }
-        
+
         if (roomsValues) {
           inArray = checkInArray(roomsValues, complex.flats, "room");
           if (!inArray) {
             return false;
           } 
         }
+
+        complexAddProperties(complex);
+
         
         if (filterItemsDiapason && filterItemsDiapason.length != 0) {
           for (let i = 0; i < filterItemsDiapason.length; i++) {
@@ -210,9 +223,7 @@ export const fetchComplexes = (region: string | null = null, filterItems: Array<
           return false;
         } 
 
-        //сортируем срок сдачи по годам
-        complex.deadline.sort((a, b) => a.year > b.year ? 1 : -1);
-        complex.maxDeadline = complex.deadline[complex.deadline.length - 1].year;
+        
         return true;
       })
 
@@ -245,19 +256,30 @@ export const fetchComplexesByIds = (region: string | null = null, arrFavoriteCom
   
   Axios.get(`${urlDataServ}/complexes?_embed=flats&${arrFavoriteComplexesIds?.map((id)=>"id="+id).join("&")}${args}`)
     .then(({ data, headers }) => {
-     
-      const complexes = data.filter((complex: ComplexeType) => {
+      const complexes = data.map((complex: ComplexeType) => {
         complexAddProperties(complex);
-        //сортируем срок сдачи по годам
-        complex.deadline.sort((a, b) => a.year > b.year ? 1 : -1);
-        complex.maxDeadline = complex.deadline[complex.deadline.length - 1].year;
-        return true;
+        return complex;
       })
+      updateDataComplexesInRedux(dispatch, complexes, headers["x-total-count"] ? +headers["x-total-count"] : complexes.length)
+    })
+    .catch((e) => {
+      console.error(e);
+      dispatch(setErrorText("Произошла ошибка при загрузке жилых комплексов :("));
+    })
+}
 
-      dispatch(setTotalCount(headers["x-total-count"] ? +headers["x-total-count"] : complexes.length));
-      dispatch(setCurrentPage(1));
-      dispatch(setComplexes(complexes));
-      dispatch(setLoading(false));
+
+export const fetchComplexesByText = (text:string | null = null) => (dispatch: any): void => {
+  
+  dispatch(setLoading(true));
+  
+  Axios.get(`${urlDataServ}/complexes?_embed=flats&name_like=${text}`)
+    .then(({ data, headers }) => {
+      const complexes = data.map((complex: ComplexeType) => {
+        complexAddProperties(complex);
+        return complex;
+      })
+      updateDataComplexesInRedux(dispatch, complexes, headers["x-total-count"] ? +headers["x-total-count"] : complexes.length)
     })
     .catch((e) => {
       console.error(e);
@@ -284,6 +306,13 @@ export const fetchDetailComplex = (id:number) => (dispatch: any): void => {
     })
 }
 
+function updateDataComplexesInRedux(dispatch:any, complexes:Array<ComplexeType>, countComplexes: number) {
+  dispatch(setTotalCount(countComplexes));
+  dispatch(setCurrentPage(1));
+  dispatch(setComplexes(complexes));
+  dispatch(setLoading(false));
+}
+
 
 function complexAddProperties(complex:any) {//Делает вычисление и добавляет новые свойства комлпексу, на основе вычислений
   const [minCostSquare, maxCostSquare, minCost, maxCost] = getMinMaxValuesFlats(complex.flats);//получаем мин/max стоимости квартир в данном комплексе
@@ -293,7 +322,12 @@ function complexAddProperties(complex:any) {//Делает вычисление 
   complex.minCostSquare = minCostSquare;
   complex.flatsGroupByRooms = getFlatsGroupByRooms(complex.flats) //возвращаем массив сгруппированных по кол-ву комнат квартир
 
+  //сортируем срок сдачи по годам
+  complex.deadline.sort((a:DeadlineItemType, b:DeadlineItemType) => a.year > b.year ? 1 : -1);
+  complex.maxDeadline = complex.deadline[complex.deadline.length - 1].year;
+
 }
+
 
 
 function checkInArray(arrayIncludes:Array<string | number>, arr:any, nameProp:string) {//Проверяет есть ли в массиве arrayIncludes какие-либо элементы из массива arr. Проверка по свойству nameProp элементов массива arr

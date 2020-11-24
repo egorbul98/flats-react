@@ -4,6 +4,9 @@
   padding-top: 78px;
   margin-top: 70px;
 
+  .form-search {
+    margin-top: 0;
+  }
   &__text {
     margin-top: 14px;
     color: #ffffff;
@@ -33,6 +36,7 @@
 
 
 .form-search {
+  margin-top: 20px;
   &__field {
     width: 488px;
     height: 50px;
@@ -57,7 +61,8 @@
     height: 100%;
     padding-left: 20px;
     padding-right: 56px;
-
+    border-radius: 6px;
+    border: 1px solid #cccccc;
     &::-ms-clear {
       display: none;
       width: 0;

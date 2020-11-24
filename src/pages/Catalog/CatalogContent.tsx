@@ -56,4 +56,4 @@ const SlideItem: React.FC<PropsTypeSlide> = React.memo(({src, title}) => {
     </div>
   )
 })
-export default CatalogContent;
+export default React.memo(CatalogContent);

@@ -12,7 +12,8 @@ const Navigation:React.FC<PropsType> = ({activeNav}) => {
   return (
     <nav className={classNames("header-catalog__nav catalog-nav ", {"catalog-nav catalog-nav--active":activeNav})}>
             <NavLink to="/" exact className='catalog-nav__item'>Главная</NavLink>
-            <NavLink to="/favorites" exact className='catalog-nav__item'><HeartIcon width="13" height="12"/> Избранное</NavLink>
+          <NavLink to="/favorites" exact className='catalog-nav__item'><HeartIcon width="13" height="12" /> Избранное</NavLink>
+          <NavLink to="/search" exact className='catalog-nav__item'>Поиск</NavLink>
         {/* <div
             className="catalog-nav__item catalog-nav__item-menu catalog-nav__item--margin-right">
             <a href="" className="link-menu">

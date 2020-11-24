@@ -1,10 +1,11 @@
 import { ComplexeExtendedDetailType, ComplexeType} from "../../mainTypes";
-import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ADD_FAVORITE_ID_COMPLEX, REMOVE_FAVORITE_ID_COMPLEX} from "../actions/complexesActions";
-import { ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType, AddFavoriteIdComplexType, RemoveFavoriteIdComplexType} from "../actions/complexesActions";
+import { SET_COMPLEXES, SET_DETAIL_COMPLEX, SORT_COMPLEXES, SET_TOTAL_COUNT, SET_CURRENT_PAGE, SET_LOADING, SET_ERROR_COMPLEXES, ADD_FAVORITE_ID_COMPLEX, REMOVE_FAVORITE_ID_COMPLEX, SET_SEARCH_TEXT} from "../actions/complexesActions";
+import { ErrorComplexesType, SetComplexesType, SetTotalCountType, SetCurrentPageType, SetLoadingType,SortComplexesType,  SetDetailComplexType, AddFavoriteIdComplexType, RemoveFavoriteIdComplexType, SetSearchTextType} from "../actions/complexesActions";
 
 const initialState = {
   items: [] as Array<ComplexeType>,
   favoriteItemsIds: [] as Array<number>,
+  searchText: '' as string,
   currentPage: 1 as number,
   perPage: 4 as number,
   totalCount: 0 as number,
@@ -14,10 +15,13 @@ const initialState = {
 }
 export type StateComplexesType = typeof initialState;
  
-type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType | AddFavoriteIdComplexType| RemoveFavoriteIdComplexType;
+type ActionsTypes = SetComplexesType | SetTotalCountType | SetCurrentPageType | SetLoadingType | SortComplexesType | ErrorComplexesType | SetDetailComplexType | AddFavoriteIdComplexType| RemoveFavoriteIdComplexType | SetSearchTextType;
 
 export const ComplexesReducer = (state = initialState, action:ActionsTypes):StateComplexesType => {
   switch (action.type) {
+    case SET_SEARCH_TEXT:
+      return { ...state, searchText: action.payload };
+    
     case SET_COMPLEXES:
       return { ...state, items: action.payload };
     

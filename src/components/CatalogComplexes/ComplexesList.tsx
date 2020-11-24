@@ -7,7 +7,7 @@ import Loading from '../miniComponents/Loading';
 import classNames from 'classnames';
 import Pagination from '../miniComponents/Pagination';
 import { setClearFilter } from '../../redux/actions/filterActions';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 type PropsTypes = {
   displayItems?: string
 }

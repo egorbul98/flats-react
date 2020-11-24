@@ -2,12 +2,13 @@ import React from 'react';
 import iconVK from '../assets/img/logo_vk.png';
 import iconYT from '../assets/img/logo_youtube.png';
 import iconInst from '../assets/img/logo_instagram.png';
-import iconSearch from '../assets/img/icon-search.svg';
+
 import { useSwitchRegion } from '../handlers/hooks/useSwitchRegion';
 import { useDispatch } from 'react-redux';
 import { FilterItemDiapasonType, setChangeFilterItemDiapason } from '../redux/actions/filterActions';
 import { fetchComplexes } from '../redux/actions/complexesActions';
 import { Link } from 'react-router-dom';
+import SearchComplexesBlock from './SearchComplexesBlock';
 type PropsTypes = {
   onOpenMap?: () => void;
 }
@@ -48,14 +49,9 @@ const Footer : React.FC < PropsTypes > = ({onOpenMap}) => {
             
         </div>
        
-        <div className="catalog-footer__item social">
-          <form action="" className="form-search">
-            <div className="form-search__field">
-              <input readOnly type="search" className="form-search__input" placeholder="Поиск по базе"/>
-              <button type='submit' className="btn-search"><img src={iconSearch} alt=""/></button>
-            </div>
-          </form>
-
+          <div className="catalog-footer__item social">
+            <SearchComplexesBlock/>
+         
           <div className="social__site"><Link to="/">PRONovostroyki.com</Link></div>
 
           <div className="social__list">

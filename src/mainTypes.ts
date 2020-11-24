@@ -101,7 +101,7 @@ export type CharacteristicInnerItemType =  {
   value: string | number
 }
 
-type DeadlineItemType = {
+export type DeadlineItemType = {
   corpus: number,
   year: number
 }
