@@ -22,13 +22,14 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
   const [idActiveComplex, setIdActiveComplex] = React.useState<number | null>(null);
   const [openFilter, setOpenFilter] = React.useState(false);//Только для мобильной версии
 
-  const { region, complexesItems } = useSelector(({ filter, complexes }: AppStateType) => {
+  const { region, complexesItems, favoriteComplexesIds } = useSelector(({ filter, complexes }: AppStateType) => {
     return {
       region: filter.region,
-      complexesItems: complexes.items
+      complexesItems: complexes.items,
+      favoriteComplexesIds: complexes.favoriteItemsIds,
     }
   })
-  
+ 
   React.useEffect(() => {
     setIdActiveComplex(null)
   }, [region]);
@@ -74,7 +75,7 @@ const MapModal : React.FC < PropsTypes > = ({open, onCloseMap}) => {
             <hr className="hr" />
           
           {idActiveComplex
-            ? <ComplexInfo complex={activeComplex} onClickBack={onCloseInfoComplex} />
+            ? <ComplexInfo complex={activeComplex} onClickBack={onCloseInfoComplex} isFavorite={favoriteComplexesIds.includes(idActiveComplex)}/>
             : <MapFormFilterBox onCloseFilter={onCloseFilter} />}
           
         </div>

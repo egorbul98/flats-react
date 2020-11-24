@@ -61,6 +61,8 @@ const ComplexCart: React.FC<ComplexeType & propTypes> = ({ mini, display, isFavo
     }
 
     const onToggleFavoirite = () => {
+        console.log(isFavorite);
+        
         if (isFavorite) {
             dispatch(removeFavoriteIdComplex(complex.id))
         } else {

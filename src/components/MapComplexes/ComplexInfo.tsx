@@ -5,10 +5,11 @@ import ComplexCart from '../CatalogComplexes/ComplexCart';
 
 type PropsTypes = {
   complex: ComplexeType,
-  onClickBack: () => void
+  onClickBack: () => void,
+  isFavorite?:boolean
 }
 
-const ComplexInfo : React.FC < PropsTypes > = ({complex, onClickBack}) => {
+const ComplexInfo : React.FC < PropsTypes > = ({complex, isFavorite, onClickBack}) => {
 
   return (
     <div className="map__complex-info complex-info">
@@ -16,7 +17,7 @@ const ComplexInfo : React.FC < PropsTypes > = ({complex, onClickBack}) => {
       <span className="close"><img src={window.location.origin+iconArrowLeft} alt="img" /><span className="go-to-filter">Назад к фильтру</span><span className="go-to-map">Назад к карте</span></span> </div>
       <div className="map__complex-info-inner">
 
-        <ComplexCart {...complex} mini={true} />
+        <ComplexCart {...complex} mini={true} isFavorite={isFavorite}/>
       
       </div>
 
